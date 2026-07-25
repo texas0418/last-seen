@@ -1,0 +1,234 @@
+// src/screens/MessagesScreen.tsx
+// Thread list + thread view + the live-script runtime (typing delays,
+// choice chips, free-text gates). Dae's thread doubles as the only hint
+// channel once her intro script has played out.
+
+import { useEffect, useRef, useState } from 'react';
+import {
+  KeyboardAvoidingView,
+  Platform,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
+
+import { THREADS } from '../content/threads';
+import { checkGate, gateById } from '../engine/gates';
+import { activeGates, hintLabel } from '../engine/hints';
+import { currentStep, scriptHistory } from '../engine/script';
+import { AppHeader, Bubble, StatusBarRow, ui } from '../engine/ui';
+import { isVisible, type ScriptStep, type Thread } from '../models';
+import {
+  flagSet,
+  getKv,
+  hasFlag,
+  markRead,
+  putKv,
+  scriptIndex,
+  setFlag,
+  setScriptIndex,
+} from '../state';
+import { colors, fonts } from '../theme';
+
+const choseKey = (threadId: string, i: number) => `chose:${threadId}:${i}`;
+const hintKey = (gateId: string) => `hint:${gateId}`;
+
+function LiveChoice({ thread, step, cursor }: { thread: Thread; step: ScriptStep; cursor: number }) {
+  if (step.kind !== 'choice') return null;
+  return (
+    <View>
+      {step.options.map((o) => (
+        <Pressable
+          key={o.label}
+          style={ui.chip}
+          onPress={() => {
+            putKv(choseKey(thread.id, cursor), o.label);
+            if (o.setsFlag) setFlag(o.setsFlag);
+            setScriptIndex(thread.id, o.goto ?? cursor + 1);
+          }}
+        >
+          <Text style={ui.chipText}>{o.label}</Text>
+        </Pressable>
+      ))}
+    </View>
+  );
+}
+
+function LiveFreetext({ thread, step, cursor }: { thread: Thread; step: ScriptStep; cursor: number }) {
+  const [text, setText] = useState('');
+  const [wrongBody, setWrongBody] = useState<string | null>(null);
+  if (step.kind !== 'freetext') return null;
+  const send = () => {
+    if (!text.trim()) return;
+    if (checkGate(step.gateId, text)) {
+      putKv(choseKey(thread.id, cursor), step.echo ?? text.trim());
+      const flag = gateById(step.gateId).setsFlag;
+      if (flag) setFlag(flag);
+      setScriptIndex(thread.id, cursor + 1);
+    } else {
+      setWrongBody(step.wrong);
+      setText('');
+    }
+  };
+  return (
+    <View>
+      {wrongBody ? <Bubble from="them" body={wrongBody} /> : null}
+      <View style={s.inputRow}>
+        <TextInput
+          style={[ui.input, { flex: 1 }]}
+          value={text}
+          onChangeText={setText}
+          placeholder="Text message"
+          placeholderTextColor={colors.faint}
+          autoCapitalize="none"
+          onSubmitEditing={send}
+        />
+        <Pressable onPress={send} hitSlop={10}>
+          <Text style={s.send}>↑</Text>
+        </Pressable>
+      </View>
+    </View>
+  );
+}
+
+function DaeHints() {
+  const gates = activeGates(flagSet());
+  return (
+    <View style={s.hints}>
+      {gates.map((g) => {
+        const level = Number(getKv(hintKey(g.id)) ?? '0');
+        return (
+          <View key={g.id}>
+            {level > 0 && <Bubble from="me" body={`about ${hintLabel(g)}…`} />}
+            {level > 0 && <Bubble from="them" body={g.nudges[Math.min(level, 2) - 1]} />}
+            {level < 2 && (
+              <Pressable
+                style={ui.chip}
+                onPress={() => putKv(hintKey(g.id), String(level + 1))}
+              >
+                <Text style={ui.chipText}>
+                  {level === 0 ? `Ask about ${hintLabel(g)}` : 'I’m still stuck.'}
+                </Text>
+              </Pressable>
+            )}
+          </View>
+        );
+      })}
+    </View>
+  );
+}
+
+function LiveArea({ thread }: { thread: Thread }) {
+  const cursor = scriptIndex(thread.id);
+  const steps = thread.live!.steps;
+  const step = currentStep(steps, cursor);
+  // Typing is DERIVED: a pending 'them' step means she's typing. The effect
+  // only schedules the delivery, which advances the external store.
+  const typing = step?.kind === 'them';
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    if (step?.kind !== 'them') return undefined;
+    timer.current = setTimeout(
+      () => setScriptIndex(thread.id, cursor + 1),
+      step.delayMs ?? 1500,
+    );
+    return () => {
+      if (timer.current) clearTimeout(timer.current);
+    };
+  }, [cursor, step, thread.id]);
+
+  const history = scriptHistory(steps, cursor, (i) => getKv(choseKey(thread.id, i)));
+  const done = step === undefined || step.kind === 'end';
+  return (
+    <View>
+      {history.map((b, i) => (
+        <Bubble key={i} from={b.from} body={b.body} />
+      ))}
+      {typing && <Bubble from="them" body="…" />}
+      {step && !typing && <LiveChoice thread={thread} step={step} cursor={cursor} />}
+      {step && !typing && <LiveFreetext thread={thread} step={step} cursor={cursor} />}
+      {thread.id === 'th-dae' && done && <DaeHints />}
+    </View>
+  );
+}
+
+function ThreadView({ thread, onBack }: { thread: Thread; onBack: () => void }) {
+  const flags = flagSet();
+  const scroll = useRef<ScrollView>(null);
+  useEffect(() => markRead(thread.id), [thread.id]);
+  const liveActive = thread.live && flags.has(thread.live.trigger);
+  return (
+    <KeyboardAvoidingView
+      style={ui.screen}
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+    >
+      <StatusBarRow />
+      <AppHeader title={thread.contact} subtitle={thread.detail} onBack={onBack} />
+      <ScrollView
+        ref={scroll}
+        contentContainerStyle={{ padding: 14, paddingBottom: 30 }}
+        onContentSizeChange={() => scroll.current?.scrollToEnd({ animated: true })}
+      >
+        {thread.messages.filter((m) => isVisible(m, flags)).map((m, i) => (
+          <View key={i}>
+            <Text style={s.when}>{m.when}</Text>
+            <Bubble from={m.from === 'quinn' ? 'me' : 'them'} body={m.body} />
+          </View>
+        ))}
+        {liveActive && <LiveArea thread={thread} />}
+      </ScrollView>
+    </KeyboardAvoidingView>
+  );
+}
+
+export default function MessagesScreen({ onBack }: { onBack: () => void }) {
+  const [openId, setOpenId] = useState<string | null>(null);
+  const flags = flagSet();
+  const visible = THREADS.filter((t) => isVisible(t, flags));
+  const open = visible.find((t) => t.id === openId);
+  if (open) return <ThreadView thread={open} onBack={() => setOpenId(null)} />;
+  return (
+    <View style={ui.screen}>
+      <StatusBarRow />
+      <AppHeader title="Messages" onBack={onBack} />
+      <ScrollView>
+        {visible.map((t) => {
+          const last = t.messages[t.messages.length - 1];
+          return (
+            <Pressable key={t.id} style={ui.row} onPress={() => setOpenId(t.id)}>
+              <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                <Text style={ui.rowTitle}>{t.contact}</Text>
+                {!hasFlag('ending4') && !getKv(`read:${t.id}`) && (
+                  <View style={ui.badge}>
+                    <Text style={ui.badgeText}> </Text>
+                  </View>
+                )}
+              </View>
+              <Text style={ui.rowSub} numberOfLines={1}>
+                {last?.body ?? 'New conversation'}
+              </Text>
+            </Pressable>
+          );
+        })}
+      </ScrollView>
+    </View>
+  );
+}
+
+const s = StyleSheet.create({
+  when: {
+    textAlign: 'center',
+    fontFamily: fonts.sans,
+    fontSize: 11,
+    color: colors.faint,
+    marginTop: 10,
+    marginBottom: 2,
+  },
+  inputRow: { flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 10 },
+  send: { color: colors.accent, fontSize: 26, fontWeight: '700' },
+  hints: { marginTop: 14 },
+});
