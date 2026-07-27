@@ -27,7 +27,7 @@ import { checkGate, gateById } from '../engine/gates';
 import { AppHeader, StatusBarRow, ui } from '../engine/ui';
 import { isVisible, type Email } from '../models';
 import { useStoryUnlocked } from '../proAccess';
-import { flagSet, hasFlag, markRead, putKv, setFlag } from '../state';
+import { flagSet, hasFlag, isRead, markRead, putKv, setFlag } from '../state';
 import { colors, fonts } from '../theme';
 import PaywallScreen from './PaywallScreen';
 
@@ -126,7 +126,8 @@ export default function MailScreen({ onBack }: { onBack: () => void }) {
     (e) => e.account === account && isVisible(e, flags),
   );
   const open = emails.find((e) => e.id === openId);
-  if (open && open.id === DRAFT_ID && hasFlag('act3'))
+  if (open && open.id === DRAFT_ID && hasFlag('act3')) {
+    markRead(DRAFT_ID); // the decoder route must clear unread too
     return (
       <View style={ui.screen}>
         <StatusBarRow />
@@ -142,6 +143,7 @@ export default function MailScreen({ onBack }: { onBack: () => void }) {
         />
       </View>
     );
+  }
   if (open) return <EmailView email={open} onBack={() => setOpenId(null)} />;
 
   return (
@@ -168,7 +170,8 @@ export default function MailScreen({ onBack }: { onBack: () => void }) {
         <ScrollView>
           {emails.map((e) => (
             <Pressable key={e.id} style={ui.row} onPress={() => setOpenId(e.id)}>
-              <Text style={ui.rowTitle}>
+              <Text style={[ui.rowTitle, !isRead(e.id) && ui.rowTitleUnread]}>
+                {!isRead(e.id) ? <Text style={ui.unreadDot}>{'● '}</Text> : null}
                 {e.folder === 'drafts' ? '✏️ ' : ''}
                 {e.from}
               </Text>

@@ -150,4 +150,31 @@ for (const e of [...EMAILS, ...VOICEMAILS, ...NOTES, ...PHOTOS])
   for (const f of e.visibleWhen ?? [])
     assert.ok(settable.has(f), `dead flag '${f}' (${e.id})`);
 
+
+// ——— discoverability: the inverse of the leak test ———
+// Every "find the phrase" gate answer must actually exist, ciphered, in
+// player-readable content. (Added after playtest 1: "still game" was never
+// planted — the final gate was unsolvable.)
+{
+  const flip = (s: string): string =>
+    s.replace(/[a-z]/g, (c: string) => String.fromCharCode(219 - c.charCodeAt(0)))
+     .replace(/[A-Z]/g, (c: string) => String.fromCharCode(155 - c.charCodeAt(0)));
+  const oldThread = THREADS.find((t) => t.id === 'th-casey-old');
+  if (!oldThread) throw new Error('th-casey-old missing');
+  const bodies = oldThread.messages.map((m) => m.body.toLowerCase()).join(' ');
+  assert(
+    bodies.includes(flip('still game').toLowerCase()),
+    'the old words ("still game") are planted, ciphered, in th-casey-old',
+  );
+  const draftPlain = flip(DRAFT_BODY_CIPHER).toLowerCase();
+  assert(
+    draftPlain.includes('say the old words'),
+    'the draft instructs "say the old words"',
+  );
+  assert(
+    !draftPlain.includes('still game'),
+    'the draft must NOT contain the old words themselves',
+  );
+}
+
 console.log(`test-content: all assertions passed (${pool.length} readable items scanned)`);

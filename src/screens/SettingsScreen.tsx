@@ -12,8 +12,11 @@ import { AppHeader, StatusBarRow, phoneClock, ui } from '../engine/ui';
 import { hasFlag, resetWorld, setFlag } from '../state';
 import { colors, fonts } from '../theme';
 
+const ENDING_FLAGS = ['ending1', 'ending2', 'ending3', 'ending4'] as const;
+
 export default function SettingsScreen({ onBack }: { onBack: () => void }) {
   const [armReset, setArmReset] = useState(false);
+  const endingsSeen = ENDING_FLAGS.filter((f) => hasFlag(f)).length;
   const { battery } = phoneClock();
   return (
     <View style={ui.screen}>
@@ -76,6 +79,16 @@ export default function SettingsScreen({ onBack }: { onBack: () => void }) {
             {hasFlag('act3') ? 'Signed in' : 'Signed out — added Jun 2026, never synced to cloud'}
           </Text>
         </View>
+
+        {endingsSeen > 0 && (
+          <>
+            <Text style={s.section}>CASE</Text>
+            <View style={ui.row}>
+              <Text style={ui.rowTitle}>Endings</Text>
+              <Text style={ui.rowSub}>{endingsSeen} of 4 seen</Text>
+            </View>
+          </>
+        )}
 
         <Text style={s.section}>· · ·</Text>
         <Pressable

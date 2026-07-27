@@ -26,6 +26,9 @@ export const THREADS: Thread[] = [
       },
       { from: 'quinn', body: 'fine.', when: 'Nov 20, 2023' },
       { from: 'quinn', body: 'XZHVB. KOVZHV.', when: 'Jan 2, 2024' },
+      // The old words. Garbage until the cipher is cracked; then it's the
+      // question Casey never answered — and the burner gate's answer.
+      { from: 'quinn', body: 'HGROO TZNV?', when: 'Mar 8, 2024' },
     ],
   },
   {
@@ -287,30 +290,46 @@ export const THREADS: Thread[] = [
           body: 'you actually did it. i hoped and i was terrified, both. i’m safe. i can’t say more unless you already know it. what happens now is the only choice that ever mattered:',
           delayMs: 3000,
         },
+        // 4 — the choice. Confirms are IN-FICTION (Quinn asks to be sure);
+        // every resolved branch flows to 13, the reopen beat, so the player
+        // can pursue the other endings without any menu.
         {
           kind: 'choice',
           options: [
             { label: 'I’m sending everything to Mara. All of it.', goto: 5 },
-            { label: 'I’ll burn it. Stay a ghost. Stay safe.', goto: 7 },
-            { label: 'I know where you are. I’m coming.', goto: 9 },
+            { label: 'I’ll burn it. Stay a ghost. Stay safe.', goto: 8 },
+            { label: 'I know where you are. I’m coming.', goto: 11 },
           ],
+        },
+        // 5-7 — loud
+        {
+          kind: 'them',
+          body: 'say it plain. no taking it back. she prints everything — the town, the sheriff, our name next to eli’s in the paper.',
+          delayMs: 2500,
         },
         {
           kind: 'choice',
           options: [
-            { label: 'Confirm — send the archive. This ends loud.', setsFlag: 'ending1' },
+            { label: 'Send it. All of it. This ends loud.', setsFlag: 'ending1', goto: 13 },
             { label: 'Wait. Not yet.', goto: 4 },
           ],
         },
         { kind: 'end' },
+        // 8-10 — quiet
+        {
+          kind: 'them',
+          body: 'you’re sure. i stay dead. you grieve me in public for the rest of your life, and mom never knows.',
+          delayMs: 2500,
+        },
         {
           kind: 'choice',
           options: [
-            { label: 'Confirm — delete the account. This ends quiet.', setsFlag: 'ending2' },
+            { label: 'Burn it. Stay a ghost. Stay safe.', setsFlag: 'ending2', goto: 13 },
             { label: 'Wait. Not yet.', goto: 4 },
           ],
         },
         { kind: 'end' },
+        // 11-12 — the town gate (ending3 via the gate's flag)
         {
           kind: 'them',
           body: 'if you really know, you don’t have to say the town to me. say it to the phone. it’s been listening this whole time anyway.',
@@ -320,6 +339,20 @@ export const THREADS: Thread[] = [
           kind: 'freetext',
           gateId: 'town',
           wrong: 'if you don’t know, don’t guess. guessing gets people found by the wrong ones. the envelope knows. the boat knows. the flowers know.',
+        },
+        // 13-14 — the reopen: fires after any ending's epilogue closes
+        {
+          kind: 'them',
+          body: '…still there? it doesn’t feel finished. the other doors are still on the table.',
+          delayMs: 2500,
+        },
+        {
+          kind: 'choice',
+          options: [
+            { label: 'I’m sending everything to Mara. All of it.', goto: 5 },
+            { label: 'I’ll burn it. Stay a ghost. Stay safe.', goto: 8 },
+            { label: 'I know where you are. I’m coming.', goto: 11 },
+          ],
         },
         { kind: 'end' },
       ],

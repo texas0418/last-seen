@@ -12,7 +12,7 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { decoderMapping, setDecoderMapping } from '../state';
 import { colors, fonts } from '../theme';
-import { isFullyDecoded } from './cipher';
+import { cipherLetters, isFullyDecoded } from './cipher';
 
 const ROWS = ['abcdefghi', 'jklmnopqr', 'stuvwxyz'].map((r) => r.split(''));
 
@@ -31,6 +31,7 @@ export default function Decoder({
   const [selected, setSelected] = useState<string | null>(null);
   const [confirmWipe, setConfirmWipe] = useState(false);
   const solved = isFullyDecoded(ciphertext, mapping);
+  const unmapped = cipherLetters(ciphertext).filter((c) => !mapping[c]).length;
 
   const save = (next: Record<string, string>) => {
     setMapping(next);
@@ -78,7 +79,9 @@ export default function Decoder({
             ? 'the letters have stopped fighting you.'
             : selected
               ? `every “${selected.toUpperCase()}” is lit. type what it really is.`
-              : 'tap a letter in the message. then type what it really is.'}
+              : unmapped > 0 && unmapped <= 5
+                ? `${unmapped === 1 ? 'one letter is' : `${unmapped} letters are`} still lying to you.`
+                : 'tap a letter in the message. then type what it really is.'}
         </Text>
         <View style={s.words}>
           {words.map((word, wi) => (

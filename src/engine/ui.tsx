@@ -90,6 +90,8 @@ export const ui = StyleSheet.create({
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: colors.hairline,
   },
+  unreadDot: { color: colors.accent, fontSize: 11 },
+  rowTitleUnread: { fontWeight: '600' },
   rowTitle: { fontFamily: fonts.sans, fontSize: 16, fontWeight: '600', color: colors.text },
   rowSub: { fontFamily: fonts.sans, fontSize: 13, color: colors.textDim, marginTop: 3 },
   badge: {
@@ -120,6 +122,9 @@ export const ui = StyleSheet.create({
     paddingVertical: 9,
     marginVertical: 4,
     alignSelf: 'flex-end',
+    // long labels must stay visibly right-aligned options, never wrap into
+    // something that reads as a full-width incoming message
+    maxWidth: '82%',
   },
   chipText: { color: colors.accent, fontFamily: fonts.sans, fontSize: 15 },
   input: {

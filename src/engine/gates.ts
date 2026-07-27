@@ -133,7 +133,7 @@ export const GATES: Gate[] = [
     wrong: ['Wrong number.'],
     clues: [
       { itemId: 'em-draft', surface: 'mail', what: 'the unsent draft, decoded: "say the old words"' },
-      { itemId: 'th-casey-old', surface: 'messages', what: 'the cipher itself — proof only Casey could answer' },
+      { itemId: 'th-casey-old', surface: 'messages', what: 'her last unanswered text, in cipher: "HGROO TZNV?" -> "still game?" — the question Casey finally answers' },
     ],
     nudges: [
       'the draft tells you exactly what to say. it just doesn’t tell you in english.',

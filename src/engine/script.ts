@@ -19,17 +19,31 @@ export function scriptHistory(
   cursor: number,
   chosen: ChoiceLookup,
 ): RenderedBubble[] {
+  // Follow the PATH the player actually took (gotos and all) — a linear
+  // scan would render "them" bubbles from branches never visited. Backward
+  // gotos (the ending loop) can revisit a step; the guard set stops the
+  // walk from looping past the same choice twice with a stale answer.
   const out: RenderedBubble[] = [];
-  for (let i = 0; i < Math.min(cursor, steps.length); i += 1) {
+  const visited = new Set<number>();
+  let i = 0;
+  while (i < cursor && i < steps.length) {
     const s = steps[i];
-    if (s.kind === 'them') out.push({ from: 'them', body: s.body });
-    if (s.kind === 'choice') {
-      const label = chosen(i);
-      if (label) out.push({ from: 'me', body: label });
+    if (s.kind === 'end') break;
+    if (s.kind === 'them') {
+      out.push({ from: 'them', body: s.body });
+      i += 1;
+      continue;
     }
-    if (s.kind === 'freetext') {
-      const echo = chosen(i);
-      if (echo) out.push({ from: 'me', body: echo });
+    const answer = chosen(i);
+    if (!answer) break;
+    out.push({ from: 'me', body: answer });
+    if (s.kind === 'choice') {
+      if (visited.has(i)) break;
+      visited.add(i);
+      const opt = s.options.find((o) => o.label === answer);
+      i = opt?.goto ?? i + 1;
+    } else {
+      i += 1;
     }
   }
   return out;

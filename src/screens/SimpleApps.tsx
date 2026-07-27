@@ -13,7 +13,7 @@ import { PhotoViewer } from '../engine/PhotoViewer';
 import { AppHeader, StatusBarRow, ui } from '../engine/ui';
 import { isVisible } from '../models';
 import { PHOTO_ART } from '../photoAssets';
-import { flagSet, markRead } from '../state';
+import { flagSet, isRead, markRead } from '../state';
 import { colors, fonts } from '../theme';
 
 export function VoicemailScreen({ onBack }: { onBack: () => void }) {
@@ -40,7 +40,10 @@ export function VoicemailScreen({ onBack }: { onBack: () => void }) {
       <ScrollView>
         {items.map((v) => (
           <Pressable key={v.id} style={ui.row} onPress={() => setOpenId(v.id)}>
-            <Text style={ui.rowTitle}>{v.from}</Text>
+            <Text style={[ui.rowTitle, !isRead(v.id) && ui.rowTitleUnread]}>
+              {!isRead(v.id) ? <Text style={ui.unreadDot}>{'● '}</Text> : null}
+              {v.from}
+            </Text>
             <Text style={ui.rowSub}>
               {v.when} · {v.duration}
             </Text>
@@ -74,7 +77,10 @@ export function NotesScreen({ onBack }: { onBack: () => void }) {
       <ScrollView>
         {items.map((n) => (
           <Pressable key={n.id} style={ui.row} onPress={() => setOpenId(n.id)}>
-            <Text style={ui.rowTitle}>{n.title}</Text>
+            <Text style={[ui.rowTitle, !isRead(n.id) && ui.rowTitleUnread]}>
+              {!isRead(n.id) ? <Text style={ui.unreadDot}>{'● '}</Text> : null}
+              {n.title}
+            </Text>
             <Text style={ui.rowSub}>{n.when}</Text>
           </Pressable>
         ))}
