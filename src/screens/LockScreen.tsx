@@ -1,15 +1,19 @@
 // src/screens/LockScreen.tsx
-// Quinn's lock screen: the fair-photo wallpaper (described), notification
-// previews that seed the cast, and a 4-digit keypad. The passcode's clue is
-// IN the wallpaper (long-press = look closer), taught here once — every
-// photo in the game supports the same gesture.
+// Quinn's lock screen: the fair-photo wallpaper, notification previews that
+// seed the cast, and a 4-digit keypad. The passcode's clue is IN the
+// wallpaper — tapping any photo opens the zoomable viewer (pinch + pan),
+// taught here once; every photo in the game works the same way.
 
 import { useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import {
+  Image, Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions,
+} from 'react-native';
 
 import { PHOTOS } from '../content/other';
 import { checkGate, gateById } from '../engine/gates';
+import { PhotoViewer } from '../engine/PhotoViewer';
 import { StatusBarRow, ui } from '../engine/ui';
+import { PHOTO_ART } from '../photoAssets';
 import { setFlag } from '../state';
 import { colors, fonts } from '../theme';
 
@@ -25,6 +29,9 @@ export default function LockScreen() {
   const [entry, setEntry] = useState('');
   const [wrongs, setWrongs] = useState(0);
   const [closer, setCloser] = useState(false);
+  const { width } = useWindowDimensions();
+  // explicit pixel size — see PhotoViewer note (18pt screen + 16pt card padding, 1pt border)
+  const wallW = width - 2 * (18 + 16 + 1);
   const wallpaper = PHOTOS.find((p) => p.id === 'ph-wallpaper')!;
 
   const press = (k: string) => {
@@ -44,17 +51,21 @@ export default function LockScreen() {
     <View style={ui.screen}>
       <StatusBarRow />
       <ScrollView contentContainerStyle={{ padding: 18 }}>
-        <Pressable
-          style={s.wallpaper}
-          onLongPress={() => setCloser(true)}
-          onPress={() => setCloser(false)}
-          delayLongPress={600}
-        >
-          <Text style={s.wallpaperEmoji}>{wallpaper.emoji}</Text>
-          <Text style={s.wallpaperAlt}>
-            {closer && wallpaper.closer ? wallpaper.closer : wallpaper.alt}
-          </Text>
-          <Text style={s.closerHint}>{closer ? '' : 'hold to look closer'}</Text>
+        <Pressable style={s.wallpaper} onPress={() => setCloser(true)}>
+          {PHOTO_ART[wallpaper.id] ? (
+            <Image
+              source={PHOTO_ART[wallpaper.id].image}
+              style={[s.wallpaperCover, { width: wallW }]}
+              resizeMode="cover"
+              accessibilityLabel={wallpaper.alt}
+            />
+          ) : (
+            <>
+              <Text style={s.wallpaperEmoji}>{wallpaper.emoji}</Text>
+              <Text style={s.wallpaperAlt}>{wallpaper.alt}</Text>
+            </>
+          )}
+          <Text style={s.closerHint}>tap to look closer</Text>
         </Pressable>
         {PREVIEWS.map((p, i) => (
           <View key={i} style={s.notif}>
@@ -74,6 +85,14 @@ export default function LockScreen() {
           ))}
         </View>
       </ScrollView>
+      {closer && PHOTO_ART[wallpaper.id] ? (
+        <PhotoViewer
+          source={PHOTO_ART[wallpaper.id].image}
+          ar={PHOTO_ART[wallpaper.id].ar}
+          label={wallpaper.closer ?? wallpaper.alt}
+          onClose={() => setCloser(false)}
+        />
+      ) : null}
     </View>
   );
 }
@@ -86,6 +105,12 @@ const s = StyleSheet.create({
     borderColor: colors.panelBorder,
     padding: 16,
     marginBottom: 14,
+  },
+  wallpaperImg: { width: '100%', borderRadius: 12, backgroundColor: colors.hairline },
+  wallpaperCover: {
+    height: 230,
+    borderRadius: 12,
+    backgroundColor: colors.hairline,
   },
   wallpaperEmoji: { fontSize: 34, textAlign: 'center', marginBottom: 8 },
   wallpaperAlt: {

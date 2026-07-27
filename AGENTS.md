@@ -62,9 +62,10 @@ test-content.ts enforces the mechanical half of this. The judgment half:
   thread exists so the player never feels alone).
 - The paywall is the one non-diegetic screen, by design: never dress a real
   purchase as fiction.
-- Photos are v1 "described scenes" (alt text + long-press closer layer).
-  When real art ships, the closer layer becomes the zoom detail in the image
-  itself — the text pipeline stays as the accessibility layer.
+- Photos are real art: tapping opens the zoomable viewer (PhotoViewer,
+  pinch + pan) and the player FINDS details — never pre-frame a detail crop.
+  The content alt/closer text pipeline is the accessibility layer, and the
+  described-scene card remains the fallback for photos without art.
 
 # Git workflow (PR-based CI)
 

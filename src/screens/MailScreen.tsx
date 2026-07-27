@@ -83,7 +83,7 @@ function EmailView({ email, onBack }: { email: Email; onBack: () => void }) {
       <AppHeader title={email.from} subtitle={email.when} onBack={onBack} />
       <ScrollView contentContainerStyle={{ padding: 18 }}>
         <Text style={s.subject}>{email.subject}</Text>
-        <Text style={s.body}>{email.body}</Text>
+        <Text selectable style={s.body}>{email.body}</Text>
         {(email.attachments ?? []).map((a) => (
           <View key={a.name} style={s.attach}>
             <Text style={s.attachName}>📎 {a.name}</Text>

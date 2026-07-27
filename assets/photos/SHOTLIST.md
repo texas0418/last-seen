@@ -81,3 +81,82 @@ on a windowsill, a harbor at lunch, a blurry cat that isn't hers, a sunset
 like everyone's sunset, mom asleep in an armchair, a cracked phone screen
 someone else's. No text constraints — just nothing that contradicts the
 timeline (no snow, no palm trees, no visible dates after Oct 11).
+
+---
+
+# Generation prompts v2 — TEXT-FREE bases (paste-ready)
+
+All text, handwriting, and pen marks get composited in post from the exact
+strings above — do NOT let the generator attempt any lettering. Each prompt
+reserves a clean BLANK ZONE where the type will land; when picking takes,
+check the blank zone is truly empty and roughly flat/undistorted.
+
+Style preamble for #2, #4, #5, #6 — prepend to each, same model + settings
+for all four (one camera roll):
+
+> Candid iPhone photo, photorealistic, coastal Pacific Northwest, overcast
+> marine light, muted colors, slightly imperfect framing, mild grain, no
+> watermark, no text anywhere.
+
+## 1 · ph-wallpaper.jpg  (tall portrait, e.g. 9:16)
+> A scanned photo-booth souvenir strip from a 2000s county fair: three
+> stacked flash-lit frames on slightly yellowed glossy paper with a wide
+> plain white border, the bottom border noticeably taller and completely
+> blank. Two sisters, about 10 and 13, sunburnt and mid-laugh, sharing pink
+> cotton candy; in the last frame the older girl looks at the younger one
+> instead of the camera. Slight scan glare. No text, dates, or logos
+> anywhere on the strip.
+
+BLANK ZONE: the tall bottom border → I print the © fair line there, tiny.
+
+## 2 · ph-ozzy.jpg  (3:4) — no text needed, unchanged
+> [style preamble] A sky-blue budgie parakeet perched on a curtain rod near
+> the ceiling of an ordinary apartment, looking down at the camera with the
+> stern posture of a building inspector. Warm late-afternoon window light,
+> soft focus. No letters, numbers, screens, or calendars anywhere in frame.
+
+## 3 · ph-chart.jpg  (3:4)
+> Overhead phone photo of a torn half-sheet of aged, slightly yellowed
+> lined notebook paper lying on beige carpet. The page is completely blank
+> — nothing written on it. Its lower edge is torn away and scorched
+> brown-black, as if the bottom half burned off. Soft window light, slight
+> shadow of the phone over one corner, realistic paper fibers and carpet
+> texture.
+
+BLANK ZONE: the whole page → I add the crayon title and the three pencil
+pairs in handwriting faces, textured to sit in the paper.
+
+## 4 · ph-flyer.jpg  (3:4)
+> [style preamble] Street-level photo through a shop window: a photocopied
+> flyer taped inside the glass with a faint reflection of the street on the
+> glass, two burned-down candle stubs on the windowsill below. The flyer is
+> mostly filled by a black-and-white photocopied photo of a young fisherman
+> in orange rain-gear overalls laughing into the wind on a boat deck; below
+> the photo the flyer's lower third is blank white paper. No lettering
+> anywhere on the flyer.
+
+BLANK ZONE: the flyer's lower third → I set the ELI SOTO memorial lines in
+photocopy-degraded type.
+
+## 5 · ph-ferry.jpg  (3:4 or 4:3)
+> [style preamble] A hurried photo taken at a steep angle of a plain
+> printed notice behind glass in a dockside display case, a band of glare
+> across the glass, the edge of a dock railing intruding into one corner.
+> The paper shows only a faint empty table grid — a header band and one
+> column of empty rows, all blank, no characters. Grey morning light.
+
+BLANK ZONE: header + rows → I set NORTH LINE, the four stops, the times
+column, and draw the double ballpoint circle around 5:40 AM.
+
+## 6 · ph-overlook.jpg  (3:4) — no text needed, unchanged
+> [style preamble] From a cliff overlook at dusk, shot carelessly over a
+> galvanized guardrail: grey ocean a long way down, thin drizzle haze, flat
+> light draining all color, no visible horizon, no people, no signs, no
+> birds. Slightly tilted framing. The kind of photo nobody takes for fun.
+
+---
+
+Compositing (my side, once masters land in this folder): perspective-warp
+the type into each blank zone, match grain/blur/color cast, then cut the
+"closer" crops. Tool: sharp via scratchpad (SVG type rasterized onto the
+photo), per the house playbook — no Pillow on this machine.

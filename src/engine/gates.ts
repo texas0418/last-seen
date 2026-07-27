@@ -60,7 +60,9 @@ export const GATES: Gate[] = [
     // lost) is teased in banter; the bird's name and the year live far away.
     id: 'mail',
     kind: 'password',
-    answers: ['ozzy2014'],
+    // 'ozzyking2014': the caption "Ozzy. King." reads as a compound name to
+    // some players — a correct deduction must never bounce on formatting.
+    answers: ['ozzy2014', 'ozzyking2014'],
     setsFlag: 'act2',
     wrong: [
       'Incorrect password.',

@@ -36,6 +36,26 @@ import { colors, fonts } from '../theme';
 const choseKey = (threadId: string, i: number) => `chose:${threadId}:${i}`;
 const hintKey = (gateId: string) => `hint:${gateId}`;
 
+// Threads whose latest live message arrived seconds ago (this JS session
+// only) — those type on letter by letter; history is always instant.
+const freshDelivery: Record<string, number> = {};
+
+function TypewriterBubble({ body }: { body: string }) {
+  const [n, setN] = useState(1);
+  useEffect(() => {
+    if (n >= body.length) return undefined;
+    // ~33ms/char, but long messages accelerate so nothing takes over ~4s
+    const stride = Math.max(1, Math.round(body.length / 120));
+    const t = setTimeout(() => setN(Math.min(body.length, n + stride)), 33);
+    return () => clearTimeout(t);
+  }, [n, body]);
+  return (
+    <Pressable onPress={() => setN(body.length)}>
+      <Bubble from="them" body={body.slice(0, n)} />
+    </Pressable>
+  );
+}
+
 function LiveChoice({ thread, step, cursor }: { thread: Thread; step: ScriptStep; cursor: number }) {
   if (step.kind !== 'choice') return null;
   return (
@@ -132,10 +152,10 @@ function LiveArea({ thread }: { thread: Thread }) {
 
   useEffect(() => {
     if (step?.kind !== 'them') return undefined;
-    timer.current = setTimeout(
-      () => setScriptIndex(thread.id, cursor + 1),
-      step.delayMs ?? 1500,
-    );
+    timer.current = setTimeout(() => {
+      freshDelivery[thread.id] = Date.now();
+      setScriptIndex(thread.id, cursor + 1);
+    }, step.delayMs ?? 1500);
     return () => {
       if (timer.current) clearTimeout(timer.current);
     };
@@ -143,11 +163,18 @@ function LiveArea({ thread }: { thread: Thread }) {
 
   const history = scriptHistory(steps, cursor, (i) => getKv(choseKey(thread.id, i)));
   const done = step === undefined || step.kind === 'end';
+  const freshUntil = (freshDelivery[thread.id] ?? 0) + 8000;
   return (
     <View>
-      {history.map((b, i) => (
-        <Bubble key={i} from={b.from} body={b.body} />
-      ))}
+      {history.map((b, i) => {
+        const isFreshLast =
+          i === history.length - 1 && b.from === 'them' && Date.now() < freshUntil;
+        return isFreshLast ? (
+          <TypewriterBubble key={i} body={b.body} />
+        ) : (
+          <Bubble key={i} from={b.from} body={b.body} />
+        );
+      })}
       {typing && <Bubble from="them" body="…" />}
       {step && !typing && <LiveChoice thread={thread} step={step} cursor={cursor} />}
       {step && !typing && <LiveFreetext thread={thread} step={step} cursor={cursor} />}

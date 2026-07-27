@@ -15,7 +15,7 @@ export const VOICEMAILS: Voicemail[] = [
   {
     id: 'vm-mom-oct2',
     from: 'Mom',
-    when: 'Oct 2, 4:41 PM',
+    when: 'Oct 2, 2026, 4:41 PM',
     duration: '1:12',
     transcript:
       '“Quinn, honey, it’s your mother. I was thinking about the wisteria at ' +
@@ -26,7 +26,7 @@ export const VOICEMAILS: Voicemail[] = [
   {
     id: 'vm-mom-oct11',
     from: 'Mom',
-    when: 'Oct 11, 8:03 PM',
+    when: 'Oct 11, 2026, 8:03 PM',
     duration: '0:31',
     transcript:
       '“You sounded far away today, sweetheart. Not the phone kind of far away. ' +
@@ -35,7 +35,7 @@ export const VOICEMAILS: Voicemail[] = [
   {
     id: 'vm-dae-oct13',
     from: 'Dae 🌙',
-    when: 'Oct 13, 3:14 AM',
+    when: 'Oct 13, 2026, 3:14 AM',
     duration: '0:22',
     transcript:
       '“[crying] Pick up. Pick up pick up pick up. Tell me you didn’t — you ' +
@@ -46,7 +46,7 @@ export const VOICEMAILS: Voicemail[] = [
     // reads as a confused woman's grief; the florist receipt reframes it.
     id: 'vm-mom-oct15',
     from: 'Mom',
-    when: 'Oct 15, 11:20 AM',
+    when: 'Oct 15, 2026, 11:20 AM',
     duration: '0:47',
     transcript:
       '“Thank you for the flowers, honey. Lilies, like the fair. Though I told ' +
@@ -58,7 +58,7 @@ export const VOICEMAILS: Voicemail[] = [
   {
     id: 'vm-hr',
     from: 'Halloway Seafood — Front Office',
-    when: 'Oct 13, 9:00 AM',
+    when: 'Oct 13, 2026, 9:00 AM',
     duration: '0:26',
     transcript:
       '“Ms. Mercer, this is Carol from the front office. Mr. Halloway asked me ' +

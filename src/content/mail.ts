@@ -29,7 +29,7 @@ export const EMAILS: Email[] = [
     folder: 'inbox',
     from: 'PelicanMail',
     subject: 'Your storage is 90% full',
-    when: 'Oct 9',
+    when: 'Oct 9, 2026',
     body:
       'Hi Quinn,\n\nStorage used across your linked mailboxes is 90% full.\n\n' +
       '  • qmercer.pb@pelicanmail.com — 11.2 GB\n' +
@@ -42,7 +42,7 @@ export const EMAILS: Email[] = [
     folder: 'inbox',
     from: 'Quinn Mercer',
     subject: 'Fwd: AP batch — September (do not delete)',
-    when: 'Oct 3',
+    when: 'Oct 3, 2026',
     body: 'forwarding to myself. if the audit asks: I only copied what was already true.',
     attachments: [
       {
@@ -65,7 +65,7 @@ export const EMAILS: Email[] = [
     folder: 'inbox',
     from: 'Tides & Ledgers Weekly',
     subject: 'FOIA’d: what the county won’t test',
-    when: 'Sep 30',
+    when: 'Sep 30, 2026',
     body:
       'This week: our records request on county shellfish-bed testing came back ' +
       '92% redacted — and the 8% is damning. Also: who is buying up dockside ' +
@@ -77,7 +77,7 @@ export const EMAILS: Email[] = [
     folder: 'inbox',
     from: 'Slater’s Pharmacy',
     subject: 'Itemized statement — Rx #7741',
-    when: 'Oct 7',
+    when: 'Oct 7, 2026',
     body:
       'Patient: MERCER, MARIANNE\nPrescriber: Dr. A. Okafor\n' +
       'Donepezil 10 mg, 90-day supply — $214.60 (insurance declined: plan lapsed)\n\n' +
@@ -89,7 +89,7 @@ export const EMAILS: Email[] = [
     folder: 'inbox',
     from: 'Port Brennan Credit Union',
     subject: 'Card alert: ATM withdrawal $400.00',
-    when: 'Oct 8',
+    when: 'Oct 8, 2026',
     body:
       'A withdrawal of $400.00 was made at BRENNAN MARKET ATM.\n' +
       'This is your second cash withdrawal this week. If this wasn’t you, call us.',
@@ -100,7 +100,7 @@ export const EMAILS: Email[] = [
     folder: 'inbox',
     from: 'Mara Reyes',
     subject: '(no subject)',
-    when: 'Oct 18',
+    when: 'Oct 18, 2026',
     visibleWhen: ['maraTrusted'],
     body:
       'What I have, so we’re even:\n\n' +
@@ -121,7 +121,7 @@ export const EMAILS: Email[] = [
     folder: 'inbox',
     from: 'Tidepool Florals',
     subject: 'Receipt — order #3117',
-    when: 'Oct 14',
+    when: 'Oct 14, 2026',
     body:
       'Thank you for your order!\n\n' +
       'Oct 14, 9:12 AM — paid IN STORE, cash.\n' +
@@ -136,7 +136,7 @@ export const EMAILS: Email[] = [
     folder: 'inbox',
     from: 'NorthTel Prepaid',
     subject: 'Your prepaid line is active',
-    when: 'Oct 9',
+    when: 'Oct 9, 2026',
     body:
       'Welcome to NorthTel. Your prepaid SIM (line ending ···-0412) is active.\n' +
       'Loaded: 90 days talk & text. No contract. No names. That’s the NorthTel way.',
@@ -147,7 +147,7 @@ export const EMAILS: Email[] = [
     folder: 'inbox',
     from: 'Quinn Mercer',
     subject: 'the tide book — everything, in order',
-    when: 'Oct 11',
+    when: 'Oct 11, 2026',
     body:
       'If someone I trust is reading this, the order matters:\n\n' +
       '1. Water panels, Bed 7/12, Feb–Sept — originals, before the swap.\n' +
@@ -174,7 +174,7 @@ export const EMAILS: Email[] = [
     folder: 'drafts',
     from: 'Draft — never sent',
     subject: DRAFT_SUBJECT_CIPHER,
-    when: 'Oct 11, 11:41 PM',
+    when: 'Oct 11, 2026, 11:41 PM',
     body: DRAFT_BODY_CIPHER,
   },
 ];

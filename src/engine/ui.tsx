@@ -57,7 +57,7 @@ export function Bubble({ from, body }: { from: 'them' | 'me' | 'quinn'; body: st
   const mine = from !== 'them';
   return (
     <View style={[ui.bubble, mine ? ui.bubbleMe : ui.bubbleThem]}>
-      <Text style={[ui.bubbleText, mine && { color: '#eef4fa' }]}>{body}</Text>
+      <Text selectable style={[ui.bubbleText, mine && { color: '#eef4fa' }]}>{body}</Text>
     </View>
   );
 }
