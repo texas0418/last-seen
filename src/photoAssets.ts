@@ -35,4 +35,60 @@ export const PHOTO_ART: Record<string, PhotoArt> = {
     image: require('../assets/photos/ph-overlook.jpg'),
     ar: 1086 / 1448,
   },
+  'ph-tcar': {
+    image: require('../assets/photos/ph-tcar.jpg'),
+    ar: 1211 / 653,
+  },
+  'b1': {
+    image: require('../assets/photos/b1.jpg'),
+    ar: 1211 / 653,
+  },
+  'b2': {
+    image: require('../assets/photos/b2.jpg'),
+    ar: 1211 / 653,
+  },
+  'b3': {
+    image: require('../assets/photos/b3.jpg'),
+    ar: 1211 / 653,
+  },
+  'b4': {
+    image: require('../assets/photos/b4.jpg'),
+    ar: 1211 / 653,
+  },
+  'b5': {
+    image: require('../assets/photos/b5.jpg'),
+    ar: 1211 / 653,
+  },
+  'b6': {
+    image: require('../assets/photos/b6.jpg'),
+    ar: 1211 / 653,
+  },
+  'b7': {
+    image: require('../assets/photos/b7.jpg'),
+    ar: 1211 / 653,
+  },
+  'b8': {
+    image: require('../assets/photos/b8.jpg'),
+    ar: 1211 / 653,
+  },
+  'b9': {
+    image: require('../assets/photos/b9.jpg'),
+    ar: 1211 / 653,
+  },
+  'b10': {
+    image: require('../assets/photos/b10.jpg'),
+    ar: 1211 / 653,
+  },
+  'b11': {
+    image: require('../assets/photos/b11.jpg'),
+    ar: 799 / 653,
+  },
+  'b12': {
+    image: require('../assets/photos/b12.jpg'),
+    ar: 1211 / 653,
+  },
+  'b13': {
+    image: require('../assets/photos/b13.jpg'),
+    ar: 1211 / 653,
+  },
 };

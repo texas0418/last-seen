@@ -152,6 +152,22 @@ export const PHOTOS: DescribedPhoto[] = [
     caption: 'the best day',
   },
   {
+    id: 'b6',
+    when: 'Oct 5',
+    emoji: '🪑',
+    caption: 'sunday.',
+    alt:
+      'Mom asleep in the wingback under the crocheted afghan, reading glasses still on, a plain pale book in her hands. Late light through the lace.',
+  },
+  {
+    id: 'b2',
+    when: 'Oct 10',
+    emoji: '🪴',
+    caption: 'the hostages',
+    alt:
+      'The windowsill jungle over the radiator — pothos, fern, the little monstera — rain on the glass, the street grey beyond.',
+  },
+  {
     id: 'ph-ozzy',
     when: 'Mar 12, 2021',
     emoji: '🐦',
@@ -159,6 +175,20 @@ export const PHOTOS: DescribedPhoto[] = [
       'A sky-blue budgie standing on a curtain rod with the posture of a ' +
       'building inspector who has found several violations.',
     caption: 'Ozzy. King.',
+  },
+  {
+    id: 'b10',
+    when: 'Oct 8',
+    emoji: '🧩',
+    alt:
+      'The thousand-piece puzzle at night: border done, a mug holding the box lid face-down, lamp light.',
+  },
+  {
+    id: 'b8',
+    when: 'Oct 6',
+    emoji: '🌧️',
+    alt:
+      'Rain hammering the windshield from the driver’s seat, parked, wipers stopped mid-arc, the harbor lot smeared into bokeh.',
   },
   {
     id: 'ph-chart',
@@ -170,6 +200,21 @@ export const PHOTOS: DescribedPhoto[] = [
       'pencil, a two-column list: A—Z, B—Y, C—X… the rest of the page is ' +
       'gone, burnt-edged, like someone once tried to retire it.',
     caption: 'found in mom’s boxes. still binding. 🐦',
+  },
+  {
+    id: 'b7',
+    when: 'Oct 2',
+    emoji: '🛒',
+    alt:
+      'Two paper bags spilling groceries on the kitchen counter — apples, a leek, plain bread. The fluorescent hum practically audible.',
+  },
+  {
+    id: 'b11',
+    when: 'Sep 30',
+    emoji: '🧾',
+    caption: 'month-end',
+    alt:
+      'The desk after hours: adding machine, paper stacks edge-on, the monitor dark, one green banker’s lamp.',
   },
   {
     id: 'ph-flyer',
@@ -185,6 +230,21 @@ export const PHOTOS: DescribedPhoto[] = [
     caption: undefined,
   },
   {
+    id: 'b12',
+    when: 'Sep 28',
+    emoji: '🕊️',
+    caption: 'almost five years, king.',
+    alt:
+      'The old brass birdcage on the shelf, repurposed: a pot of ivy growing out through the bars. Dust in the window light.',
+  },
+  {
+    id: 'b1',
+    when: 'Sep 21',
+    emoji: '☕',
+    alt:
+      'A latte on the café window table, rain streaking the glass, the marina blurred beyond, the chair opposite empty.',
+  },
+  {
     id: 'ph-ferry',
     when: 'Oct 9',
     emoji: '⛴️',
@@ -196,19 +256,56 @@ export const PHOTOS: DescribedPhoto[] = [
     visibleWhen: ['act2'],
   },
   {
+    id: 'b9',
+    when: 'Sep 12',
+    emoji: '🐦‍⬛',
+    alt:
+      'A great blue heron on a single piling at low tide, fog eating the far shore. It did not care that she was there.',
+  },
+  {
+    id: 'b3',
+    when: 'Aug 30',
+    emoji: '🍟',
+    alt:
+      'Fish and chips in plain paper on the dock bench, wooden fork, gulls loitering just out of reach.',
+  },
+  {
     id: 'ph-tcar',
-    when: 'Oct 4',
+    when: 'Oct 4, 11:52 PM',
     emoji: '🚗',
     visibleWhen: ['night8'],
     alt:
-      'A screenshot she saved: her own car in the marina lot at night, ' +
-      'photographed from across the street. Sent to her, not taken by her. ' +
-      'Sodium light, long shadows, the sea a black wall behind.',
+      'Her own car alone in the marina lot at night, photographed from ' +
+      'across the street. Sodium light, long shadows. And at the fence, ' +
+      'facing the car: a man standing perfectly still, hood up, his ' +
+      'high-visibility work jacket glowing under the lamp.',
     closer:
-      'In the rear window, the photographer’s reflection: a high-vis ' +
-      'jacket, HARBOR PATROL stenciled across the chest. He didn’t notice. ' +
-      'Or didn’t care.',
+      'Taken five minutes after “nice parking job.” She went back out with ' +
+      'her phone, and he let her take the picture. The jacket: bright ' +
+      'yellow-orange, grey reflective double stripe. Not a construction ' +
+      'crew’s. He never moved.',
     caption: undefined,
+  },
+  {
+    id: 'b4',
+    when: 'Aug 14',
+    emoji: '🐈',
+    alt:
+      'An orange cat mid-leap off the fence rail, hopelessly blurred, half the frame shed wall. Not her cat. Photographed anyway.',
+  },
+  {
+    id: 'b5',
+    when: 'Aug 2',
+    emoji: '🌇',
+    alt:
+      'A sunset over pewter water, the ordinary kind everyone photographs: grey-gold light, pebble beach, one stranger far down the shore.',
+  },
+  {
+    id: 'b13',
+    when: 'Jul 19',
+    emoji: '🌲',
+    alt:
+      'The driftwood beach up the coast, logs like fallen columns, fog snagged in the treeline.',
   },
   {
     id: 'ph-overlook',
