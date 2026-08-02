@@ -11,6 +11,7 @@ export function activeGateIds(flags: FlagSet): string[] {
   const ids: string[] = [];
   if (!flags.has('act2')) ids.push('mail');
   if (flags.has('act2') && !flags.has('maraTrusted')) ids.push('mara1');
+  if (flags.has('night5') && !flags.has('booksDone')) ids.push('mara2');
   if (flags.has('act2') && !flags.has('act3')) ids.push('tidewater');
   if (flags.has('draftDecoded') && !flags.has('burnerContact')) ids.push('burner');
   if (flags.has('burnerContact') && !flags.has('ending3')) ids.push('town');
@@ -21,6 +22,7 @@ export const hintLabel = (g: Gate): string =>
   ({
     mail: 'her email password',
     mara1: 'what the reporter wants',
+    mara2: 'the reports',
     tidewater: 'the second mailbox',
     burner: 'the old words',
     town: 'where she is',

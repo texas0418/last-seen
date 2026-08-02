@@ -124,6 +124,27 @@ export const GATES: Gate[] = [
     ],
   },
   {
+    // Night 5: the accounting deduction. The answer legitimately lives in
+    // the evidence (deduction kind — exempt from the leak scan): the lab's
+    // issued log says R-1147-B / Bed 7 / FAIL; the county shelf says
+    // R-1147-C / pass. First mismatch = the report they touched to bury
+    // Eli. Suffix-generous, number-strict.
+    id: 'mara2',
+    kind: 'deduction',
+    answers: ['r1147', 'r1147b', 'r1147c', '1147'],
+    setsFlag: 'booksDone',
+    wrong: ['No. Numbers or nothing.', 'you’re reading it like a bank statement. it’s a crime scene.'],
+    clues: [
+      { itemId: 'em-backup1', surface: 'mail', what: 'lab issued log: R-1147-B · Bed 7 · Apr · FAIL' },
+      { itemId: 'em-backup2', surface: 'mail', what: 'county shelf: Bed 7 · Apr · R-1147-C · pass' },
+      { itemId: 'note-bc', surface: 'notes', what: 'Quinn’s rule: B is born, C is changed' },
+    ],
+    nudges: [
+      'she matched paper for a living. what the lab wrote and what the county keeps are supposed to be twins.',
+      'read the last letter of every report number, both lists, top to bottom. find where the twins stop matching. the first time is the one that matters.',
+    ],
+  },
+  {
     // The old words, typed to the burner after decoding the draft. The
     // draft yields them in cipher; the player must decode and SEND them.
     id: 'burner',

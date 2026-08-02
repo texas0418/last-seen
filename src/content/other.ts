@@ -101,6 +101,16 @@ export const NOTES: Note[] = [
       'leave the plants for dae. she’ll pretend to hate it.\n' +
       'mom’s lilies — AFTER. so she knows.',
   },
+  {
+    id: 'note-bc',
+    title: 'ledger rules',
+    when: 'Jun 14',
+    visibleWhen: ['maraTrusted'],
+    body:
+      'B is born. C is changed.\n' +
+      'nothing gets a C without somebody paying for the edit.\n' +
+      'count the C’s. then count who cashed them.',
+  },
 ];
 
 export const PHOTOS: DescribedPhoto[] = [

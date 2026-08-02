@@ -153,6 +153,25 @@ export const THREADS: Thread[] = [
       { from: 'them', body: 'give back what you took and all of this stops.', when: 'Oct 7, 9:21 PM' },
       { from: 'them', body: 'saw you at the office after hours. last warning.', when: 'Oct 11, 10:38 PM' },
     ],
+    // Night 5 cliff: the watcher noticed the reading. He knows the phone
+    // opened the ledgers — which means he can see more than a dead number.
+    live: {
+      trigger: 'booksDone',
+      steps: [
+        { kind: 'them', body: 'you opened the books.', delayMs: 9000 },
+        {
+          kind: 'them',
+          body: 'quinn couldn’t leave the numbers alone either. look how that ended.',
+          delayMs: 3500,
+        },
+        {
+          kind: 'them',
+          body: 'box. marina office. by friday. after that i stop charging by the hour.',
+          delayMs: 3000,
+        },
+        { kind: 'end' },
+      ],
+    },
   },
   {
     id: 'th-pharm',
@@ -226,6 +245,30 @@ export const THREADS: Thread[] = [
           kind: 'them',
           body: 'Okay. Okay. My name is Mara Reyes. I’m a reporter. Quinn was my source, and the story is real, and it is not done. I just sent her backup what I have. Read it, then we talk about what happens to the Halloways.',
           delayMs: 2500,
+        },
+        {
+          kind: 'choice',
+          options: [{ label: 'I’ll read all of it.', setsFlag: 'night5' }],
+        },
+        {
+          kind: 'them',
+          body: 'Three files. The lab’s own ledger, the county’s shelf, and the shell company. Quinn could read them. Can you?',
+          delayMs: 2500,
+        },
+        {
+          kind: 'them',
+          body: 'When you can name the first report they touched — the number, not vibes — text it to me. Until then I’m writing around a hole.',
+          delayMs: 3000,
+        },
+        {
+          kind: 'freetext',
+          gateId: 'mara2',
+          wrong: 'No. Numbers or nothing.',
+        },
+        {
+          kind: 'them',
+          body: 'R-1147. Bed seven. April. He walked into that water eleven days after the lab said nobody should. The story has its spine now — and whoever built that shelf isn’t done with you. Keep reading.',
+          delayMs: 4000,
         },
         { kind: 'end' },
       ],

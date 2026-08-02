@@ -46,6 +46,13 @@ export const NIGHTS: NightDef[] = [
     recap:
       'The affair was a costume. The reporter is real, the story is real, and your sister is a witness who never made it to print.',
   },
+  {
+    n: 5,
+    title: 'THE BOOKS',
+    unlockedBy: 'night5',
+    recap:
+      'The reporter kept her word: three files, one hole. Quinn read ledgers the way other people read faces. Your turn.',
+  },
 ];
 
 export const currentNight = (has: (f: Flag) => boolean): NightDef => {

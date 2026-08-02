@@ -179,6 +179,99 @@ export const EMAILS: Email[] = [
   },
 ];
 
+
+// ——— Night 5: Mara's backup (the accounting puzzle) ———
+const BACKUP_EMAILS: Email[] = [
+  {
+    id: 'em-backup1',
+    account: 'personal',
+    folder: 'inbox',
+    from: 'Mara Reyes',
+    subject: 'backup 1/3 — what the lab issued',
+    when: 'Oct 19, 2026',
+    visibleWhen: ['maraTrusted'],
+    body:
+      'First file. Brennan Analytical’s issued-report log for 2025, pulled ' +
+      'under the public records act. This is what the lab actually wrote. ' +
+      'Nobody disputes this list — that’s what makes it a ruler. — M',
+    attachments: [
+      {
+        name: 'brennan-issued-2025.pdf',
+        body:
+          'BRENNAN ANALYTICAL — REPORTS ISSUED (2025)\n' +
+          'public records act request · M. Reyes\n' +
+          '\n' +
+          'R-1136-B · Feb 12 · Bed 2 · marginal — retest advised\n' +
+          'R-1140-B · Mar 09 · Bed 3 · pass\n' +
+          'R-1144-B · Mar 30 · Bed 5 · pass\n' +
+          'R-1147-B · Apr 08 · Bed 7 · FAIL — biotoxin exceedance.\n' +
+          '            worker contact not advised.\n' +
+          'R-1151-B · May 12 · Bed 2 · pass\n' +
+          'R-1155-B · Jun 02 · Bed 7 · FAIL — exceedance persists\n' +
+          'R-1160-B · Jul 21 · Bed 4 · pass',
+      },
+    ],
+  },
+  {
+    id: 'em-backup2',
+    account: 'personal',
+    folder: 'inbox',
+    from: 'Mara Reyes',
+    subject: 'backup 2/3 — what the county shelf says',
+    when: 'Oct 19, 2026',
+    visibleWhen: ['maraTrusted'],
+    body:
+      'Second file. The county’s shellfish-bed filing index — the official ' +
+      'shelf. Harvest permits, insurance, the sheriff’s desk: everything ' +
+      'downstream reads THIS, not the lab. — M',
+    attachments: [
+      {
+        name: 'county-filings-index-2025.pdf',
+        body:
+          'BRENNAN COUNTY — SHELLFISH BED FILINGS (2025)\n' +
+          '\n' +
+          'Bed 2 · Feb 2025 · R-1136-B · marginal\n' +
+          'Bed 3 · Mar 2025 · R-1140-B · pass\n' +
+          'Bed 5 · Mar 2025 · R-1144-B · pass\n' +
+          'Bed 7 · Apr 2025 · R-1147-C · pass\n' +
+          'Bed 2 · May 2025 · R-1151-B · pass\n' +
+          'Bed 7 · Jun 2025 · R-1155-C · pass\n' +
+          'Bed 4 · Jul 2025 · R-1160-B · pass',
+      },
+    ],
+  },
+  {
+    id: 'em-backup3',
+    account: 'personal',
+    folder: 'inbox',
+    from: 'Mara Reyes',
+    subject: 'backup 3/3 — the shell',
+    when: 'Oct 19, 2026',
+    visibleWhen: ['maraTrusted'],
+    body:
+      'Third file. The company that gets paid every time the shelf and the ' +
+      'lab disagree. Look at the formation date. Look at the address. Then ' +
+      'look at the first thing they ever billed for. — M',
+    attachments: [
+      {
+        name: 'coastal-remediation-registration.pdf',
+        body:
+          'WA SECRETARY OF STATE — BUSINESS ENTITY EXCERPT\n' +
+          '\n' +
+          'COASTAL REMEDIATION LLC\n' +
+          'formed: Mar 27, 2025\n' +
+          'registered agent: HW HOLDINGS — 14 Marina Way, Port Brennan\n' +
+          'officers: [nominee service — names withheld]\n' +
+          '\n' +
+          'first recorded invoice (per AP ledger):\n' +
+          'CR-1001 · Apr 2025 · $4,800 · “filing amendment — rush”',
+      },
+    ],
+  },
+];
+
+EMAILS.push(...BACKUP_EMAILS);
+
 export const emailById = (id: string): Email => {
   const e = EMAILS.find((x) => x.id === id);
   if (!e) throw new Error(`unknown email: ${id}`);

@@ -10,6 +10,8 @@ export const FLAGS = [
   'act2', // personal mail password solved
   'act3', // hidden tidewater account unlocked
   'maraTrusted', // deduction check passed; Mara's file drop arrives
+  'night5', // acknowledged the file drop — Night 5 (The Books) opens
+  'booksDone', // named R-1147 to Mara — the accounting night resolved
   'airplaneMode',
   'cloudRestored', // deleted Marcus thread recovered
   'draftDecoded', // the cipher draft resolved in the decoder
