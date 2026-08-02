@@ -242,3 +242,12 @@ small trailing ivy growing through the bars. Warm window light. Dust.
 
 Deliver as ph-tcar.jpg and b1.jpg … b12.jpg in this folder; captions,
 dates, and in-game placement are handled at integration.
+
+## 7-REVISED · ph-tcar.jpg — staged prompt (reflections are hard for models)
+Use the long-form staged prompt (Setting / Subject / Key detail / Style /
+Do-not-include) — see chat 2026-08-02 or reconstruct: rear windshield as
+explicit dark mirror; the man EXISTS ONLY as a reflection in the glass;
+hi-vis jacket, featureless silhouette head; lot itself empty; no text
+anywhere. FALLBACK (guaranteed): generate with the rear window dark and
+EMPTY — the jacketed reflection gets composited in post along with the
+HARBOR PATROL stencil, same pipeline as the timetable.
