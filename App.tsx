@@ -1,14 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Text } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
-// Global safety ceiling: honor Dynamic Type but never let fixed phone-chrome
-// layouts collapse. Reading surfaces cap tighter at their own call sites.
-type TextWithDefaults = typeof Text & {
-  defaultProps?: { maxFontSizeMultiplier?: number };
-};
-const T = Text as TextWithDefaults;
-T.defaultProps = { ...T.defaultProps, maxFontSizeMultiplier: 1.4 };
+// Dynamic Type ceilings live in theme.ts (TYPE_CAPS) and are applied as
+// explicit maxFontSizeMultiplier props per surface via the capped wrappers
+// in src/engine/ui.tsx — Text.defaultProps is silently DEAD under React 19
+// (the old "global 1.4 cap" here did nothing and AX sizes scaled unbounded).
 
 import { currentNight } from './src/content/nights';
 import { ENDINGS } from './src/content/other';

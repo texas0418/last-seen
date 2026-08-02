@@ -6,13 +6,13 @@
 import { useAudioPlayer, useAudioPlayerStatus, setAudioModeAsync } from 'expo-audio';
 import { useEffect, useState } from 'react';
 import {
-  Image, Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions,
+  Image, Pressable, ScrollView, StyleSheet, View, useWindowDimensions,
 } from 'react-native';
 
 import { VM_AUDIO } from '../audioAssets';
 import { NOTES, PHOTOS, VOICEMAILS } from '../content/other';
 import { PhotoViewer } from '../engine/PhotoViewer';
-import { AppHeader, StatusBarRow, ui } from '../engine/ui';
+import { AppHeader, BodyText, ChromeText, StatusBarRow, ui } from '../engine/ui';
 import { isVisible } from '../models';
 import { PHOTO_ART } from '../photoAssets';
 import { flagSet, isRead, markRead } from '../state';
@@ -34,7 +34,7 @@ function VoicemailPlayer({ source }: { source: number }) {
   };
   return (
     <Pressable style={s.playRow} onPress={toggle}>
-      <Text style={s.playBtn}>{status.playing ? '❙❙' : '▶'}</Text>
+      <ChromeText style={s.playBtn}>{status.playing ? '❙❙' : '▶'}</ChromeText>
       <View style={s.playTrack}>
         <View
           style={[
@@ -64,10 +64,10 @@ export function VoicemailScreen({ onBack }: { onBack: () => void }) {
         <AppHeader title={open.from} subtitle={`${open.when} · ${open.duration}`} onBack={() => setOpenId(null)} />
         <ScrollView contentContainerStyle={{ padding: 20 }}>
           {VM_AUDIO[open.id] != null && <VoicemailPlayer source={VM_AUDIO[open.id]} />}
-          <Text style={s.transcriptLabel}>
+          <ChromeText style={s.transcriptLabel}>
             {VM_AUDIO[open.id] != null ? 'TRANSCRIPT' : 'TRANSCRIPT (audio unavailable)'}
-          </Text>
-          <Text selectable style={s.transcript}>{open.transcript}</Text>
+          </ChromeText>
+          <BodyText selectable style={s.transcript}>{open.transcript}</BodyText>
         </ScrollView>
       </View>
     );
@@ -79,13 +79,13 @@ export function VoicemailScreen({ onBack }: { onBack: () => void }) {
       <ScrollView>
         {items.map((v) => (
           <Pressable key={v.id} style={ui.row} onPress={() => setOpenId(v.id)}>
-            <Text style={[ui.rowTitle, !isRead(v.id) && ui.rowTitleUnread]}>
-              {!isRead(v.id) ? <Text style={ui.unreadDot}>{'● '}</Text> : null}
+            <ChromeText style={[ui.rowTitle, !isRead(v.id) && ui.rowTitleUnread]}>
+              {!isRead(v.id) ? <ChromeText style={ui.unreadDot}>{'● '}</ChromeText> : null}
               {v.from}
-            </Text>
-            <Text style={ui.rowSub}>
+            </ChromeText>
+            <ChromeText style={ui.rowSub}>
               {v.when} · {v.duration}
-            </Text>
+            </ChromeText>
           </Pressable>
         ))}
       </ScrollView>
@@ -104,7 +104,7 @@ export function NotesScreen({ onBack }: { onBack: () => void }) {
         <StatusBarRow />
         <AppHeader title={open.title} subtitle={open.when} onBack={() => setOpenId(null)} />
         <ScrollView contentContainerStyle={{ padding: 20 }}>
-          <Text selectable style={s.note}>{open.body}</Text>
+          <BodyText selectable style={s.note}>{open.body}</BodyText>
         </ScrollView>
       </View>
     );
@@ -116,11 +116,11 @@ export function NotesScreen({ onBack }: { onBack: () => void }) {
       <ScrollView>
         {items.map((n) => (
           <Pressable key={n.id} style={ui.row} onPress={() => setOpenId(n.id)}>
-            <Text style={[ui.rowTitle, !isRead(n.id) && ui.rowTitleUnread]}>
-              {!isRead(n.id) ? <Text style={ui.unreadDot}>{'● '}</Text> : null}
+            <ChromeText style={[ui.rowTitle, !isRead(n.id) && ui.rowTitleUnread]}>
+              {!isRead(n.id) ? <ChromeText style={ui.unreadDot}>{'● '}</ChromeText> : null}
               {n.title}
-            </Text>
-            <Text style={ui.rowSub}>{n.when}</Text>
+            </ChromeText>
+            <ChromeText style={ui.rowSub}>{n.when}</ChromeText>
           </Pressable>
         ))}
       </ScrollView>
@@ -164,14 +164,14 @@ export function PhotosScreen({ onBack }: { onBack: () => void }) {
                 />
               ) : (
                 <>
-                  <Text style={s.photoEmoji}>{p.emoji}</Text>
-                  <Text style={[s.photoAlt, closer ? { color: colors.ghost } : null]}>
+                  <ChromeText style={s.photoEmoji}>{p.emoji}</ChromeText>
+                  <BodyText style={[s.photoAlt, closer ? { color: colors.ghost } : null]}>
                     {closer ? p.closer : p.alt}
-                  </Text>
+                  </BodyText>
                 </>
               )}
-              {p.caption ? <Text style={s.photoCaption}>“{p.caption}”</Text> : null}
-              <Text style={s.photoWhen}>{p.when}</Text>
+              {p.caption ? <BodyText style={s.photoCaption}>“{p.caption}”</BodyText> : null}
+              <ChromeText style={s.photoWhen}>{p.when}</ChromeText>
             </Pressable>
           );
         })}

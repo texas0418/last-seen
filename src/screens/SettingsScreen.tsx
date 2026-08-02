@@ -5,10 +5,10 @@
 // pre-ship item). "Start over" is the only non-diegetic control.
 
 import { useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Switch, Text, TextInput, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Switch, View } from 'react-native';
 
 import { PERSONAL_ADDRESS, TIDEWATER_ADDRESS } from '../content/mail';
-import { AppHeader, StatusBarRow, phoneClock, ui } from '../engine/ui';
+import { AppHeader, ChromeText, ChromeTextInput, StatusBarRow, phoneClock, ui } from '../engine/ui';
 import { checkGate, gateById } from '../engine/gates';
 import { hasFlag, resetWorld, setFlag } from '../state';
 import { colors, fonts } from '../theme';
@@ -27,30 +27,30 @@ export default function SettingsScreen({ onBack }: { onBack: () => void }) {
       <StatusBarRow />
       <AppHeader title="Settings" onBack={onBack} />
       <ScrollView>
-        <Text style={s.section}>THIS PHONE</Text>
+        <ChromeText style={s.section}>THIS PHONE</ChromeText>
         <View style={ui.row}>
-          <Text style={ui.rowTitle}>Quinn Mercer</Text>
-          <Text style={ui.rowSub}>(360) 555-0198 · BrinePhone 11 · BrineOS 11</Text>
+          <ChromeText style={ui.rowTitle}>Quinn Mercer</ChromeText>
+          <ChromeText style={ui.rowSub}>(360) 555-0198 · BrinePhone 11 · BrineOS 11</ChromeText>
         </View>
         <View style={ui.row}>
-          <Text style={ui.rowTitle}>Battery</Text>
-          <Text style={ui.rowSub}>{battery}% — Low Power Mode is on</Text>
+          <ChromeText style={ui.rowTitle}>Battery</ChromeText>
+          <ChromeText style={ui.rowSub}>{battery}% — Low Power Mode is on</ChromeText>
         </View>
         <View style={ui.row}>
-          <Text style={ui.rowTitle}>Storage</Text>
-          <Text style={ui.rowSub}>57.1 GB of 64 GB used</Text>
+          <ChromeText style={ui.rowTitle}>Storage</ChromeText>
+          <ChromeText style={ui.rowSub}>57.1 GB of 64 GB used</ChromeText>
         </View>
         {hasFlag('night6') && !hasFlag('cloudRestored') && (
           <View>
             <Pressable style={ui.row} onPress={() => setPinOpen(!pinOpen)}>
-              <Text style={[ui.rowTitle, { color: colors.accent }]}>Cloud trash</Text>
-              <Text style={ui.rowSub}>
+              <ChromeText style={[ui.rowTitle, { color: colors.accent }]}>Cloud trash</ChromeText>
+              <ChromeText style={ui.rowSub}>
                 1 deleted conversation can still be recovered. PIN required.
-              </Text>
+              </ChromeText>
             </Pressable>
             {pinOpen && (
               <View style={s2.pinRow}>
-                <TextInput
+                <ChromeTextInput
                   style={[ui.input, s2.pinInput]}
                   value={pin}
                   onChangeText={(v) => setPin(v.replace(/[^0-9]/g, '').slice(0, 4))}
@@ -69,31 +69,31 @@ export default function SettingsScreen({ onBack }: { onBack: () => void }) {
                   }}
                   hitSlop={10}
                 >
-                  <Text style={s2.pinGo}>Unlock</Text>
+                  <ChromeText style={s2.pinGo}>Unlock</ChromeText>
                 </Pressable>
               </View>
             )}
             {pinOpen && wrongs > 0 && (
-              <Text style={s2.pinWrong}>
+              <ChromeText style={s2.pinWrong}>
                 {gateById('cloud').wrong[Math.min(wrongs - 1, gateById('cloud').wrong.length - 1)]}
-              </Text>
+              </ChromeText>
             )}
           </View>
         )}
         {hasFlag('cloudRestored') && (
           <View style={ui.row}>
-            <Text style={ui.rowTitle}>Cloud trash</Text>
-            <Text style={ui.rowSub}>1 conversation restored to Messages</Text>
+            <ChromeText style={ui.rowTitle}>Cloud trash</ChromeText>
+            <ChromeText style={ui.rowSub}>1 conversation restored to Messages</ChromeText>
           </View>
         )}
 
-        <Text style={s.section}>RADIO</Text>
+        <ChromeText style={s.section}>RADIO</ChromeText>
         <View style={[ui.row, s.toggleRow]}>
           <View>
-            <Text style={ui.rowTitle}>Airplane Mode</Text>
-            <Text style={ui.rowSub}>
+            <ChromeText style={ui.rowTitle}>Airplane Mode</ChromeText>
+            <ChromeText style={ui.rowSub}>
               {hasFlag('airplaneMode') ? 'No one can reach this phone. Or find it.' : 'Connected · BrineTel LTE'}
-            </Text>
+            </ChromeText>
           </View>
           <Switch
             value={hasFlag('airplaneMode')}
@@ -102,37 +102,37 @@ export default function SettingsScreen({ onBack }: { onBack: () => void }) {
           />
         </View>
 
-        <Text style={s.section}>MAIL ACCOUNTS</Text>
+        <ChromeText style={s.section}>MAIL ACCOUNTS</ChromeText>
         <View style={ui.row}>
-          <Text style={ui.rowTitle}>{PERSONAL_ADDRESS}</Text>
-          <Text style={ui.rowSub}>{hasFlag('act2') ? 'Signed in' : 'Signed out — password required'}</Text>
+          <ChromeText style={ui.rowTitle}>{PERSONAL_ADDRESS}</ChromeText>
+          <ChromeText style={ui.rowSub}>{hasFlag('act2') ? 'Signed in' : 'Signed out — password required'}</ChromeText>
         </View>
         <View style={ui.row}>
-          <Text style={ui.rowTitle}>{TIDEWATER_ADDRESS}</Text>
-          <Text style={[ui.rowSub, !hasFlag('act3') && { color: colors.ghost }]}>
+          <ChromeText style={ui.rowTitle}>{TIDEWATER_ADDRESS}</ChromeText>
+          <ChromeText style={[ui.rowSub, !hasFlag('act3') && { color: colors.ghost }]}>
             {hasFlag('act3') ? 'Signed in' : 'Signed out — added Jun 2026, never synced to cloud'}
-          </Text>
+          </ChromeText>
         </View>
 
         {endingsSeen > 0 && (
           <>
-            <Text style={s.section}>CASE</Text>
+            <ChromeText style={s.section}>CASE</ChromeText>
             <View style={ui.row}>
-              <Text style={ui.rowTitle}>Endings</Text>
-              <Text style={ui.rowSub}>{endingsSeen} of 4 seen</Text>
+              <ChromeText style={ui.rowTitle}>Endings</ChromeText>
+              <ChromeText style={ui.rowSub}>{endingsSeen} of 4 seen</ChromeText>
             </View>
           </>
         )}
 
-        <Text style={s.section}>· · ·</Text>
+        <ChromeText style={s.section}>· · ·</ChromeText>
         <Pressable
           style={ui.row}
           onPress={() => (armReset ? (resetWorld(), setArmReset(false)) : setArmReset(true))}
         >
-          <Text style={[ui.rowTitle, { color: colors.badge }]}>
+          <ChromeText style={[ui.rowTitle, { color: colors.badge }]}>
             {armReset ? 'Tap again to erase everything and start over' : 'Start over'}
-          </Text>
-          <Text style={ui.rowSub}>Returns the phone to the envelope. All progress is lost.</Text>
+          </ChromeText>
+          <ChromeText style={ui.rowSub}>Returns the phone to the envelope. All progress is lost.</ChromeText>
         </Pressable>
       </ScrollView>
     </View>

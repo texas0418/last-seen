@@ -2,10 +2,10 @@
 // Quinn's calendar: a quiet list of a life mid-stride. Mostly noise by
 // design — but appointments dated after Oct 12 do their own talking.
 
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 
 import { CALENDAR } from '../content/calendar';
-import { AppHeader, StatusBarRow, ui } from '../engine/ui';
+import { AppHeader, ChromeText, StatusBarRow, ui } from '../engine/ui';
 import { isVisible } from '../models';
 import { flagSet, markRead } from '../state';
 import { colors, fonts } from '../theme';
@@ -21,9 +21,9 @@ export default function CalendarScreen({ onBack }: { onBack: () => void }) {
           markRead(c.id);
           return (
             <View key={c.id} style={ui.row}>
-              <Text style={s.when}>{c.when}</Text>
-              <Text style={ui.rowTitle}>{c.title}</Text>
-              {c.detail ? <Text style={ui.rowSub}>{c.detail}</Text> : null}
+              <ChromeText style={s.when}>{c.when}</ChromeText>
+              <ChromeText style={ui.rowTitle}>{c.title}</ChromeText>
+              {c.detail ? <ChromeText style={ui.rowSub}>{c.detail}</ChromeText> : null}
             </View>
           );
         })}

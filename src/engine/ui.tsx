@@ -3,10 +3,41 @@
 // bubbles. The status bar's clock and battery are SCRIPTED — the night at
 // Casey's kitchen table advances as acts unlock, and the battery only falls.
 
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import {
+  Pressable,
+  StyleSheet,
+  Text,
+  TextInput,
+  type TextInputProps,
+  type TextProps,
+  View,
+} from 'react-native';
 
 import { hasFlag } from '../state';
-import { colors, fonts } from '../theme';
+import { colors, fonts, TYPE_CAPS } from '../theme';
+
+// Text with explicit Dynamic Type ceilings (theme.TYPE_CAPS). Use these
+// instead of raw <Text>: Text.defaultProps is silently dead under React 19,
+// so the cap must ride every component.
+
+/** BrineOS furniture: status bar, headers, tiles, rows, keypads, buttons. */
+export const ChromeText = (props: TextProps) => (
+  <Text maxFontSizeMultiplier={TYPE_CAPS.chrome} {...props} />
+);
+
+/** Evidence prose: bubbles, mail, notes, transcripts, narration. */
+export const BodyText = (props: TextProps) => (
+  <Text maxFontSizeMultiplier={TYPE_CAPS.body} {...props} />
+);
+
+/** Ciphertext and decoder cells: tight — alignment IS the puzzle. */
+export const PuzzleText = (props: TextProps) => (
+  <Text maxFontSizeMultiplier={TYPE_CAPS.puzzle} {...props} />
+);
+
+export const ChromeTextInput = (props: TextInputProps) => (
+  <TextInput maxFontSizeMultiplier={TYPE_CAPS.chrome} {...props} />
+);
 
 export function phoneClock(): { time: string; battery: number } {
   if (hasFlag('draftDecoded')) return { time: '4:44 AM', battery: 9 };
@@ -20,11 +51,11 @@ export function StatusBarRow() {
   const airplane = hasFlag('airplaneMode');
   return (
     <View style={ui.status}>
-      <Text style={ui.statusText}>{airplane ? '✈' : 'BrineTel'}</Text>
-      <Text style={ui.statusText}>{time}</Text>
-      <Text style={[ui.statusText, battery <= 15 && { color: colors.badge }]}>
+      <ChromeText style={ui.statusText}>{airplane ? '✈' : 'BrineTel'}</ChromeText>
+      <ChromeText style={ui.statusText}>{time}</ChromeText>
+      <ChromeText style={[ui.statusText, battery <= 15 && { color: colors.badge }]}>
         {battery}%
-      </Text>
+      </ChromeText>
     </View>
   );
 }
@@ -41,13 +72,13 @@ export function AppHeader({
   return (
     <View style={ui.header}>
       <Pressable onPress={onBack} hitSlop={12}>
-        <Text style={ui.back}>‹</Text>
+        <ChromeText style={ui.back}>‹</ChromeText>
       </Pressable>
       <View style={{ flex: 1 }}>
-        <Text style={ui.title} numberOfLines={1}>
+        <ChromeText style={ui.title} numberOfLines={1}>
           {title}
-        </Text>
-        {subtitle ? <Text style={ui.subtitle}>{subtitle}</Text> : null}
+        </ChromeText>
+        {subtitle ? <ChromeText style={ui.subtitle}>{subtitle}</ChromeText> : null}
       </View>
     </View>
   );
@@ -57,7 +88,7 @@ export function Bubble({ from, body }: { from: 'them' | 'me' | 'quinn'; body: st
   const mine = from !== 'them';
   return (
     <View style={[ui.bubble, mine ? ui.bubbleMe : ui.bubbleThem]}>
-      <Text selectable style={[ui.bubbleText, mine && { color: '#eef4fa' }]}>{body}</Text>
+      <BodyText selectable style={[ui.bubbleText, mine && { color: '#eef4fa' }]}>{body}</BodyText>
     </View>
   );
 }

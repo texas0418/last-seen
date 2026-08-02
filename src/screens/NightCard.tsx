@@ -3,9 +3,10 @@
 // endings: mono brand chrome, serif recap — Casey outside the phone for one
 // breath before the screen lights again.
 
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 
 import type { NightDef } from '../content/nights';
+import { BodyText, ChromeText } from '../engine/ui';
 import { colors, fonts, type } from '../theme';
 
 const ROMAN = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
@@ -20,14 +21,14 @@ export default function NightCard({
   return (
     <View style={s.screen}>
       <View style={s.center}>
-        <Text style={s.eyebrow}>NIGHT {ROMAN[night.n]}</Text>
-        <Text style={s.title}>{night.title}</Text>
+        <ChromeText style={s.eyebrow}>NIGHT {ROMAN[night.n]}</ChromeText>
+        <ChromeText style={s.title}>{night.title}</ChromeText>
         {night.recap ? (
-          <Text style={[type.narration, s.recap]}>{night.recap}</Text>
+          <BodyText style={[type.narration, s.recap]}>{night.recap}</BodyText>
         ) : null}
       </View>
       <Pressable onPress={onContinue} style={s.continueHit} hitSlop={16}>
-        <Text style={s.continue}>pick the phone back up</Text>
+        <ChromeText style={s.continue}>pick the phone back up</ChromeText>
       </Pressable>
     </View>
   );

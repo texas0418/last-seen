@@ -5,9 +5,10 @@
 // no gesture libs. (maximumZoomScale is iOS-only; Android gets pan-only until
 // a case ships there.)
 
-import { Image, Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
+import { Image, Pressable, ScrollView, StyleSheet, View, useWindowDimensions } from 'react-native';
 
 import { colors, fonts } from '../theme';
+import { ChromeText } from './ui';
 
 interface Props {
   source: number;
@@ -44,9 +45,9 @@ export function PhotoViewer({ source, ar, label, onClose }: Props) {
         />
       </ScrollView>
       <Pressable style={s.done} onPress={onClose} hitSlop={12}>
-        <Text style={s.doneText}>Done</Text>
+        <ChromeText style={s.doneText}>Done</ChromeText>
       </Pressable>
-      <Text style={s.hint}>pinch to look closer</Text>
+      <ChromeText style={s.hint}>pinch to look closer</ChromeText>
     </View>
   );
 }

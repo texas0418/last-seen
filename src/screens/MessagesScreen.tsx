@@ -10,8 +10,6 @@ import {
   Pressable,
   ScrollView,
   StyleSheet,
-  Text,
-  TextInput,
   View,
 } from 'react-native';
 
@@ -19,7 +17,7 @@ import { THREADS } from '../content/threads';
 import { checkGate, gateById } from '../engine/gates';
 import { activeGates, hintLabel } from '../engine/hints';
 import { currentStep, scriptHistory } from '../engine/script';
-import { AppHeader, Bubble, StatusBarRow, ui } from '../engine/ui';
+import { AppHeader, Bubble, ChromeText, ChromeTextInput, StatusBarRow, ui } from '../engine/ui';
 import { isVisible, type ScriptStep, type Thread } from '../models';
 import {
   flagSet,
@@ -70,7 +68,7 @@ function LiveChoice({ thread, step, cursor }: { thread: Thread; step: ScriptStep
             setScriptIndex(thread.id, o.goto ?? cursor + 1);
           }}
         >
-          <Text style={ui.chipText}>{o.label}</Text>
+          <ChromeText style={ui.chipText}>{o.label}</ChromeText>
         </Pressable>
       ))}
     </View>
@@ -97,7 +95,7 @@ function LiveFreetext({ thread, step, cursor }: { thread: Thread; step: ScriptSt
     <View>
       {wrongBody ? <Bubble from="them" body={wrongBody} /> : null}
       <View style={s.inputRow}>
-        <TextInput
+        <ChromeTextInput
           style={[ui.input, { flex: 1 }]}
           value={text}
           onChangeText={setText}
@@ -107,7 +105,7 @@ function LiveFreetext({ thread, step, cursor }: { thread: Thread; step: ScriptSt
           onSubmitEditing={send}
         />
         <Pressable onPress={send} hitSlop={10}>
-          <Text style={s.send}>↑</Text>
+          <ChromeText style={s.send}>↑</ChromeText>
         </Pressable>
       </View>
     </View>
@@ -129,9 +127,9 @@ function DaeHints() {
                 style={ui.chip}
                 onPress={() => putKv(hintKey(g.id), String(level + 1))}
               >
-                <Text style={ui.chipText}>
+                <ChromeText style={ui.chipText}>
                   {level === 0 ? `Ask about ${hintLabel(g)}` : 'I’m still stuck.'}
-                </Text>
+                </ChromeText>
               </Pressable>
             )}
           </View>
@@ -215,7 +213,7 @@ function ThreadView({ thread, onBack }: { thread: Thread; onBack: () => void }) 
       >
         {thread.messages.filter((m) => isVisible(m, flags)).map((m, i) => (
           <View key={i}>
-            <Text style={s.when}>{m.when}</Text>
+            <ChromeText style={s.when}>{m.when}</ChromeText>
             <Bubble from={m.from === 'quinn' ? 'me' : 'them'} body={m.body} />
           </View>
         ))}
@@ -241,16 +239,16 @@ export default function MessagesScreen({ onBack }: { onBack: () => void }) {
           return (
             <Pressable key={t.id} style={ui.row} onPress={() => setOpenId(t.id)}>
               <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                <Text style={ui.rowTitle}>{t.contact}</Text>
+                <ChromeText style={ui.rowTitle}>{t.contact}</ChromeText>
                 {!hasFlag('ending4') && !getKv(`read:${t.id}`) && (
                   <View style={ui.badge}>
-                    <Text style={ui.badgeText}> </Text>
+                    <ChromeText style={ui.badgeText}> </ChromeText>
                   </View>
                 )}
               </View>
-              <Text style={ui.rowSub} numberOfLines={1}>
+              <ChromeText style={ui.rowSub} numberOfLines={1}>
                 {last?.body ?? 'New conversation'}
-              </Text>
+              </ChromeText>
             </Pressable>
           );
         })}

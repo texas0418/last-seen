@@ -21,6 +21,28 @@ export const colors = {
   ok: '#7fae8b',
 } as const;
 
+/**
+ * Dynamic Type ceilings (maxFontSizeMultiplier) per surface. React 19
+ * silently ignores Text.defaultProps, so these must ride every component —
+ * use the capped wrappers in src/engine/ui.tsx (ChromeText / BodyText /
+ * PuzzleText / ChromeTextInput), never raw <Text>. Anchored on the old
+ * (dead) global cap of 1.4:
+ * - chrome 1.3: BrineOS furniture — status bar, headers, app tiles, rows,
+ *   keypads, chips, buttons. Tighter than the old global: the fake phone
+ *   only reads as a real phone if its chrome keeps OS proportions.
+ * - body 1.6: evidence prose — bubbles, mail, notes, transcripts, photo
+ *   alt/closer text, Casey's narration. Reading IS the game; scale
+ *   generously past the old global.
+ * - puzzle 1.2: ciphertext and decoder surfaces — the fixed-width cell
+ *   grid, its key tray, the ciphered login hint. Alignment is the puzzle,
+ *   and doctrine says ciphertext stays crisp.
+ */
+export const TYPE_CAPS = {
+  chrome: 1.3,
+  body: 1.6,
+  puzzle: 1.2,
+} as const;
+
 export const fonts = {
   /** Everything the phone renders — a modern OS is sans. */
   sans: Platform.select({ ios: 'Helvetica Neue', default: 'sans-serif' })!,

@@ -9,11 +9,12 @@
 // draft IS the difficulty. When every letter maps correctly, onDecoded fires.
 
 import { useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
 import { decoderMapping, setDecoderMapping } from '../state';
 import { colors, fonts } from '../theme';
 import { cipherLetters, isFullyDecoded } from './cipher';
+import { ChromeText, PuzzleText } from './ui';
 
 const ROWS = ['abcdefghi', 'jklmnopqr', 'stuvwxyz'].map((r) => r.split(''));
 
@@ -76,7 +77,7 @@ export default function Decoder({
   return (
     <View style={{ flex: 1 }}>
       <ScrollView style={{ flex: 1 }} contentContainerStyle={{ padding: 18 }}>
-        <Text style={s.hintLine}>
+        <ChromeText style={s.hintLine}>
           {solved
             ? 'the letters have stopped fighting you.'
             : selected
@@ -84,7 +85,7 @@ export default function Decoder({
               : unmapped > 0 && unmapped <= 5
                 ? `${unmapped === 1 ? 'one letter is' : `${unmapped} letters are`} still lying to you.`
                 : 'tap a letter in the message. then type what it really is.'}
-        </Text>
+        </ChromeText>
         <View style={s.words}>
           {words.map((word, wi) => (
             <View key={wi} style={s.word}>
@@ -93,16 +94,16 @@ export default function Decoder({
                 const isLetter = lower >= 'a' && lower <= 'z';
                 if (!isLetter)
                   return (
-                    <Text key={i} style={s.punct}>
+                    <PuzzleText key={i} style={s.punct}>
                       {ch}
-                    </Text>
+                    </PuzzleText>
                   );
                 const mapped = mapping[lower];
                 const isSel = selected === lower;
                 return (
                   <Pressable key={i} disabled={solved} onPress={() => setSelected(isSel ? null : lower)}>
                     <View style={[s.cell, isSel && s.cellSel]}>
-                      <Text
+                      <PuzzleText
                         style={[
                           s.cellGuess,
                           conflicted(lower) && s.cellConflict,
@@ -110,10 +111,10 @@ export default function Decoder({
                         ]}
                       >
                         {mapped ? mapped.toUpperCase() : '·'}
-                      </Text>
-                      <Text style={[s.cellCipher, isSel && s.cellCipherSel]}>
+                      </PuzzleText>
+                      <PuzzleText style={[s.cellCipher, isSel && s.cellCipherSel]}>
                         {lower.toUpperCase()}
-                      </Text>
+                      </PuzzleText>
                     </View>
                   </Pressable>
                 );
@@ -133,7 +134,7 @@ export default function Decoder({
                   style={[s.key, (!selected || solved) && s.keyDisabled]}
                   onPress={() => type(p)}
                 >
-                  <Text style={[s.keyText, used && s.keyUsed]}>{p.toUpperCase()}</Text>
+                  <PuzzleText style={[s.keyText, used && s.keyUsed]}>{p.toUpperCase()}</PuzzleText>
                 </Pressable>
               );
             })}
@@ -142,22 +143,22 @@ export default function Decoder({
                 style={[s.key, s.keyWide, (!selected || solved) && s.keyDisabled]}
                 onPress={clearSelected}
               >
-                <Text style={s.keyText}>⌫</Text>
+                <PuzzleText style={s.keyText}>⌫</PuzzleText>
               </Pressable>
             )}
           </View>
         ))}
         <View style={s.trayFoot}>
           {solved ? (
-            <Text style={s.wipeAsk}>solved. it stays solved.</Text>
+            <ChromeText style={s.wipeAsk}>solved. it stays solved.</ChromeText>
           ) : confirmWipe ? (
             <>
-              <Text style={s.wipeAsk}>forget everything you’ve tried?</Text>
+              <ChromeText style={s.wipeAsk}>forget everything you’ve tried?</ChromeText>
               <Pressable onPress={wipe} hitSlop={8}>
-                <Text style={s.wipeYes}>start over</Text>
+                <ChromeText style={s.wipeYes}>start over</ChromeText>
               </Pressable>
               <Pressable onPress={() => setConfirmWipe(false)} hitSlop={8}>
-                <Text style={s.wipeNo}>keep going</Text>
+                <ChromeText style={s.wipeNo}>keep going</ChromeText>
               </Pressable>
             </>
           ) : (
@@ -165,9 +166,9 @@ export default function Decoder({
               onPress={() => Object.keys(mapping).length > 0 && setConfirmWipe(true)}
               hitSlop={8}
             >
-              <Text style={[s.wipeLink, Object.keys(mapping).length === 0 && s.keyDisabled]}>
+              <ChromeText style={[s.wipeLink, Object.keys(mapping).length === 0 && s.keyDisabled]}>
                 start over
-              </Text>
+              </ChromeText>
             </Pressable>
           )}
         </View>

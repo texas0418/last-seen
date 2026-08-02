@@ -6,13 +6,13 @@
 
 import { useState } from 'react';
 import {
-  Image, Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions,
+  Image, Pressable, ScrollView, StyleSheet, View, useWindowDimensions,
 } from 'react-native';
 
 import { PHOTOS } from '../content/other';
 import { checkGate, gateById } from '../engine/gates';
 import { PhotoViewer } from '../engine/PhotoViewer';
-import { StatusBarRow, ui } from '../engine/ui';
+import { BodyText, ChromeText, StatusBarRow, ui } from '../engine/ui';
 import { PHOTO_ART } from '../photoAssets';
 import { setFlag } from '../state';
 import { colors, fonts } from '../theme';
@@ -61,26 +61,26 @@ export default function LockScreen() {
             />
           ) : (
             <>
-              <Text style={s.wallpaperEmoji}>{wallpaper.emoji}</Text>
-              <Text style={s.wallpaperAlt}>{wallpaper.alt}</Text>
+              <ChromeText style={s.wallpaperEmoji}>{wallpaper.emoji}</ChromeText>
+              <BodyText style={s.wallpaperAlt}>{wallpaper.alt}</BodyText>
             </>
           )}
-          <Text style={s.closerHint}>tap to look closer</Text>
+          <ChromeText style={s.closerHint}>tap to look closer</ChromeText>
         </Pressable>
         {PREVIEWS.map((p, i) => (
           <View key={i} style={s.notif}>
-            <Text style={s.notifApp}>{p.app}</Text>
-            <Text style={s.notifLine} numberOfLines={1}>
+            <ChromeText style={s.notifApp}>{p.app}</ChromeText>
+            <BodyText style={s.notifLine} numberOfLines={1}>
               {p.line}
-            </Text>
+            </BodyText>
           </View>
         ))}
-        <Text style={s.dots}>{'●'.repeat(entry.length).padEnd(4, '○')}</Text>
-        {warning ? <Text style={s.warning}>{warning}</Text> : null}
+        <ChromeText style={s.dots}>{'●'.repeat(entry.length).padEnd(4, '○')}</ChromeText>
+        {warning ? <ChromeText style={s.warning}>{warning}</ChromeText> : null}
         <View style={s.pad}>
           {KEYS.map((k, i) => (
             <Pressable key={i} style={[s.key, !k && { opacity: 0 }]} onPress={() => press(k)}>
-              <Text style={s.keyText}>{k}</Text>
+              <ChromeText style={s.keyText}>{k}</ChromeText>
             </Pressable>
           ))}
         </View>

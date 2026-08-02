@@ -2,13 +2,13 @@
 // BrineOS home: a grid of the six apps. Badges are honest unread counts so
 // the phone itself points at new evidence without ever explaining it.
 
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 
 import { CALENDAR } from '../content/calendar';
 import { EMAILS } from '../content/mail';
 import { NOTES, PHOTOS, VOICEMAILS } from '../content/other';
 import { THREADS } from '../content/threads';
-import { StatusBarRow, ui } from '../engine/ui';
+import { ChromeText, StatusBarRow, ui } from '../engine/ui';
 import { isVisible } from '../models';
 import { flagSet, hasFlag, isRead } from '../state';
 import { colors, fonts } from '../theme';
@@ -60,7 +60,7 @@ export default function HomeScreen({ onOpen }: { onOpen: (app: AppId) => void })
   return (
     <View style={ui.screen}>
       <StatusBarRow />
-      <Text style={s.owner}>Quinn’s phone</Text>
+      <ChromeText style={s.owner}>Quinn’s phone</ChromeText>
       <View style={s.grid}>
         {APPS.map((a) => {
           const n = unreadCount(a.id);
@@ -68,16 +68,16 @@ export default function HomeScreen({ onOpen }: { onOpen: (app: AppId) => void })
             <Pressable key={a.id} style={s.tile} onPress={() => onOpen(a.id)}>
               {n > 0 && (
                 <View style={[ui.badge, s.tileBadge]}>
-                  <Text style={ui.badgeText}>{n}</Text>
+                  <ChromeText style={ui.badgeText}>{n}</ChromeText>
                 </View>
               )}
-              <Text style={s.tileEmoji}>{a.emoji}</Text>
-              <Text style={s.tileLabel}>{a.label}</Text>
+              <ChromeText style={s.tileEmoji}>{a.emoji}</ChromeText>
+              <ChromeText style={s.tileLabel}>{a.label}</ChromeText>
             </Pressable>
           );
         })}
       </View>
-      <Text style={s.footer}>BrineOS 11 · storage almost full</Text>
+      <ChromeText style={s.footer}>BrineOS 11 · storage almost full</ChromeText>
     </View>
   );
 }

@@ -2,9 +2,10 @@
 // The epilogue card for whichever ending fired. The phone stays explorable
 // afterwards — the endings are voicemails from the future, not a game over.
 
-import { Pressable, ScrollView, StyleSheet, Text } from 'react-native';
+import { Pressable, ScrollView, StyleSheet } from 'react-native';
 
 import type { Ending } from '../content/other';
+import { BodyText, ChromeText } from '../engine/ui';
 import { colors, fonts, type } from '../theme';
 
 export default function EndingScreen({
@@ -16,18 +17,18 @@ export default function EndingScreen({
 }) {
   return (
     <ScrollView style={s.screen} contentContainerStyle={s.content}>
-      <Text style={s.brand}>LAST SEEN</Text>
+      <ChromeText style={s.brand}>LAST SEEN</ChromeText>
       {/* The one honest chrome line (paywall precedent): tell the player
           the shape of the ending space, never dress it as fiction. */}
-      <Text style={s.ordinal}>ENDING {ending.flag.slice(-1)} OF 4</Text>
-      <Text style={s.title}>{ending.title}</Text>
+      <ChromeText style={s.ordinal}>ENDING {ending.flag.slice(-1)} OF 4</ChromeText>
+      <ChromeText style={s.title}>{ending.title}</ChromeText>
       {ending.prose.map((p, i) => (
-        <Text key={i} style={[type.narration, { marginBottom: 20 }]}>
+        <BodyText key={i} style={[type.narration, { marginBottom: 20 }]}>
           {p}
-        </Text>
+        </BodyText>
       ))}
       <Pressable onPress={onClose}>
-        <Text style={s.close}>return to the phone</Text>
+        <ChromeText style={s.close}>return to the phone</ChromeText>
       </Pressable>
     </ScrollView>
   );

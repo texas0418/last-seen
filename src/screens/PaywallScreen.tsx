@@ -3,8 +3,9 @@
 // never dress a real purchase as part of the fiction. Fail-open builds
 // (Expo Go / placeholder keys) never see this screen.
 
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 
+import { BodyText, ChromeText } from '../engine/ui';
 import { purchaseStory, restoreStory, useStoryUnlocked } from '../proAccess';
 import { hasFlag, setFlag } from '../state';
 import { colors, fonts } from '../theme';
@@ -18,31 +19,31 @@ export default function PaywallScreen({ onDone }: { onDone: () => void }) {
   if (unlocked) finish();
   return (
     <View style={s.screen}>
-      <Text style={s.brand}>LAST SEEN</Text>
-      <Text style={s.case}>Case One: Widow’s Point</Text>
-      <Text style={s.copy}>
+      <ChromeText style={s.brand}>LAST SEEN</ChromeText>
+      <ChromeText style={s.case}>Case One: Widow’s Point</ChromeText>
+      <BodyText style={s.copy}>
         The password is right. The mail is about to open, and everything past
         it — the second mailbox, the reporter, the draft she never sent, all
         four endings.
-      </Text>
-      <Text style={s.copy}>Unlock the full story. One time, yours forever.</Text>
+      </BodyText>
+      <BodyText style={s.copy}>Unlock the full story. One time, yours forever.</BodyText>
       <Pressable
         style={s.buy}
         onPress={async () => {
           if (await purchaseStory()) finish();
         }}
       >
-        <Text style={s.buyText}>Continue the story</Text>
+        <ChromeText style={s.buyText}>Continue the story</ChromeText>
       </Pressable>
       <Pressable
         onPress={async () => {
           if (await restoreStory()) finish();
         }}
       >
-        <Text style={s.restore}>Restore purchase</Text>
+        <ChromeText style={s.restore}>Restore purchase</ChromeText>
       </Pressable>
       <Pressable onPress={onDone}>
-        <Text style={s.later}>Not now</Text>
+        <ChromeText style={s.later}>Not now</ChromeText>
       </Pressable>
     </View>
   );

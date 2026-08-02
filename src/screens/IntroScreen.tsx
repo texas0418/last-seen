@@ -4,9 +4,10 @@
 // photo strip land here; both are load-bearing clues later.
 
 import { useState } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 
 import { INTRO } from '../content/other';
+import { BodyText, ChromeText } from '../engine/ui';
 import { setFlag } from '../state';
 import { colors, type } from '../theme';
 
@@ -19,9 +20,9 @@ export default function IntroScreen() {
       onPress={() => (last ? setFlag('introDone') : setI(i + 1))}
     >
       <View style={s.center}>
-        <Text style={type.narration}>{INTRO[i]}</Text>
+        <BodyText style={type.narration}>{INTRO[i]}</BodyText>
       </View>
-      <Text style={s.tap}>{last ? 'pick up the phone' : 'tap'}</Text>
+      <ChromeText style={s.tap}>{last ? 'pick up the phone' : 'tap'}</ChromeText>
     </Pressable>
   );
 }

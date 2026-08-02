@@ -5,14 +5,7 @@
 // the ciphered unsent draft, opened in the Decoder.
 
 import { useState } from 'react';
-import {
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from 'react-native';
+import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
 import {
   DRAFT_BODY_CIPHER,
@@ -24,7 +17,15 @@ import {
 } from '../content/mail';
 import Decoder from '../engine/Decoder';
 import { checkGate, gateById } from '../engine/gates';
-import { AppHeader, StatusBarRow, ui } from '../engine/ui';
+import {
+  AppHeader,
+  BodyText,
+  ChromeText,
+  ChromeTextInput,
+  PuzzleText,
+  StatusBarRow,
+  ui,
+} from '../engine/ui';
 import { isVisible, type Email } from '../models';
 import { useStoryUnlocked } from '../proAccess';
 import { flagSet, hasFlag, isRead, markRead, putKv, setFlag } from '../state';
@@ -54,9 +55,9 @@ function Login({
   };
   return (
     <View style={s.login}>
-      <Text style={s.loginAddress}>{address}</Text>
-      {hint ? <Text style={s.loginHint}>hint: {hint}</Text> : null}
-      <TextInput
+      <ChromeText style={s.loginAddress}>{address}</ChromeText>
+      {hint ? <PuzzleText style={s.loginHint}>hint: {hint}</PuzzleText> : null}
+      <ChromeTextInput
         style={[ui.input, { marginTop: 14 }]}
         value={pw}
         onChangeText={setPw}
@@ -67,9 +68,9 @@ function Login({
         secureTextEntry
         onSubmitEditing={submit}
       />
-      {msg ? <Text style={s.wrong}>{msg}</Text> : null}
+      {msg ? <ChromeText style={s.wrong}>{msg}</ChromeText> : null}
       <Pressable style={s.loginBtn} onPress={submit}>
-        <Text style={s.loginBtnText}>Sign in</Text>
+        <ChromeText style={s.loginBtnText}>Sign in</ChromeText>
       </Pressable>
     </View>
   );
@@ -82,12 +83,12 @@ function EmailView({ email, onBack }: { email: Email; onBack: () => void }) {
       <StatusBarRow />
       <AppHeader title={email.from} subtitle={email.when} onBack={onBack} />
       <ScrollView contentContainerStyle={{ padding: 18 }}>
-        <Text style={s.subject}>{email.subject}</Text>
-        <Text selectable style={s.body}>{email.body}</Text>
+        <BodyText style={s.subject}>{email.subject}</BodyText>
+        <BodyText selectable style={s.body}>{email.body}</BodyText>
         {(email.attachments ?? []).map((a) => (
           <View key={a.name} style={s.attach}>
-            <Text style={s.attachName}>📎 {a.name}</Text>
-            <Text style={s.attachBody}>{a.body}</Text>
+            <ChromeText style={s.attachName}>📎 {a.name}</ChromeText>
+            <BodyText style={s.attachBody}>{a.body}</BodyText>
           </View>
         ))}
       </ScrollView>
@@ -153,9 +154,9 @@ export default function MailScreen({ onBack }: { onBack: () => void }) {
       <View style={s.tabs}>
         {(['personal', 'tidewater'] as const).map((a) => (
           <Pressable key={a} style={[s.tab, account === a && s.tabOn]} onPress={() => setAccount(a)}>
-            <Text style={[s.tabText, account === a && { color: colors.text }]}>
+            <ChromeText style={[s.tabText, account === a && { color: colors.text }]}>
               {a === 'personal' ? 'Personal' : `${hasFlag('act3') ? '' : '🔒 '}tidewater.ledger`}
-            </Text>
+            </ChromeText>
           </Pressable>
         ))}
       </View>
@@ -170,15 +171,15 @@ export default function MailScreen({ onBack }: { onBack: () => void }) {
         <ScrollView>
           {emails.map((e) => (
             <Pressable key={e.id} style={ui.row} onPress={() => setOpenId(e.id)}>
-              <Text style={[ui.rowTitle, !isRead(e.id) && ui.rowTitleUnread]}>
-                {!isRead(e.id) ? <Text style={ui.unreadDot}>{'● '}</Text> : null}
+              <ChromeText style={[ui.rowTitle, !isRead(e.id) && ui.rowTitleUnread]}>
+                {!isRead(e.id) ? <ChromeText style={ui.unreadDot}>{'● '}</ChromeText> : null}
                 {e.folder === 'drafts' ? '✏️ ' : ''}
                 {e.from}
-              </Text>
-              <Text style={ui.rowSub} numberOfLines={1}>
+              </ChromeText>
+              <ChromeText style={ui.rowSub} numberOfLines={1}>
                 {e.subject}
-              </Text>
-              <Text style={s.rowWhen}>{e.when}</Text>
+              </ChromeText>
+              <ChromeText style={s.rowWhen}>{e.when}</ChromeText>
             </Pressable>
           ))}
         </ScrollView>
