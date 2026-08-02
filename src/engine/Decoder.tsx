@@ -3,7 +3,8 @@
 // cryptogram interaction: tap a letter IN the ciphertext (all instances
 // highlight), then type the guess on the A–Z row below — it fills every
 // instance at once. Tap a solved letter to change it; ⌫ clears the selected
-// letter; "start over" (with confirm) wipes the whole mapping. No frequency
+// letter; "start over" (with confirm) wipes the whole mapping; a SOLVED
+// draft locks permanently — the finished text can never be disturbed. No frequency
 // helper, no validation until the whole text resolves — the length of the
 // draft IS the difficulty. When every letter maps correctly, onDecoded fires.
 
@@ -40,7 +41,7 @@ export default function Decoder({
   };
 
   const type = (plain: string) => {
-    if (!selected) return;
+    if (!selected || solved) return;
     const next = { ...mapping };
     if (next[selected] === plain) delete next[selected];
     else next[selected] = plain;
@@ -48,13 +49,14 @@ export default function Decoder({
   };
 
   const clearSelected = () => {
-    if (!selected || !mapping[selected]) return;
+    if (!selected || !mapping[selected] || solved) return;
     const next = { ...mapping };
     delete next[selected];
     save(next);
   };
 
   const wipe = () => {
+    if (solved) return;
     setConfirmWipe(false);
     setSelected(null);
     save({});
@@ -98,7 +100,7 @@ export default function Decoder({
                 const mapped = mapping[lower];
                 const isSel = selected === lower;
                 return (
-                  <Pressable key={i} onPress={() => setSelected(isSel ? null : lower)}>
+                  <Pressable key={i} disabled={solved} onPress={() => setSelected(isSel ? null : lower)}>
                     <View style={[s.cell, isSel && s.cellSel]}>
                       <Text
                         style={[
@@ -128,7 +130,7 @@ export default function Decoder({
               return (
                 <Pressable
                   key={p}
-                  style={[s.key, !selected && s.keyDisabled]}
+                  style={[s.key, (!selected || solved) && s.keyDisabled]}
                   onPress={() => type(p)}
                 >
                   <Text style={[s.keyText, used && s.keyUsed]}>{p.toUpperCase()}</Text>
@@ -137,7 +139,7 @@ export default function Decoder({
             })}
             {ri === 2 && (
               <Pressable
-                style={[s.key, s.keyWide, !selected && s.keyDisabled]}
+                style={[s.key, s.keyWide, (!selected || solved) && s.keyDisabled]}
                 onPress={clearSelected}
               >
                 <Text style={s.keyText}>⌫</Text>
@@ -146,7 +148,9 @@ export default function Decoder({
           </View>
         ))}
         <View style={s.trayFoot}>
-          {confirmWipe ? (
+          {solved ? (
+            <Text style={s.wipeAsk}>solved. it stays solved.</Text>
+          ) : confirmWipe ? (
             <>
               <Text style={s.wipeAsk}>forget everything you’ve tried?</Text>
               <Pressable onPress={wipe} hitSlop={8}>
