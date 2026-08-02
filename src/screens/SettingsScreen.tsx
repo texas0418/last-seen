@@ -5,10 +5,11 @@
 // pre-ship item). "Start over" is the only non-diegetic control.
 
 import { useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Switch, Text, TextInput, View } from 'react-native';
 
 import { PERSONAL_ADDRESS, TIDEWATER_ADDRESS } from '../content/mail';
 import { AppHeader, StatusBarRow, phoneClock, ui } from '../engine/ui';
+import { checkGate, gateById } from '../engine/gates';
 import { hasFlag, resetWorld, setFlag } from '../state';
 import { colors, fonts } from '../theme';
 
@@ -16,6 +17,9 @@ const ENDING_FLAGS = ['ending1', 'ending2', 'ending3', 'ending4'] as const;
 
 export default function SettingsScreen({ onBack }: { onBack: () => void }) {
   const [armReset, setArmReset] = useState(false);
+  const [pinOpen, setPinOpen] = useState(false);
+  const [pin, setPin] = useState('');
+  const [wrongs, setWrongs] = useState(0);
   const endingsSeen = ENDING_FLAGS.filter((f) => hasFlag(f)).length;
   const { battery } = phoneClock();
   return (
@@ -36,21 +40,51 @@ export default function SettingsScreen({ onBack }: { onBack: () => void }) {
           <Text style={ui.rowTitle}>Storage</Text>
           <Text style={ui.rowSub}>57.1 GB of 64 GB used</Text>
         </View>
-        {hasFlag('act3') && (
-          <Pressable
-            style={ui.row}
-            onPress={() => setFlag('cloudRestored')}
-            disabled={hasFlag('cloudRestored')}
-          >
-            <Text style={[ui.rowTitle, !hasFlag('cloudRestored') && { color: colors.accent }]}>
-              Cloud trash
-            </Text>
-            <Text style={ui.rowSub}>
-              {hasFlag('cloudRestored')
-                ? '1 conversation restored to Messages'
-                : '1 deleted conversation can still be recovered. Restore?'}
-            </Text>
-          </Pressable>
+        {hasFlag('night6') && !hasFlag('cloudRestored') && (
+          <View>
+            <Pressable style={ui.row} onPress={() => setPinOpen(!pinOpen)}>
+              <Text style={[ui.rowTitle, { color: colors.accent }]}>Cloud trash</Text>
+              <Text style={ui.rowSub}>
+                1 deleted conversation can still be recovered. PIN required.
+              </Text>
+            </Pressable>
+            {pinOpen && (
+              <View style={s2.pinRow}>
+                <TextInput
+                  style={[ui.input, s2.pinInput]}
+                  value={pin}
+                  onChangeText={(v) => setPin(v.replace(/[^0-9]/g, '').slice(0, 4))}
+                  keyboardType="number-pad"
+                  placeholder="••••"
+                  placeholderTextColor={colors.faint}
+                />
+                <Pressable
+                  onPress={() => {
+                    if (pin.length < 4) return;
+                    if (checkGate('cloud', pin)) setFlag('cloudRestored');
+                    else {
+                      setWrongs(wrongs + 1);
+                      setPin('');
+                    }
+                  }}
+                  hitSlop={10}
+                >
+                  <Text style={s2.pinGo}>Unlock</Text>
+                </Pressable>
+              </View>
+            )}
+            {pinOpen && wrongs > 0 && (
+              <Text style={s2.pinWrong}>
+                {gateById('cloud').wrong[Math.min(wrongs - 1, gateById('cloud').wrong.length - 1)]}
+              </Text>
+            )}
+          </View>
+        )}
+        {hasFlag('cloudRestored') && (
+          <View style={ui.row}>
+            <Text style={ui.rowTitle}>Cloud trash</Text>
+            <Text style={ui.rowSub}>1 conversation restored to Messages</Text>
+          </View>
         )}
 
         <Text style={s.section}>RADIO</Text>
@@ -104,6 +138,13 @@ export default function SettingsScreen({ onBack }: { onBack: () => void }) {
     </View>
   );
 }
+
+const s2 = StyleSheet.create({
+  pinRow: { flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 16, paddingVertical: 10 },
+  pinInput: { width: 110, textAlign: 'center', letterSpacing: 6, fontFamily: fonts.mono },
+  pinGo: { color: colors.accent, fontFamily: fonts.sans, fontSize: 15 },
+  pinWrong: { color: colors.badge, fontFamily: fonts.mono, fontSize: 12, paddingHorizontal: 16, paddingBottom: 8 },
+});
 
 const s = StyleSheet.create({
   section: {

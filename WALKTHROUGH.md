@@ -113,8 +113,12 @@ that reads `gsv ylzg. dsvm sv dzh ylim.`
 receipt (LOOK at its date — Oct 14, two days after she "died," paid IN
 STORE, in CASH — sit with what that means), the burner-phone confirmation
 (a number ending 0412), and — in Drafts — one unsent message that is all
-gibberish. Also: Settings → Cloud trash → restore Marcus's deleted message
-(he's not the villain; he was going to testify).
+gibberish. Also, from Night 6 on: Settings → Cloud trash asks for
+Quinn's cloud PIN — the scheme is in Dae's thread ("everything's mom now —
+where she is") and the room number is on the Calendar (rm 214 → pad to four
+digits: `0214`). Restoring it recovers Marcus's deleted message — he's not
+the villain; he was going to testify. Check when it was deleted, and by
+whom.
 
 ---
 

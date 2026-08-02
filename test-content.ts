@@ -71,6 +71,7 @@ const contentIds = new Set<string>([
   ...VOICEMAILS.map((v) => v.id),
   ...NOTES.map((n) => n.id),
   ...PHOTOS.map((p) => p.id),
+  ...CALENDAR.map((c) => c.id),
 ]);
 for (const g of GATES) {
   assert.ok(g.clues.length >= 2, `gate '${g.id}' has fewer than 2 clues`);

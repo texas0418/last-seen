@@ -11,6 +11,7 @@ export const FLAGS = [
   'act3', // hidden tidewater account unlocked
   'maraTrusted', // deduction check passed; Mara's file drop arrives
   'night5', // acknowledged the file drop — Night 5 (The Books) opens
+  'night6', // read T's warning — Night 6 (Marcus) opens
   'booksDone', // named R-1147 to Mara — the accounting night resolved
   'airplaneMode',
   'cloudRestored', // deleted Marcus thread recovered
@@ -30,6 +31,7 @@ export type Surface =
   | 'notes'
   | 'photos'
   | 'settings'
+  | 'calendar'
   | 'intro';
 
 export interface Msg {

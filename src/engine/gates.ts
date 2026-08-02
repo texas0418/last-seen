@@ -145,6 +145,25 @@ export const GATES: Gate[] = [
     ],
   },
   {
+    // Night 6: the cloud-trash PIN. Scheme (everything is mom now — WHERE
+    // she is) surfaces in Dae's thread; the room number is a calendar
+    // entry. The pad wants four digits: rm 214 -> 0214. Password kind:
+    // '0214' never appears in readable content.
+    id: 'cloud',
+    kind: 'password',
+    answers: ['0214'],
+    setsFlag: 'cloudRestored',
+    wrong: ['Incorrect PIN.', 'Incorrect PIN. Recovery items remain encrypted.'],
+    clues: [
+      { itemId: 'th-dae', surface: 'messages', what: 'the PIN scheme: "everything’s mom now — where she is"' },
+      { itemId: 'cal-harborview', surface: 'calendar', what: 'mom — harborview · rm 214 · tuesdays' },
+    ],
+    nudges: [
+      'her cloud pin? dae teased her about it once. after the diagnosis, everything became mom.',
+      'not who mom is. WHERE mom is. the pad wants four digits and the answer only has three — she padded it.',
+    ],
+  },
+  {
     // The old words, typed to the burner after decoding the draft. The
     // draft yields them in cipher; the player must decode and SEND them.
     id: 'burner',

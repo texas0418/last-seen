@@ -49,6 +49,26 @@ export const CALENDAR: CalEntry[] = [
     title: 'dentist',
   },
   {
+    id: 'cal-harborview',
+    when: 'Tuesdays, 4:00 PM',
+    title: 'mom — harborview',
+    detail: 'rm 214. she likes the window chair.',
+    visibleWhen: ['night6'],
+  },
+  {
+    id: 'cal-oct11',
+    when: 'Oct 11, 9:00 AM',
+    title: 'R.H. — office',
+    detail: 'bring nothing.',
+    visibleWhen: ['night6'],
+  },
+  {
+    id: 'cal-oct12',
+    when: 'Oct 12, 5:00 AM',
+    title: '—',
+    visibleWhen: ['night6'],
+  },
+  {
     id: 'cal-oct23',
     when: 'Oct 23',
     title: 'ozzy — 5 yrs',

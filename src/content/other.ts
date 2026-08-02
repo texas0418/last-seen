@@ -66,6 +66,18 @@ export const VOICEMAILS: Voicemail[] = [
       'property, and, um — given the circumstances I’m so sorry to be leaving ' +
       'this message at all. Please disregard. I’m sorry. [call ends]”',
   },
+  {
+    id: 'vm-marcus',
+    from: 'Marcus Halloway',
+    when: 'Oct 11, 2026, 7:42 PM',
+    duration: '0:29',
+    visibleWhen: ['night6'],
+    transcript:
+      'Quinn. It’s — you know who it is. My father had his consultant in the ' +
+      'office for an hour today and your name came through the door twice. ' +
+      'Whatever you copied — I need to know it’s somewhere safe. Not for him. ' +
+      'For — just. Call me back. Not the office line.',
+  },
 ];
 
 export const NOTES: Note[] = [

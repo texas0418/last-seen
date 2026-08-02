@@ -62,6 +62,18 @@ export const THREADS: Thread[] = [
         when: 'Oct 10, 11:47 PM',
       },
       { from: 'them', body: 'that’s not funny??? call me', when: 'Oct 10, 11:52 PM' },
+      {
+        from: 'them',
+        body: 'locked out of your own cloud AGAIN. incredible. new pin, again??',
+        when: 'Sep 14, 3:22 PM',
+        visibleWhen: ['night6'],
+      },
+      {
+        from: 'quinn',
+        body: 'reset it. everything’s mom now — where she is. i won’t forget where she is.',
+        when: 'Sep 14, 3:29 PM',
+        visibleWhen: ['night6'],
+      },
       { from: 'them', body: 'quinn.', when: 'Oct 12, 8:15 AM' },
       { from: 'them', body: 'they found your car. tell me this is one of your jokes. tell me right now.', when: 'Oct 12, 9:03 AM' },
       { from: 'them', body: 'i called the tip line 4 times. the sheriff told me to STOP CALLING. what kind of', when: 'Oct 14, 2:20 PM' },
@@ -133,10 +145,16 @@ export const THREADS: Thread[] = [
         body: 'We need to talk about what you took from the office. Before he finds out. I mean it, Quinn.',
         when: 'Oct 9, 4:55 PM',
       },
+      {
+        from: 'them',
+        body: 'You were in the file room Tuesday after close. I signed the log as me. That’s twice now.',
+        when: 'Oct 10, 8:12 PM',
+        visibleWhen: ['night6'],
+      },
       // Recovered from cloud trash in act 3: Marcus was never the villain.
       {
         from: 'them',
-        body: '[recovered message] I know what my father did to the Soto reports. I’ve been copying them too. If you go public I’ll testify. Whatever you decide — I’m sorry I was a coward first.',
+        body: '[recovered · deleted by account owner · Oct 11, 11:59 PM] I know what my father did to the Soto reports. I’ve been copying them too. If you go public I’ll testify. Whatever you decide — I’m sorry I was a coward first.',
         when: 'Oct 11, 11:58 PM',
         visibleWhen: ['cloudRestored'],
       },
@@ -168,6 +186,10 @@ export const THREADS: Thread[] = [
           kind: 'them',
           body: 'box. marina office. by friday. after that i stop charging by the hour.',
           delayMs: 3000,
+        },
+        {
+          kind: 'choice',
+          options: [{ label: '[ Don’t reply ]', setsFlag: 'night6' }],
         },
         { kind: 'end' },
       ],

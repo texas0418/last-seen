@@ -53,6 +53,13 @@ export const NIGHTS: NightDef[] = [
     recap:
       'The reporter kept her word: three files, one hole. Quinn read ledgers the way other people read faces. Your turn.',
   },
+  {
+    n: 6,
+    title: 'MARCUS',
+    unlockedBy: 'night6',
+    recap:
+      'The watcher gave you until Friday. And the boss’s son keeps leaving words on a dead woman’s phone — none of them the words a guilty man would choose.',
+  },
 ];
 
 export const currentNight = (has: (f: Flag) => boolean): NightDef => {
