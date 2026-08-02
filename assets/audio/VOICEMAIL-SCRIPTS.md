@@ -87,3 +87,42 @@ smaller.
   feel, leading beep, trailing click on #3.
 - Priority order if recording piecemeal: 5, 1, 2 (Mom carries the game),
   then 3, then 4.
+
+---
+
+## 6. `vm-marcus.m4a` — Marcus Halloway · 0:29  *(added in v2, Night 6)*
+Mid-30s, private-school polish fraying in real time. Starts controlled,
+cracks in the middle. The unfinished "For —" is the entire performance:
+he almost says "for you" and can't.
+
+> "Quinn. It's — you know who it is. My father had his consultant in the
+> office for an hour today and your name came through the door twice.
+> Whatever you copied — I need to know it's somewhere safe. Not for him.
+> For — just. Call me back. Not the office line."
+
+Direction: pace quickens through "came through the door twice" — he's
+walking somewhere private. Long breath before "Not for him."
+
+## 7. `vm-eli.m4a` — Eli Soto · 0:41  *(added in v2, Night 7 — the hardest one)*
+Late 20s, easy warmth, half-shouting over wind and engine. THE POINT: he
+is not scared. The complaint about the water is offhand, between dinner
+plans and Sunday at her mother's. Record clean; wind/deck ambience gets
+added in post (or record against real wind). Bracketed sounds are
+production notes, not lines — the spoken words must match the rest
+exactly.
+
+> "Rosita. Don't cook tonight, I'll bring— [wind] —they've got us pulling
+> cages out of seven today. water smells like a battery, I'm not —
+> [inaudible] — Ramos says the notice came down last week and the office
+> said pull anyway, so. [pause] Tell your mother we'll come Sunday. Love
+> you."
+
+Direction: "love you" thrown away, routine, already turning back to work.
+That's what makes it unbearable on the second listen.
+
+---
+
+## Planned for the noise pass (not yet in content — do not record yet)
+- `vm-dad.m4a` — Dad's saved voicemail (the sisters' childhood anchor).
+- `vm-mom-n10.m4a` — one more Mom cue for Night 10.
+Scripts will be added here when their content lands.
