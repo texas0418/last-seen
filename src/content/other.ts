@@ -16,7 +16,7 @@ export const VOICEMAILS: Voicemail[] = [
     id: 'vm-mom-oct2',
     from: 'Mom',
     when: 'Oct 2, 2026, 4:41 PM',
-    duration: '1:12',
+    duration: '0:17',
     transcript:
       '“Quinn, honey, it’s your mother. I was thinking about the wisteria at ' +
       'Alder Street — twelve years this fall since we lost that house, can you ' +
@@ -27,7 +27,7 @@ export const VOICEMAILS: Voicemail[] = [
     id: 'vm-mom-oct11',
     from: 'Mom',
     when: 'Oct 11, 2026, 8:03 PM',
-    duration: '0:31',
+    duration: '0:09',
     transcript:
       '“You sounded far away today, sweetheart. Not the phone kind of far away. ' +
       'The other kind. You get that from him, you know. Call me back.”',
@@ -36,7 +36,7 @@ export const VOICEMAILS: Voicemail[] = [
     id: 'vm-dae-oct13',
     from: 'Dae 🌙',
     when: 'Oct 13, 2026, 3:14 AM',
-    duration: '0:22',
+    duration: '0:09',
     transcript:
       '“[crying] Pick up. Pick up pick up pick up. Tell me you didn’t — you ' +
       'don’t get to make me the plant person, Quinn, that was a JOKE — [call ends]”',
@@ -47,7 +47,7 @@ export const VOICEMAILS: Voicemail[] = [
     id: 'vm-mom-oct15',
     from: 'Mom',
     when: 'Oct 15, 2026, 11:20 AM',
-    duration: '0:47',
+    duration: '0:20',
     transcript:
       '“Thank you for the flowers, honey. Lilies, like the fair. Though I told ' +
       'the delivery girl at the door, my Quinn always sends yellow ones — she ' +
@@ -59,7 +59,7 @@ export const VOICEMAILS: Voicemail[] = [
     id: 'vm-hr',
     from: 'Halloway Seafood — Front Office',
     when: 'Oct 13, 2026, 9:00 AM',
-    duration: '0:26',
+    duration: '0:18',
     transcript:
       '“Ms. Mercer, this is Carol from the front office. Mr. Halloway asked me ' +
       'to remind you that company records and login credentials are company ' +
@@ -70,7 +70,7 @@ export const VOICEMAILS: Voicemail[] = [
     id: 'vm-marcus',
     from: 'Marcus Halloway',
     when: 'Oct 11, 2026, 7:42 PM',
-    duration: '0:29',
+    duration: '0:18',
     visibleWhen: ['night6'],
     transcript:
       'Quinn. It’s — you know who it is. My father had his consultant in the ' +
@@ -82,7 +82,7 @@ export const VOICEMAILS: Voicemail[] = [
     id: 'vm-eli',
     from: 'Eli Soto (fwd: R. Soto)',
     when: 'Apr 8, 2025, 6:12 AM',
-    duration: '0:41',
+    duration: '0:22',
     visibleWhen: ['rosaTrust'],
     transcript:
       'Rosita. Don’t cook tonight, I’ll bring— [wind] —they’ve got us ' +

@@ -3,11 +3,13 @@
 // Photos carry the long-press "look closer" gesture taught on the lock
 // screen — the closer layer is where zoom-level details live.
 
-import { useState } from 'react';
+import { useAudioPlayer, useAudioPlayerStatus, setAudioModeAsync } from 'expo-audio';
+import { useEffect, useState } from 'react';
 import {
   Image, Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions,
 } from 'react-native';
 
+import { VM_AUDIO } from '../audioAssets';
 import { NOTES, PHOTOS, VOICEMAILS } from '../content/other';
 import { PhotoViewer } from '../engine/PhotoViewer';
 import { AppHeader, StatusBarRow, ui } from '../engine/ui';
@@ -15,6 +17,40 @@ import { isVisible } from '../models';
 import { PHOTO_ART } from '../photoAssets';
 import { flagSet, isRead, markRead } from '../state';
 import { colors, fonts } from '../theme';
+
+function VoicemailPlayer({ source }: { source: number }) {
+  const player = useAudioPlayer(source);
+  const status = useAudioPlayerStatus(player);
+  useEffect(() => {
+    setAudioModeAsync({ playsInSilentMode: true });
+  }, []);
+  const toggle = () => {
+    if (status.playing) player.pause();
+    else {
+      if (status.didJustFinish || status.currentTime >= status.duration - 0.1)
+        player.seekTo(0);
+      player.play();
+    }
+  };
+  return (
+    <Pressable style={s.playRow} onPress={toggle}>
+      <Text style={s.playBtn}>{status.playing ? '❙❙' : '▶'}</Text>
+      <View style={s.playTrack}>
+        <View
+          style={[
+            s.playFill,
+            {
+              width: `${Math.min(
+                100,
+                (status.currentTime / Math.max(status.duration, 0.1)) * 100,
+              )}%`,
+            },
+          ]}
+        />
+      </View>
+    </Pressable>
+  );
+}
 
 export function VoicemailScreen({ onBack }: { onBack: () => void }) {
   const [openId, setOpenId] = useState<string | null>(null);
@@ -27,7 +63,10 @@ export function VoicemailScreen({ onBack }: { onBack: () => void }) {
         <StatusBarRow />
         <AppHeader title={open.from} subtitle={`${open.when} · ${open.duration}`} onBack={() => setOpenId(null)} />
         <ScrollView contentContainerStyle={{ padding: 20 }}>
-          <Text style={s.transcriptLabel}>TRANSCRIPT (audio unavailable)</Text>
+          {VM_AUDIO[open.id] != null && <VoicemailPlayer source={VM_AUDIO[open.id]} />}
+          <Text style={s.transcriptLabel}>
+            {VM_AUDIO[open.id] != null ? 'TRANSCRIPT' : 'TRANSCRIPT (audio unavailable)'}
+          </Text>
           <Text selectable style={s.transcript}>{open.transcript}</Text>
         </ScrollView>
       </View>
@@ -150,6 +189,21 @@ export function PhotosScreen({ onBack }: { onBack: () => void }) {
 }
 
 const s = StyleSheet.create({
+  playRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 14,
+    backgroundColor: colors.panel,
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: colors.panelBorder,
+    paddingHorizontal: 16,
+    paddingVertical: 14,
+    marginBottom: 18,
+  },
+  playBtn: { color: colors.accent, fontSize: 18, width: 24, textAlign: 'center' },
+  playTrack: { flex: 1, height: 4, borderRadius: 2, backgroundColor: colors.hairline },
+  playFill: { height: 4, borderRadius: 2, backgroundColor: colors.accent },
   transcriptLabel: { fontFamily: fonts.mono, fontSize: 11, color: colors.faint, marginBottom: 12 },
   transcript: { fontFamily: fonts.sans, fontSize: 17, lineHeight: 27, color: colors.text },
   note: { fontFamily: fonts.sans, fontSize: 16, lineHeight: 26, color: colors.text },
