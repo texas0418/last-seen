@@ -210,7 +210,7 @@ export const THREADS: Thread[] = [
         {
           kind: 'them',
           body: 'You just logged into her mail. I watch that account for a living. If you’re police, say so. If you’re him, I’m already gone.',
-          delayMs: 15000,
+          delayMs: 6000,
         },
         {
           kind: 'them',

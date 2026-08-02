@@ -152,10 +152,20 @@ function LiveArea({ thread }: { thread: Thread }) {
 
   useEffect(() => {
     if (step?.kind !== 'them') return undefined;
+    // The deadline PERSISTS: time spent elsewhere in the phone counts, so
+    // leaving a quiet thread and coming back never restarts the wait
+    // (playtest 1: Mara's opener took three visits). A small floor keeps
+    // the typing dots visible for a beat even when the wait already elapsed.
+    const dueKey = `due:${thread.id}:${cursor}`;
+    let due = Number(getKv(dueKey) ?? 0);
+    if (!due) {
+      due = Date.now() + (step.delayMs ?? 1500);
+      putKv(dueKey, String(due));
+    }
     timer.current = setTimeout(() => {
       freshDelivery[thread.id] = Date.now();
       setScriptIndex(thread.id, cursor + 1);
-    }, step.delayMs ?? 1500);
+    }, Math.max(600, due - Date.now()));
     return () => {
       if (timer.current) clearTimeout(timer.current);
     };
