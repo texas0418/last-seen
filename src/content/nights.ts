@@ -74,6 +74,34 @@ export const NIGHTS: NightDef[] = [
     recap:
       'The widow kept the pages. The sheriff signed them. And the man who texts this phone has seen every coat your sister ever wore. Watchers keep schedules. Schedules keep names.',
   },
+  {
+    n: 9,
+    title: 'TIDEWATER',
+    unlockedBy: 'night9',
+    recap:
+      'Vale has a pension record and a Thursday problem. And a widow’s unanswered voicemail finally makes sense of a mailbox name: the tide book was never missing. It was waiting for family.',
+  },
+  {
+    n: 10,
+    title: 'THE FLOWERS',
+    unlockedBy: 'night10',
+    recap:
+      'The archive is real. The signature is real. The story files Thursday. And in the tide book there is a receipt dated two days after your sister died — the reporter read it forty times before she dared to ask.',
+  },
+  {
+    n: 11,
+    title: 'THE DRAFT',
+    unlockedBy: 'night11',
+    recap:
+      'Flowers for your mother, paid in cash by a dead woman. You know what you know. One document left: never sent, and written in a language only two people ever spoke.',
+  },
+  {
+    n: 12,
+    title: 'STILL GAME',
+    unlockedBy: 'draftDecoded',
+    recap:
+      'The letters stopped fighting you. She is alive, she chose you, and a number ending 0412 is waiting for the words you never answered.',
+  },
 ];
 
 export const currentNight = (has: (f: Flag) => boolean): NightDef => {

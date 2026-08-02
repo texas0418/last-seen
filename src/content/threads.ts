@@ -134,6 +134,12 @@ export const THREADS: Thread[] = [
         when: 'Oct 10, 6:20 PM',
         visibleWhen: ['act2'],
       },
+      {
+        from: 'them',
+        body: 'and remember: he signs the county copies himself. always has. arrogance is our best witness.',
+        when: 'Oct 10, 6:24 PM',
+        visibleWhen: ['night9'],
+      },
     ],
   },
   {
@@ -410,6 +416,53 @@ export const THREADS: Thread[] = [
         {
           kind: 'them',
           body: 'Then we work until Thursday. — M',
+          delayMs: 2500,
+        },
+        {
+          waitFor: 'act3',
+          kind: 'them',
+          body: 'Rosa said “tide book.” Tidewater. She named that account so family would know it was FOR you. If you’re inside it: the transmittals. Quinn always said the signature was the one honest thing about him. Who signed for the lab results — the county copies?',
+          delayMs: 9000,
+        },
+        {
+          kind: 'freetext',
+          gateId: 'mara3',
+          wrong: 'The archive knows. Read it like she filed it — in order.',
+        },
+        {
+          kind: 'them',
+          body: 'R. Halloway. Received and signed ten days before he sent a crew into that water. That isn’t negligence, Casey — it’s arithmetic. The story files Thursday morning. Whatever else is in that account — the drafts, the things written in a language I can’t read — those are yours, not mine.',
+          delayMs: 4500,
+        },
+        {
+          kind: 'choice',
+          options: [{ label: 'Understood.', setsFlag: 'night10' }],
+        },
+        {
+          waitFor: 'night10',
+          kind: 'them',
+          body: 'One more thing, and then I stop asking. The receipt in that account. Flowers, the 14th. Her car was found on the 12th. I have read it forty times. Tell me where she stood when she paid — or tell me I’m wrong to hope.',
+          delayMs: 9000,
+        },
+        {
+          kind: 'freetext',
+          gateId: 'florist',
+          wrong: 'In-store means a street. A street means a shop with a name on it.',
+        },
+        {
+          kind: 'them',
+          body: 'Tidepool Florals. In store. Cash. Two days after. — I’m not printing that part. Some things aren’t the story; they’re yours. Go read the draft.',
+          delayMs: 4000,
+        },
+        {
+          kind: 'choice',
+          options: [
+            { label: 'It’s in our language. I’ll read it alone.', setsFlag: 'night11' },
+          ],
+        },
+        {
+          kind: 'them',
+          body: 'Call me when you decide who this ends for. — M',
           delayMs: 2500,
         },
         { kind: 'end' },

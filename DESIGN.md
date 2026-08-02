@@ -239,6 +239,15 @@ Everything else is content. The discoverability test grows with every gate:
 each answer's source clue must exist in content — the leak test's inverse,
 learned the hard way in playtest 1.
 
+## v2 build status (2026-08-02)
+
+All twelve nights EXIST in content. Deferred from the N8 spec: the timed
+airplane-mode toggle mechanic — shipped as narrative beats (T's "going
+dark doesn't hide you") instead; revisit only if playtest 2 wants more
+mechanics. Remaining before blind playtest 2: the noise pass (filler
+threads/emails/photos batch B), voicemail audio, ph-tcar art, and the v2
+walkthrough rewrite.
+
 ## Deliberate v1 leftovers now scheduled
 
 - Real voicemail audio (scripts + PDF exist; record before N-content lands).

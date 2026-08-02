@@ -41,13 +41,15 @@ assert.equal(nextCursor(1, 4), 4);
 // Hint routing follows the player's actual stuck-point.
 assert.deepEqual(activeGateIds(new Set()), ['mail']);
 assert.deepEqual(activeGateIds(new Set(['act2'])), ['mara1', 'tidewater']);
-assert.deepEqual(activeGateIds(new Set(['act2', 'maraTrusted', 'act3'])), []);
+assert.deepEqual(activeGateIds(new Set(['act2', 'maraTrusted', 'act3'])), ['mara3']);
 assert.deepEqual(
-  activeGateIds(new Set(['act2', 'maraTrusted', 'act3', 'draftDecoded'])),
+  activeGateIds(new Set(['act2', 'maraTrusted', 'act3', 'night10', 'night11', 'draftDecoded'])),
   ['burner'],
 );
 assert.deepEqual(
-  activeGateIds(new Set(['act2', 'maraTrusted', 'act3', 'draftDecoded', 'burnerContact'])),
+  activeGateIds(
+    new Set(['act2', 'maraTrusted', 'act3', 'night10', 'night11', 'draftDecoded', 'burnerContact']),
+  ),
   ['town'],
 );
 

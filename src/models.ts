@@ -16,6 +16,8 @@ export const FLAGS = [
   'night8', // promised Rosa an answer — Night 8 opens (reserved)
   'valeNamed', // named the fixer to Mara — Night 8 resolved
   'night9', // Mara set the Thursday deadline — Night 9 opens (reserved)
+  'night10', // named the signature — Night 10 (The Flowers) opens
+  'night11', // told Mara about the draft — Night 11 (The Draft) opens
   'booksDone', // named R-1147 to Mara — the accounting night resolved
   'airplaneMode',
   'cloudRestored', // deleted Marcus thread recovered

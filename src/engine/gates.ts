@@ -200,6 +200,41 @@ export const GATES: Gate[] = [
     ],
   },
   {
+    // Night 9: the signature. Deduction from the tide-book transmittal scan;
+    // M's "arrogance" line is the second surface.
+    id: 'mara3',
+    kind: 'deduction',
+    answers: ['rhalloway', 'royhalloway'],
+    setsFlag: null,
+    wrong: ['The archive knows. Read it like she filed it — in order.'],
+    clues: [
+      { itemId: 'em-tidebook', surface: 'mail', what: 'exhibit 5 + the transmittal scan: R. Halloway, signed, ten days early' },
+      { itemId: 'th-m', surface: 'messages', what: '"he signs the county copies himself. arrogance is our best witness."' },
+    ],
+    nudges: [
+      'the tide book numbers its exhibits. number five is a confession with a pen.',
+      'open the transmittal scan. first initial, last name, right over the stamp.',
+    ],
+  },
+  {
+    // Night 10: where she stood on the 14th. Deduction across the receipt,
+    // Mom's flowers voicemail, and (for the wary) the ferry photo.
+    id: 'florist',
+    kind: 'deduction',
+    answers: ['tidepoolflorals', 'tidepool'],
+    setsFlag: null,
+    wrong: ['In-store means a street. A street means a shop with a name on it.'],
+    clues: [
+      { itemId: 'em-florist', surface: 'mail', what: 'receipt: Oct 14, 9:12 AM, paid IN STORE, cash' },
+      { itemId: 'vm-mom-oct15', surface: 'voicemail', what: 'Mom thanks Quinn for lilies — a day after the in-store purchase' },
+      { itemId: 'ph-ferry', surface: 'photos', what: 'the dawn sailing north — how a dead woman reaches a shop' },
+    ],
+    nudges: [
+      'mom said a girl came to the door. the receipt says nobody delivered anything — somebody stood at a counter.',
+      'the receipt has a letterhead. type it.',
+    ],
+  },
+  {
     // The old words, typed to the burner after decoding the draft. The
     // draft yields them in cipher; the player must decode and SEND them.
     id: 'burner',
