@@ -69,7 +69,7 @@ Locked 2026-07-26 after playtest 1. Chapters ("Nights") in the diegetic
 timeline Oct 18–29; each night ends on a cliff and the next unlocks
 IMMEDIATELY (binge model, The Room). The scripted clock runs inside each
 night (evening → small hours); the battery arcs down and "charges" between
-nights. Nights 1–2 free; one IAP unlocks 3–12 (~$4.99). A finished night
+nights. Nights 1–2 free; one IAP unlocks 3–12 ($5.99). A finished night
 gets a one-line "Previously" recap card in Casey's serif voice.
 
 Principles: Casey has AGENCY (live threads where she asks people to do
