@@ -196,6 +196,21 @@ export const PHOTOS: DescribedPhoto[] = [
     visibleWhen: ['act2'],
   },
   {
+    id: 'ph-tcar',
+    when: 'Oct 4',
+    emoji: '🚗',
+    visibleWhen: ['night8'],
+    alt:
+      'A screenshot she saved: her own car in the marina lot at night, ' +
+      'photographed from across the street. Sent to her, not taken by her. ' +
+      'Sodium light, long shadows, the sea a black wall behind.',
+    closer:
+      'In the rear window, the photographer’s reflection: a high-vis ' +
+      'jacket, HARBOR PATROL stenciled across the chest. He didn’t notice. ' +
+      'Or didn’t care.',
+    caption: undefined,
+  },
+  {
     id: 'ph-overlook',
     when: 'Oct 9',
     emoji: '🌊',

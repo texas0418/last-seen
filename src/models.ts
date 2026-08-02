@@ -14,6 +14,8 @@ export const FLAGS = [
   'night6', // read T's warning — Night 6 (Marcus) opens
   'rosaTrust', // passed the widow's test — her evidence arrives
   'night8', // promised Rosa an answer — Night 8 opens (reserved)
+  'valeNamed', // named the fixer to Mara — Night 8 resolved
+  'night9', // Mara set the Thursday deadline — Night 9 opens (reserved)
   'booksDone', // named R-1147 to Mara — the accounting night resolved
   'airplaneMode',
   'cloudRestored', // deleted Marcus thread recovered
@@ -44,7 +46,10 @@ export interface Msg {
 }
 
 /** A scripted step in a LIVE thread (things texting the phone NOW). */
-export type ScriptStep =
+/** A step may carry `waitFor`: it stays dormant (no typing, no delivery)
+ * until that flag exists — how a parked conversation resumes in a LATER
+ * night without a second script. */
+export type ScriptStep = { waitFor?: Flag } & (
   | { kind: 'them'; body: string; delayMs?: number }
   | { kind: 'choice'; options: { label: string; setsFlag?: Flag; goto?: number }[] }
   | {
@@ -55,7 +60,8 @@ export type ScriptStep =
       echo?: string;
       wrong: string; // their reply to a wrong answer
     }
-  | { kind: 'end' };
+  | { kind: 'end' }
+);
 
 export interface Thread {
   id: string;

@@ -160,3 +160,11 @@ Compositing (my side, once masters land in this folder): perspective-warp
 the type into each blank zone, match grain/blur/color cast, then cut the
 "closer" crops. Tool: sharp via scratchpad (SVG type rasterized onto the
 photo), per the house playbook — no Pillow on this machine.
+
+## 7. `ph-tcar.jpg` — the saved screenshot (Night 8; described-card until art lands)
+Her own car in the marina lot at night, photographed from across the
+street. Sodium light, sea as a black wall. In the car's REAR WINDOW: the
+photographer's reflection — high-vis jacket, HARBOR PATROL stenciled
+across the chest, face obscured. The reflection must be findable at zoom
+but not obvious at a glance.
+- MUST NOT: a legible face; any name tag.

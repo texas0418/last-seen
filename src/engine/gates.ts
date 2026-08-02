@@ -181,6 +181,25 @@ export const GATES: Gate[] = [
     ],
   },
   {
+    // Night 8: name the fixer. Deduction — 'T. Vale' is printed in a
+    // newsletter nobody reads; the jacket reflection in the saved
+    // screenshot is what makes the surname mean something.
+    id: 'vale',
+    kind: 'deduction',
+    answers: ['vale', 'tvale', 'terrencevale'],
+    setsFlag: 'valeNamed',
+    wrong: ['Not a guess. A name I can pin to a photograph.'],
+    clues: [
+      { itemId: 'ph-tcar', surface: 'photos', what: 'the saved screenshot: HARBOR PATROL jacket reflected in the rear window' },
+      { itemId: 'em-portnews', surface: 'mail', what: 'Waterfront Notes, personnel item: Harbor Patrol’s T. Vale joins Halloway as security consultant' },
+      { itemId: 'th-t', surface: 'messages', what: 'six weeks of texts that know her coats, her hours, her parking' },
+    ],
+    nudges: [
+      'the watcher sent her a picture once. she kept it. look at what he didn’t mean to photograph.',
+      'harbor patrol doesn’t let go of its jackets. the waterfront newsletter keeps receipts — march, personnel.',
+    ],
+  },
+  {
     // The old words, typed to the burner after decoding the draft. The
     // draft yields them in cipher; the player must decode and SEND them.
     id: 'burner',

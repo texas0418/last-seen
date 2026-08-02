@@ -168,6 +168,12 @@ export const THREADS: Thread[] = [
     messages: [
       { from: 'them', body: 'nice sweater today. blue suits you.', when: 'Sep 30, 8:12 PM' },
       { from: 'them', body: 'the marina office has cameras, you know.', when: 'Oct 4, 11:45 PM' },
+      {
+        from: 'them',
+        body: 'nice parking job.',
+        when: 'Oct 4, 11:47 PM',
+        visibleWhen: ['night8'],
+      },
       { from: 'them', body: 'give back what you took and all of this stops.', when: 'Oct 7, 9:21 PM' },
       { from: 'them', body: 'saw you at the office after hours. last warning.', when: 'Oct 11, 10:38 PM' },
     ],
@@ -191,7 +197,19 @@ export const THREADS: Thread[] = [
           kind: 'choice',
           options: [{ label: '[ Don’t reply ]', setsFlag: 'night6' }],
         },
+        {
+          waitFor: 'valeNamed',
+          kind: 'them',
+          body: 'asking the waterfront about me now.',
+          delayMs: 10000,
+        },
+        {
+          kind: 'them',
+          body: 'quinn learned this at the end: going dark doesn’t hide you. it just tells me what you’re holding.',
+          delayMs: 4000,
+        },
         { kind: 'end' },
+        // after this: nothing. his silence is the cliff.
       ],
     },
   },
@@ -363,6 +381,36 @@ export const THREADS: Thread[] = [
           kind: 'them',
           body: 'R-1147. Bed seven. April. He walked into that water eleven days after the lab said nobody should. The story has its spine now — and whoever built that shelf isn’t done with you. Keep reading.',
           delayMs: 4000,
+        },
+        {
+          waitFor: 'night8',
+          kind: 'them',
+          body: 'Rosa Soto talked to you. ROSA SOTO. Okay. Listen. The story has a spine, the report has a signature — but legal wants a name on the surveillance. The man who watched your sister for six weeks is a pattern, Casey. Patterns keep schedules. Schedules have names.',
+          delayMs: 6000,
+        },
+        {
+          kind: 'them',
+          body: 'Find me the name. One word. I can’t print “T.”',
+          delayMs: 2500,
+        },
+        {
+          kind: 'freetext',
+          gateId: 'vale',
+          wrong: 'Not a guess. A name I can pin to a photograph.',
+        },
+        {
+          kind: 'them',
+          body: 'Terrence Vale. Twenty-two years of harbor patrol, walks into Halloway’s the same month the shell company is born. I have his pension record and his parking spot. He’s real, he’s paid, and he’s about to be famous. If he texts you again — do not answer.',
+          delayMs: 4500,
+        },
+        {
+          kind: 'choice',
+          options: [{ label: 'He gave me until Friday.', setsFlag: 'night9' }],
+        },
+        {
+          kind: 'them',
+          body: 'Then we work until Thursday. — M',
+          delayMs: 2500,
         },
         { kind: 'end' },
       ],

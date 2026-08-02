@@ -144,7 +144,10 @@ function DaeHints() {
 function LiveArea({ thread }: { thread: Thread }) {
   const cursor = scriptIndex(thread.id);
   const steps = thread.live!.steps;
-  const step = currentStep(steps, cursor);
+  const pending = currentStep(steps, cursor);
+  // a waitFor-gated step is dormant until its flag exists
+  const step =
+    pending && pending.waitFor && !hasFlag(pending.waitFor) ? undefined : pending;
   // Typing is DERIVED: a pending 'them' step means she's typing. The effect
   // only schedules the delivery, which advances the external store.
   const typing = step?.kind === 'them';

@@ -314,6 +314,35 @@ const ROSA_EMAILS: Email[] = [
 ];
 EMAILS.push(...ROSA_EMAILS);
 
+const N8_EMAILS: Email[] = [
+  {
+    id: 'em-portnews',
+    account: 'personal',
+    folder: 'inbox',
+    from: 'Port Brennan Working Waterfront',
+    subject: 'Waterfront Notes — March 2025',
+    when: 'Mar 14, 2025',
+    visibleWhen: ['night8'],
+    body:
+      'YOUR MONTHLY NOTES FROM THE WORKING WATERFRONT\n' +
+      '\n' +
+      'DREDGE SCHEDULE: Beds 4 and 7 rotate to spring dredge detail the ' +
+      'first week of April. Crews check the board.\n' +
+      '\n' +
+      'FERRY: NORTH LINE runs winter timetable through May 1. The 5:40 ' +
+      'stays, per popular outrage.\n' +
+      '\n' +
+      'PERSONNEL: After 22 years on the water, Harbor Patrol’s T. Vale ' +
+      'has retired from the service. He joins Halloway Seafood as a ' +
+      'security consultant. “The water never really lets you go,” Vale ' +
+      'told us.\n' +
+      '\n' +
+      'SEAMEN’S HALL: Chowder Friday returns. Bring a bowl, bring a story.',
+  },
+];
+EMAILS.push(...N8_EMAILS);
+
+
 
 export const emailById = (id: string): Email => {
   const e = EMAILS.find((x) => x.id === id);
