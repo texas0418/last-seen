@@ -272,6 +272,49 @@ const BACKUP_EMAILS: Email[] = [
 
 EMAILS.push(...BACKUP_EMAILS);
 
+const ROSA_EMAILS: Email[] = [
+  {
+    id: 'em-rosa-pages',
+    account: 'personal',
+    folder: 'inbox',
+    from: 'Rosa Soto',
+    subject: 'what they lost',
+    when: 'Oct 20, 2026',
+    visibleWhen: ['rosaTrust'],
+    body:
+      'Pages 3 and 4. The ones that stopped existing the week after the ' +
+      'funeral. I photographed them at the front desk. Look at the times. ' +
+      'Look at who signed. Then tell me he drowned by accident. — R',
+    attachments: [
+      {
+        name: 'incident-report-p3.jpg',
+        body:
+          'PORT BRENNAN SHERIFF — MARINE INCIDENT 25-0114 · p.3 of 6\n' +
+          '\n' +
+          '0611 — crew reports E. Soto unresponsive in water, Bed 7\n' +
+          '0619 — recovered to deck; CPR initiated\n' +
+          'water condition at site: [see county filing R-1147-C]\n' +
+          'safety notice on file: NONE FOUND\n' +
+          'statement, D. Ramos (deckhand): “we told the office the\n' +
+          'water was wrong.” — struck through, initials RD',
+      },
+      {
+        name: 'incident-report-p4.jpg',
+        body:
+          'PORT BRENNAN SHERIFF — MARINE INCIDENT 25-0114 · p.4 of 6\n' +
+          '\n' +
+          'time of first call to dispatch: 06:24 [OVERWRITTEN] 07:58\n' +
+          'next of kin notified: 11:40 — delay unexplained\n' +
+          'cause: accidental drowning — no further inquiry\n' +
+          'reviewing officer: R. DUNMORE, SHERIFF\n' +
+          'reviewed with: [name struck out] — HALLOWAY SEAFOOD',
+      },
+    ],
+  },
+];
+EMAILS.push(...ROSA_EMAILS);
+
+
 export const emailById = (id: string): Email => {
   const e = EMAILS.find((x) => x.id === id);
   if (!e) throw new Error(`unknown email: ${id}`);

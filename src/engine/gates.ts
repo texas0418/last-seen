@@ -164,6 +164,23 @@ export const GATES: Gate[] = [
     ],
   },
   {
+    // Night 7: Rosa's test. The answer is printed inside the memorial-flyer
+    // photo — deduction kind, quote-exact but normalize-forgiving.
+    id: 'rosa',
+    kind: 'deduction',
+    answers: ['thewaterdoesntforgive', 'waterdoesntforgive'],
+    setsFlag: 'rosaTrust',
+    wrong: ['every word. or don’t write back.'],
+    clues: [
+      { itemId: 'ph-flyer', surface: 'photos', what: 'the quote under his name, inside the image: "the water doesn’t forgive."' },
+      { itemId: 'th-rosa', surface: 'messages', what: 'her demand names the flyer and the window it hangs in' },
+    ],
+    nudges: [
+      'rosa won’t trust a voice. she’ll trust the town’s own paper. quinn kept a photo of it.',
+      'the memorial flyer in the camera roll. zoom under his name, under the dates. type the quote.',
+    ],
+  },
+  {
     // The old words, typed to the burner after decoding the draft. The
     // draft yields them in cipher; the player must decode and SEND them.
     id: 'burner',

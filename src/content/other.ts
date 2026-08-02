@@ -78,6 +78,19 @@ export const VOICEMAILS: Voicemail[] = [
       'Whatever you copied — I need to know it’s somewhere safe. Not for him. ' +
       'For — just. Call me back. Not the office line.',
   },
+  {
+    id: 'vm-eli',
+    from: 'Eli Soto (fwd: R. Soto)',
+    when: 'Apr 8, 2025, 6:12 AM',
+    duration: '0:41',
+    visibleWhen: ['rosaTrust'],
+    transcript:
+      'Rosita. Don’t cook tonight, I’ll bring— [wind] —they’ve got us ' +
+      'pulling cages out of seven today. water smells like a battery, I’m ' +
+      'not — [inaudible] — Ramos says the notice came down last week and ' +
+      'the office said pull anyway, so. [pause] Tell your mother we’ll come ' +
+      'Sunday. Love you. [end of forwarded message]',
+  },
 ];
 
 export const NOTES: Note[] = [

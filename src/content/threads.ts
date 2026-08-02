@@ -212,6 +212,78 @@ export const THREADS: Thread[] = [
     ],
   },
   {
+    // Rosa Soto. Cold in the archive (Quinn approached her; she refused),
+    // live once the Marcus restore proves someone is really digging. Her
+    // test answer lives inside the memorial-flyer photo. Her cliff names
+    // the "tide book" — the breadcrumb that later makes tidewater.ledger@
+    // click into place.
+    id: 'th-rosa',
+    contact: 'Rosa Soto',
+    visibleWhen: ['cloudRestored'],
+    messages: [
+      {
+        from: 'them',
+        body: 'Stop calling me. Whatever Halloway sent you to say, the answer is no.',
+        when: 'Aug 19, 2:11 PM',
+      },
+      {
+        from: 'quinn',
+        body: 'I’m not with them. I keep their books and I found something about the water at Bed 7. Ten minutes. Please.',
+        when: 'Aug 19, 2:40 PM',
+      },
+      {
+        from: 'them',
+        body: 'My husband is dead, Ms. Mercer. Ten minutes doesn’t fix arithmetic.',
+        when: 'Aug 19, 3:05 PM',
+      },
+    ],
+    live: {
+      trigger: 'cloudRestored',
+      steps: [
+        {
+          kind: 'them',
+          body: 'this number lit up again two days ago. i told myself i wouldn’t ask.',
+          delayMs: 8000,
+        },
+        {
+          kind: 'them',
+          body: 'if you’re halloway, stop. if you’re police, you know where i live. if you’re the sister — she said you existed — then prove you’re holding HER phone. what’s printed under my husband’s name, on the flyer in the seamen’s hall window. every word.',
+          delayMs: 4000,
+        },
+        {
+          kind: 'freetext',
+          gateId: 'rosa',
+          wrong: 'every word. or don’t write back.',
+        },
+        { kind: 'them', body: 'okay.', delayMs: 3000 },
+        {
+          kind: 'them',
+          body: 'he called me from the boat the morning he died. i kept it. and the police “lost” two pages of their own report — i photographed them at the front desk while the deputy got coffee. quinn is the only other person who ever saw these. now you.',
+          delayMs: 4500,
+        },
+        {
+          kind: 'them',
+          body: 'check the phone. i sent everything to her mail. don’t make me regret the one brave thing i’ve done all year.',
+          delayMs: 3000,
+        },
+        {
+          kind: 'choice',
+          options: [{ label: 'You won’t regret it. I promise.' }],
+        },
+        {
+          kind: 'them',
+          body: 'one more thing. she called me the night before they found her car. i didn’t pick up. the message said: if anything happens, the tide book is still there. TIDE BOOK. you’re her sister. what is a tide book?',
+          delayMs: 5000,
+        },
+        {
+          kind: 'choice',
+          options: [{ label: 'I don’t know yet. But I’ll find it.', setsFlag: 'night8' }],
+        },
+        { kind: 'end' },
+      ],
+    },
+  },
+  {
     // NO CALLER ID — T, live, once the player starts digging.
     id: 'th-nocaller',
     contact: 'NO CALLER ID',

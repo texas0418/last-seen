@@ -3,20 +3,27 @@
 // the ONLY hint channel, hints live in gates.ts, and they escalate exactly
 // once. She never gives answers; she gives grief and geography.
 
-import type { FlagSet } from '../models';
+import type { Flag, FlagSet } from '../models';
 import { GATES, type Gate } from './gates';
 
-/** Gate ids Dae will talk about, in the order the player is stuck on them. */
+/** The hint ladder: a gate is "active" for Dae once its prerequisite flag
+ * is set (or immediately) and until its own flag resolves it. Table-driven
+ * so twelve nights of gates never trip the complexity lint. */
+const LADDER: { id: string; requires?: Flag; until: Flag }[] = [
+  { id: 'mail', until: 'act2' },
+  { id: 'mara1', requires: 'act2', until: 'maraTrusted' },
+  { id: 'mara2', requires: 'night5', until: 'booksDone' },
+  { id: 'cloud', requires: 'night6', until: 'cloudRestored' },
+  { id: 'rosa', requires: 'cloudRestored', until: 'rosaTrust' },
+  { id: 'tidewater', requires: 'act2', until: 'act3' },
+  { id: 'burner', requires: 'draftDecoded', until: 'burnerContact' },
+  { id: 'town', requires: 'burnerContact', until: 'ending3' },
+];
+
 export function activeGateIds(flags: FlagSet): string[] {
-  const ids: string[] = [];
-  if (!flags.has('act2')) ids.push('mail');
-  if (flags.has('act2') && !flags.has('maraTrusted')) ids.push('mara1');
-  if (flags.has('night5') && !flags.has('booksDone')) ids.push('mara2');
-  if (flags.has('night6') && !flags.has('cloudRestored')) ids.push('cloud');
-  if (flags.has('act2') && !flags.has('act3')) ids.push('tidewater');
-  if (flags.has('draftDecoded') && !flags.has('burnerContact')) ids.push('burner');
-  if (flags.has('burnerContact') && !flags.has('ending3')) ids.push('town');
-  return ids;
+  return LADDER.filter(
+    (e) => (!e.requires || flags.has(e.requires)) && !flags.has(e.until),
+  ).map((e) => e.id);
 }
 
 export const hintLabel = (g: Gate): string =>
@@ -25,6 +32,7 @@ export const hintLabel = (g: Gate): string =>
     mara1: 'what the reporter wants',
     mara2: 'the reports',
     cloud: 'her cloud pin',
+    rosa: 'what the widow wants',
     tidewater: 'the second mailbox',
     burner: 'the old words',
     town: 'where she is',

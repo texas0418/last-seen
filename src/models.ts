@@ -12,6 +12,8 @@ export const FLAGS = [
   'maraTrusted', // deduction check passed; Mara's file drop arrives
   'night5', // acknowledged the file drop — Night 5 (The Books) opens
   'night6', // read T's warning — Night 6 (Marcus) opens
+  'rosaTrust', // passed the widow's test — her evidence arrives
+  'night8', // promised Rosa an answer — Night 8 opens (reserved)
   'booksDone', // named R-1147 to Mara — the accounting night resolved
   'airplaneMode',
   'cloudRestored', // deleted Marcus thread recovered
