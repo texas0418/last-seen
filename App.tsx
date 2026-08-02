@@ -10,6 +10,7 @@ type TextWithDefaults = typeof Text & {
 const T = Text as TextWithDefaults;
 T.defaultProps = { ...T.defaultProps, maxFontSizeMultiplier: 1.4 };
 
+import { currentNight } from './src/content/nights';
 import { ENDINGS } from './src/content/other';
 import { initPurchases, useStoryUnlocked } from './src/proAccess';
 import {
@@ -24,7 +25,9 @@ import HomeScreen, { type AppId } from './src/screens/HomeScreen';
 import IntroScreen from './src/screens/IntroScreen';
 import LockScreen from './src/screens/LockScreen';
 import MailScreen from './src/screens/MailScreen';
+import CalendarScreen from './src/screens/CalendarScreen';
 import MessagesScreen from './src/screens/MessagesScreen';
+import NightCard from './src/screens/NightCard';
 import SettingsScreen from './src/screens/SettingsScreen';
 import EndingScreen from './src/screens/EndingScreen';
 import {
@@ -53,12 +56,21 @@ function Root() {
     );
 
   if (!hasFlag('introDone')) return <IntroScreen />;
+
+  // Chapter card: the newest unlocked night announces itself exactly once.
+  const night = currentNight(hasFlag);
+  if (!getKv(`shown:night:${night.n}`))
+    return (
+      <NightCard night={night} onContinue={() => putKv(`shown:night:${night.n}`, '1')} />
+    );
+
   if (!hasFlag('phoneUnlocked')) return <LockScreen />;
   if (app === 'messages') return <MessagesScreen onBack={back} />;
   if (app === 'mail') return <MailScreen onBack={back} />;
   if (app === 'voicemail') return <VoicemailScreen onBack={back} />;
   if (app === 'notes') return <NotesScreen onBack={back} />;
   if (app === 'photos') return <PhotosScreen onBack={back} />;
+  if (app === 'calendar') return <CalendarScreen onBack={back} />;
   if (app === 'settings') return <SettingsScreen onBack={back} />;
   return <HomeScreen onOpen={setApp} />;
 }

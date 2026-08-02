@@ -12,6 +12,7 @@
 // @ts-expect-error node builtins have no types under Expo's tsconfig; tsx runs it fine
 import assert from 'node:assert/strict';
 
+import { CALENDAR } from './src/content/calendar';
 import { DRAFT_BODY_CIPHER, DRAFT_SUBJECT_CIPHER, EMAILS, TIDEWATER_HINT } from './src/content/mail';
 import { INTRO, NOTES, PHOTOS, VOICEMAILS } from './src/content/other';
 import { THREADS } from './src/content/threads';
@@ -41,6 +42,8 @@ for (const e of EMAILS) {
 }
 for (const v of VOICEMAILS) pool.push({ where: v.id, text: v.transcript });
 for (const n of NOTES) pool.push({ where: n.id, text: `${n.title}\n${n.body}` });
+for (const c of CALENDAR)
+  pool.push({ where: c.id, text: `${c.title}\n${c.detail ?? ''}` });
 for (const p of PHOTOS)
   pool.push({ where: p.id, text: `${p.alt}\n${p.caption ?? ''}` }); // closer excluded
 for (const g of GATES) {

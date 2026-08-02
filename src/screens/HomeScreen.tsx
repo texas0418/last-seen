@@ -4,6 +4,7 @@
 
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
+import { CALENDAR } from '../content/calendar';
 import { EMAILS } from '../content/mail';
 import { NOTES, PHOTOS, VOICEMAILS } from '../content/other';
 import { THREADS } from '../content/threads';
@@ -12,7 +13,14 @@ import { isVisible } from '../models';
 import { flagSet, hasFlag, isRead } from '../state';
 import { colors, fonts } from '../theme';
 
-export type AppId = 'messages' | 'mail' | 'voicemail' | 'notes' | 'photos' | 'settings';
+export type AppId =
+  | 'messages'
+  | 'mail'
+  | 'voicemail'
+  | 'notes'
+  | 'photos'
+  | 'calendar'
+  | 'settings';
 
 const APPS: { id: AppId; label: string; emoji: string }[] = [
   { id: 'messages', label: 'Messages', emoji: '💬' },
@@ -20,6 +28,7 @@ const APPS: { id: AppId; label: string; emoji: string }[] = [
   { id: 'voicemail', label: 'Phone', emoji: '📞' },
   { id: 'notes', label: 'Notes', emoji: '📝' },
   { id: 'photos', label: 'Photos', emoji: '🌁' },
+  { id: 'calendar', label: 'Calendar', emoji: '📅' },
   { id: 'settings', label: 'Settings', emoji: '⚙️' },
 ];
 
@@ -42,6 +51,8 @@ function unreadCount(app: AppId): number {
     return NOTES.filter((n) => isVisible(n, flags) && !isRead(n.id)).length;
   if (app === 'photos')
     return PHOTOS.filter((p) => isVisible(p, flags) && !isRead(p.id)).length;
+  if (app === 'calendar')
+    return CALENDAR.filter((c) => isVisible(c, flags) && !isRead(c.id)).length;
   return 0;
 }
 
