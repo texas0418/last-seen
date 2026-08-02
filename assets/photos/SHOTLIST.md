@@ -168,3 +168,77 @@ photographer's reflection — high-vis jacket, HARBOR PATROL stenciled
 across the chest, face obscured. The reflection must be findable at zoom
 but not obvious at a glance.
 - MUST NOT: a legible face; any name tag.
+
+---
+
+# Generation prompts v3 — ph-tcar + Batch B noise (paste-ready)
+
+Style preamble — prepend to EVERY prompt below (same model/settings as the
+first six so it all reads as one camera roll):
+
+> Candid iPhone photo, photorealistic, coastal Pacific Northwest, overcast
+> marine light, muted colors, slightly imperfect framing, mild grain, no
+> watermark, no text anywhere.
+
+Acceptance rules: reject any take with lettering, numbers, or screens-on
+anywhere in frame; nothing that implies a date after Oct 11 (no snow, no
+holiday decor); all 3:4 portrait unless noted.
+
+## 7 · ph-tcar.jpg  (3:4 or 4:3 — night preamble override)
+> Candid iPhone photo at night, photorealistic: a small dark sedan alone in
+> a marina parking lot, photographed from across the street. Orange sodium
+> lamplight, long shadows, dark harbor water and pilings behind. In the
+> car's rear window, the faint but clear reflection of the photographer —
+> a man in a high-visibility work jacket, face not visible, standing where
+> the camera must be. Slight tilt, hurried framing. No text or lettering
+> anywhere, including the jacket.
+
+BLANK ZONE: the jacket chest in the reflection → I composite the
+HARBOR PATROL stencil, degraded to match the reflection. MUST NOT: a
+legible face, plates readable, any name tag.
+
+## Batch B — the noise roll (b1–b12, all 3:4)
+
+b1 · > A latte in a chipped white mug on a café window table, harbor and
+masts blurred through wet glass beyond. Shot from the seat, one-handed.
+
+b2 · > A crowded windowsill of healthy houseplants — pothos, a fern, a
+small monstera — in mismatched pots above a radiator, grey daylight.
+(the plants Dae ends up watering)
+
+b3 · > Fish and chips in greasy unbranded paper on a weathered dock bench,
+knees and jeans at the frame's bottom edge, gulls loitering out of focus.
+
+b4 · > A motion-blurred orange cat mid-leap off a fence rail, badly timed
+photo, half the frame is shed wall.
+
+b5 · > An entirely ordinary sunset over flat grey-gold water, taken the
+way everyone takes it: horizon centered, a stranger's silhouette far down
+the beach.
+
+b6 · > An older woman asleep in a wingback armchair under a crocheted
+afghan, reading glasses still on, late-afternoon light through lace
+curtains. Tender, slightly crooked framing, shot quietly from the doorway.
+
+b7 · > Grocery bags spilling produce on a small kitchen counter — apples,
+bread in a plain sleeve, a leek — fluorescent light, nothing branded.
+
+b8 · > Heavy rain on a car windshield from the driver's seat, wipers
+mid-swipe, parking-lot lights smeared into bokeh. Going nowhere.
+
+b9 · > A great blue heron standing on a single wooden piling, low tide,
+mudflat sheen, fog eating the far shore.
+
+b10 · > A half-finished jigsaw puzzle on a coffee table, edge pieces done,
+a mug holding down the box lid (lid face-down — no printed image visible),
+lamp light, evening.
+
+b11 · > An office desk after hours: ten-key adding machine, tidy stacks of
+paper edge-on so nothing is readable, a monitor that is OFF, one desk lamp.
+
+b12 · > An empty vintage birdcage on a shelf, repurposed as a planter — a
+small trailing ivy growing through the bars. Warm window light. Dust.
+(five years after Ozzy — the caption in-game will do the work)
+
+Deliver as ph-tcar.jpg and b1.jpg … b12.jpg in this folder; captions,
+dates, and in-game placement are handled at integration.
