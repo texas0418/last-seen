@@ -23,40 +23,40 @@ Expo 57 / RN 0.86, iPhone-only, portrait, dark. Read `AGENTS.md` first, then
 - `STORE.md` holds the complete App Store listing, keywords, 12+ rating
   answers, and the App Review notes.
 
-## ⛔ BLOCKER — device build is failing right now
+## ✅ RESOLVED — the device build (2026-08-19)
 
-The last device build FAILED and this is the first thing to fix:
+The `CompileAssetCatalogVariant thinned ... Images.xcassets (in target
+'LastSeen')` failure was **stale DerivedData**, nothing more. `rm -rf
+~/LastSeenDD` (the whole directory, not just `Build/`) and a rebuild fixed
+it. No prebuild, no version changes, no source changes.
+
+Fast way to rule the catalog innocent next time — run actool standalone,
+which takes about five seconds:
 
 ```
-The following build commands failed:
-  CompileAssetCatalogVariant thinned .../LastSeen.app
-    ios/LastSeen/Images.xcassets (in target 'LastSeen')
+xcrun actool ios/LastSeen/Images.xcassets --compile /tmp/ac-out \
+  --app-icon AppIcon --target-device iphone --platform iphoneos \
+  --minimum-deployment-target 16.4 --output-format human-readable-text \
+  --output-partial-info-plist /tmp/ac-out/partial.plist
 ```
 
-Context: it built fine all evening. It broke immediately after a full
-`rm -rf node_modules package-lock.json && npm install` (done to fix a CI
-lockfile problem), followed by `rm -f ios/Podfile.lock && pod install`.
+If that exits 0, the icon and catalog are fine; stop inspecting PNGs and
+wipe DerivedData instead.
 
-Already ruled out: the icon is present, 1024x1024, and has NO alpha
-(`sips -g hasAlpha` = no). `Images.xcassets` structure is intact
-(AppIcon.appiconset + SplashScreenBackground.colorset +
-SplashScreenLogo.imageset). No `error:` line is emitted by actool — it just
-fails.
+**The project has no `DEVELOPMENT_TEAM` baked into the pbxproj.** Every
+device build and archive must pass it on the command line or it dies at
+signing before ever reaching the asset catalog:
 
-Try in this order:
-1. `rm -rf ~/LastSeenDD` entirely (not just Build/) and rebuild — the
-   asset-catalog step is the first thing a clean build does and stale
-   intermediates have caused phantom failures here before.
-2. `npx expo prebuild -p ios --no-install` to regenerate `ios/`, then
-   `cd ios && LANG=en_US.UTF-8 pod install`, then rebuild. NOTE: prebuild
-   wipes Pods, and wiping node_modules removes expo-sqlite's `sqlite3.c`
-   amalgamation, which only `pod install` restores — verify
-   `ls node_modules/expo-sqlite/ios/sqlite3.c` exists before building.
-3. Check free disk space; actool fails oddly when low.
-4. Open the workspace in Xcode and build once — its error surface for
-   asset catalogs is far better than xcodebuild's log.
+```
+LANG=en_US.UTF-8 xcodebuild -workspace ios/LastSeen.xcworkspace \
+  -scheme LastSeen -configuration Release -destination 'generic/platform=iOS' \
+  -derivedDataPath ~/LastSeenDD \
+  DEVELOPMENT_TEAM=75ULC33H2C CODE_SIGN_STYLE=Automatic \
+  -allowProvisioningUpdates -allowProvisioningDeviceRegistration build
+```
 
-The simulator build was fine, so this is device/thinning-specific.
+Also note `xcodebuild ... > log 2>&1; echo "EXIT=$?"` reports the *echo's*
+status, not the build's. Grep the log for `** BUILD SUCCEEDED **`.
 
 ## Version drift worth knowing
 
@@ -78,18 +78,26 @@ the app LAUNCHES on device, not just builds.
 
 ## Open PR
 
-https://github.com/texas0418/last-seen/pull/1 — `screenshots` → `dev`.
-CI green (quality + secrets). Contains: 5 App Store screenshots, the photo
-grid column fix, the preview-leak fix + regression test, the kv navigation
-hook, and the lockfile repair. **Not merged — Simon merges his own PRs.**
+None outstanding. PR #1 (`screenshots` → `dev`) was rebase-merged
+2026-08-19; `dev` head `ddd8fbf`.
 
 ## Next steps, in order
 
-1. **Fix the device build** (above). Nothing else can proceed.
-2. **Merge PR #1** once Simon approves.
-3. **App Store Connect record.** Nothing exists on Apple's servers yet
-   except (probably) the App ID `com.lastseen.app`, which Xcode's automatic
-   signing registered while building. Verify, then create the app record.
+1. ~~Fix the device build~~ — DONE 2026-08-19; builds, installs and
+   launches on the iPhone.
+2. ~~Merge PR #1~~ — DONE 2026-08-19, rebase-merged into `dev`.
+3. **App Store Connect record.** The App ID
+   **`com.simonshih.lastseen`** (id `N3GKXG8TS3`, In-App Purchase capability
+   on) is registered as of 2026-08-19. Only the app record is still missing.
+   - **The bundle id is NOT `com.lastseen.app`.** That string is owned by
+     another developer account — Apple returns "not available" and there is
+     no appeal. Earlier drafts of this file wrongly assumed Xcode had
+     registered it; it never did, the device builds were signing against the
+     team wildcard `75ULC33H2C.*`.
+   - App records **cannot** be created through Apple's public API. Simon
+     creates it in the ASC website (~2 min); everything after that
+     (description, keywords, categories, age rating, price, IAP,
+     screenshots, build attachment) is API-settable.
    - ASC API client: `~/.appstoreconnect/asc_api.py`
      KEY_ID `R2T6RB2W97`, ISSUER `b4c70f86-277f-4e9e-8050-dc788275caf5`,
      keys in `~/.appstoreconnect/private_keys/`.
