@@ -31,7 +31,14 @@ import { NotesScreen, VoicemailScreen } from './src/screens/SimpleApps';
 
 function Root() {
   useWorldVersion();
-  const [app, setApp] = useState<AppId | null>(null);
+  // Screenshot/layout-audit hook: a kv key can preselect the open app and
+  // the open mail item. Only reachable by writing to the app's private
+  // database from a dev machine, and it only navigates — it cannot set a
+  // flag or skip a puzzle.
+  const [app, setApp] = useState<AppId | null>(
+    () => (getKv('debug:screen') as AppId | undefined) ?? null,
+  );
+
   const unlocked = useStoryUnlocked();
   const back = () => setApp(null);
 

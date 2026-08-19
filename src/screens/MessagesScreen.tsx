@@ -248,7 +248,10 @@ export default function MessagesScreen({ onBack }: { onBack: () => void }) {
       <AppHeader title="Messages" onBack={onBack} />
       <ScrollView>
         {visible.map((t) => {
-          const last = t.messages[t.messages.length - 1];
+          // preview only what the player is allowed to have seen — the raw
+          // last message can belong to a night six chapters away
+          const seen = t.messages.filter((m) => isVisible(m, flags));
+          const last = seen[seen.length - 1];
           return (
             <Pressable key={t.id} style={ui.row} onPress={() => setOpenId(t.id)}>
               <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>

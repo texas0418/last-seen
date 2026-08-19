@@ -28,7 +28,10 @@ const COLS = 3;
 export default function PhotosScreen({ onBack }: { onBack: () => void }) {
   const [openId, setOpenId] = useState<string | null>(null);
   const { width } = useWindowDimensions();
-  const tile = Math.floor((width - GAP * (COLS - 1)) / COLS);
+  // every tile carries marginRight, including the last in a row, so the
+  // row costs COLS*(tile+GAP) — budget for COLS gaps, not COLS-1, or three
+  // tiles overflow by a hair and the grid silently wraps to two columns
+  const tile = Math.floor((width - GAP * COLS) / COLS);
   const items = PHOTOS.filter((p) => isVisible(p, flagSet()));
   // the viewer pages through the whole roll, like real Photos
   const viewerPhotos: ViewerPhoto[] = items.map((p) => ({
