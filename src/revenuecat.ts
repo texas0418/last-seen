@@ -1,14 +1,19 @@
 // src/revenuecat.ts
-// RevenueCat config for Last Seen. Keys are placeholders until the app has
-// an App Store Connect record + RevenueCat project (pre-ship checklist).
-// While placeholders are in place, proAccess.ts fails OPEN (story unlocked).
+// RevenueCat config for Last Seen.
+//
+// IOS_KEY is the PUBLIC app-specific SDK key. RevenueCat designs these to ship
+// inside the app binary — it can read offerings and start a purchase, nothing
+// more. It is not a secret. Never put a RevenueCat SECRET key here.
+//
+// Android is still a placeholder. proAccess.ts fails OPEN for any placeholder
+// key, so the story stays unlocked on platforms we have not wired up.
 
 import { Platform } from 'react-native';
 
 export const ENTITLEMENT_ID = 'story';
 export const PRODUCT_ID = 'ls_story_unlock';
 
-const IOS_KEY = 'REVENUECAT_IOS_KEY_PLACEHOLDER';
+const IOS_KEY = 'appl_iMnyuNtZnaUQghZUWUpfMqtZTSr';
 const ANDROID_KEY = 'REVENUECAT_ANDROID_KEY_PLACEHOLDER';
 
 export const keyForPlatform = (): string =>
