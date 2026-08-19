@@ -12,15 +12,25 @@ verified against the drafts below.
 | App name | `Last Seen: Widow's Point` | 30 (uses 24) |
 | Subtitle | `A found-phone detective story` | 30 (uses 29) |
 | Bundle ID | `com.simonshih.lastseen` | — |
+| App ID (Developer portal) | `N3GKXG8TS3` | — |
+| ASC app id | `6803071651` | — |
 | SKU | `lastseen-widowspoint-001` | — |
 | Primary category | Games → Puzzle | — |
 | Secondary category | Games → Adventure | — |
 | Price | Free | — |
-| In-app purchase | `ls_story_unlock` — non-consumable, **$5.99** | — |
+| In-app purchase | `ls_story_unlock` — non-consumable, **$5.99** (ASC id `6803075412`) | — |
+| IAP display name | `The Full Story` | 30 (uses 14) |
+| IAP description | `Nights three to twelve, and all four endings.` | **55** (uses 45) |
 
 **Why Puzzle over Adventure as primary:** the audience that buys hard
 cryptogram/deduction games browses Puzzle. Adventure is where narrative
 games get lost among platformers.
+
+**How this maps in the API:** a game's category is `GAMES` with up to two
+*sub*categories — there is no separate "secondary category" for games.
+Set as `primaryCategory=GAMES`, `primarySubcategoryOne=GAMES_PUZZLE`,
+`primarySubcategoryTwo=GAMES_ADVENTURE`. Passing `GAMES_PUZZLE` as
+`primaryCategory` is rejected with `ENTITY_ERROR.RELATIONSHIP.INVALID`.
 
 ---
 
@@ -112,7 +122,15 @@ Answer "No" to every collection question.
 
 ## Age rating questionnaire
 
-Recommended outcome: **12+**
+Answers below are the honest ones. **Apple's 2026 matrix computes these
+to 9+ (`NINE_PLUS`), not the 12+ this file originally predicted** — two
+"Infrequent/Mild" answers no longer reach 12+. Brazil self-rates 12.
+
+Open question for Simon: whether to voluntarily raise it via
+`ageRatingOverrideV2` (Apple lets you rate *up*, never down). The premise
+is a presumed suicide plus stalking, and a rating that reads low for the
+content is itself a rejection risk. Do not change the answers below to
+force a number — that is a misrepresentation; use the override.
 
 | Question | Answer | Why |
 |---|---|---|
@@ -193,19 +211,63 @@ Thank you for reviewing.
 
 ---
 
-## Screenshots (6.7" required — 1290 × 2796)
+## Screenshots — UPLOADED 2026-08-19
 
-Nothing past Night II, so the store gives away nothing:
+Five shots at **1320 × 2868**, uploaded to display type `APP_IPHONE_67`,
+all `COMPLETE`. Files in `assets/store/screenshots/`. Nothing past Night II,
+so the store gives away nothing:
 
-1. **Lock screen** — the photo strip wallpaper and keypad. The premise in one image.
-2. **A message thread** — Dae's, mid-conversation, so the format reads instantly.
-3. **The photo grid** — 21 thumbnails; sells "a real phone, and the evidence is in here."
-4. **A voicemail** — play button plus transcript. Shows the production value.
-5. **The decoder** — ciphertext mid-solve. Sells the difficulty to the audience that wants it.
+1. `01-lockscreen.png` — the photo strip wallpaper and keypad. The premise in one image.
+2. `02-home.png` — the BrineOS home screen with badge counts. Sells "this is a real phone."
+3. `03-photos.png` — the photo grid, 21 thumbnails; the evidence is in here.
+4. `04-messages.png` — a thread mid-conversation, so the format reads instantly.
+5. `05-voicemail.png` — play button plus transcript. Shows the production value.
 
-Optional caption overlays, in the game's own voice, if we add them later.
+A decoder shot (ciphertext mid-solve) was planned as #5 and never taken; it
+is the obvious sixth if we want to sell the difficulty harder. Optional
+caption overlays, in the game's own voice, if we add them later.
 
 ---
+
+## What is already live on App Store Connect (2026-08-19)
+
+App record `6803071651` exists and is `PREPARE_FOR_SUBMISSION`. Set via the
+API from this file — do not re-enter by hand:
+
+- name, subtitle, privacy policy URL, support URL
+- categories (GAMES / Puzzle / Adventure)
+- version string `1.0.0`
+- description, keywords, promotional text
+- price schedule: **Free**, base territory USA
+- content rights: does not use third-party content
+- age rating declaration (computes to 9+ — see above)
+- 5 screenshots at `APP_IPHONE_67`
+- App Review notes, stored **byte-for-byte identical** to this file
+- IAP `ls_story_unlock` created: non-consumable, $5.99, 175 territories,
+  localization set
+
+**Still outstanding:**
+
+1. **IAP review screenshot** — the IAP stays `MISSING_METADATA` without it.
+   Needs a capture of the real paywall, which needs real RevenueCat keys
+   first (with placeholders `proAccess.ts` fails open and the paywall never
+   renders).
+2. **App Privacy nutrition labels** — not settable through the public API.
+   Simon, in the ASC website. Answer "No" to every collection question.
+3. **The build** — none uploaded yet.
+4. **Sandbox purchase test** — see the note below; needs an explicit
+   provisioning profile.
+
+### Signing gotcha for the sandbox test
+
+Automatic signing picks the **team wildcard** profile
+(`iOS Team Provisioning Profile: *`, entitlement `75ULC33H2C.*`) for device
+builds, because nothing in the target forces an explicit one. **Wildcard App
+IDs cannot do In-App Purchase**, so a sandbox purchase will not work in a
+device build signed that way no matter how correct the RevenueCat keys are.
+Mint an explicit iOS development profile for `com.simonshih.lastseen` before
+testing the paywall on hardware. The App Store export is unaffected —
+distribution profiles are always explicit.
 
 ## Version / build
 
