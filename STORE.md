@@ -278,8 +278,11 @@ API from this file — do not re-enter by hand:
 1. **App Privacy nutrition labels** — not settable through the public API.
    Simon, in the ASC website. Answer "No" to every collection question.
 2. **The build** — none uploaded yet.
-3. **Sandbox purchase test** — see the note below; needs an explicit
-   provisioning profile.
+3. ~~Sandbox purchase test~~ — **PASSED 2026-08-19 on the iPhone 11 Pro Max
+   (iOS 26.6).** Bought `ls_story_unlock` in sandbox: the paywall dismissed,
+   the mailbox opened, and the unlock **survived a force-quit**, which is
+   what proves the entitlement came back from RevenueCat rather than an
+   in-memory flag. No errors.
 
 ### RevenueCat (done 2026-08-19)
 
@@ -299,16 +302,32 @@ The IAP review screenshot is `assets/store/iap/iap-review-paywall.png`,
 captured from the real paywall on the iPhone 16 Pro Max simulator with the
 live key in the build.
 
-### Signing gotcha for the sandbox test
+### Signing: device builds need the EXPLICIT profile
 
 Automatic signing picks the **team wildcard** profile
-(`iOS Team Provisioning Profile: *`, entitlement `75ULC33H2C.*`) for device
-builds, because nothing in the target forces an explicit one. **Wildcard App
-IDs cannot do In-App Purchase**, so a sandbox purchase will not work in a
-device build signed that way no matter how correct the RevenueCat keys are.
-Mint an explicit iOS development profile for `com.simonshih.lastseen` before
-testing the paywall on hardware. The App Store export is unaffected —
-distribution profiles are always explicit.
+(`iOS Team Provisioning Profile: *`, entitlement `75ULC33H2C.*`), because
+nothing in the target forces an explicit one. **Wildcard App IDs cannot do
+In-App Purchase**, so a sandbox purchase fails in a wildcard-signed build no
+matter how correct the RevenueCat keys are.
+
+Explicit profile created 2026-08-19 — **"Last Seen Dev Explicit"**, id
+`Z273W55AHG`, uuid `7e867721-d737-4571-82a4-21ea7c6ebfd9`, expires
+2027-08-19, covering App ID `N3GKXG8TS3`, dev cert `G25897LJRZ` and all four
+registered devices. Build against it with:
+
+```
+DEVELOPMENT_TEAM=75ULC33H2C \
+CODE_SIGN_STYLE=Manual \
+PROVISIONING_PROFILE_SPECIFIER="Last Seen Dev Explicit" \
+CODE_SIGN_IDENTITY="Apple Development: Simon Shih (D4MS9M6QY5)"
+```
+
+Verify it took by reading the built app's embedded profile — the
+`application-identifier` entitlement must be
+`75ULC33H2C.com.simonshih.lastseen`, **not** `75ULC33H2C.*`.
+
+The App Store export is unaffected; distribution profiles are always
+explicit.
 
 ## Version / build
 
