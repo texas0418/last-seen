@@ -18,7 +18,7 @@ import { INTRO, NOTES, PHOTOS, VOICEMAILS } from './src/content/other';
 import { THREADS } from './src/content/threads';
 import { flip } from './src/engine/cipher';
 import { GATES } from './src/engine/gates';
-import { FLAGS, normalizeAnswer, type Flag } from './src/models';
+import { FLAGS, isVisible, normalizeAnswer, type Flag } from './src/models';
 
 const known = new Set<string>(FLAGS);
 
@@ -223,6 +223,23 @@ for (const e of [...EMAILS, ...VOICEMAILS, ...NOTES, ...PHOTOS])
     for (const s of t.live?.steps ?? [])
       if (s.kind === 'them')
         assert.ok(!s.body.includes(';'), `semicolon in a live message: ${t.id}`);
+  }
+}
+
+
+// ——— 5. No preview leaks ———
+// The thread list shows the last VISIBLE message. A locked message must
+// never be the preview, or a player reads a Night IX beat during Night II.
+{
+  const early = new Set<string>(['introDone', 'phoneUnlocked']);
+  for (const t of THREADS) {
+    const seen = t.messages.filter((m) => isVisible(m, early));
+    const raw = t.messages[t.messages.length - 1];
+    if (raw && !isVisible(raw, early))
+      assert.ok(
+        seen.length === 0 || seen[seen.length - 1] !== raw,
+        `preview leak: ${t.id} would show a locked message`,
+      );
   }
 }
 

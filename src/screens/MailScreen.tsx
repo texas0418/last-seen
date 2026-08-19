@@ -28,7 +28,7 @@ import {
 } from '../engine/ui';
 import { type Attachment, isVisible, type Email } from '../models';
 import { useStoryUnlocked } from '../proAccess';
-import { flagSet, hasFlag, isRead, markRead, putKv, setFlag } from '../state';
+import { flagSet, getKv, hasFlag, isRead, markRead, putKv, setFlag } from '../state';
 import { colors, fonts } from '../theme';
 import PaywallScreen from './PaywallScreen';
 
@@ -127,8 +127,12 @@ function EmailView({ email, onBack }: { email: Email; onBack: () => void }) {
 }
 
 export default function MailScreen({ onBack }: { onBack: () => void }) {
-  const [account, setAccount] = useState<'personal' | 'tidewater'>('personal');
-  const [openId, setOpenId] = useState<string | null>(null);
+  const [account, setAccount] = useState<'personal' | 'tidewater'>(
+    () => (getKv('debug:mailTab') as 'personal' | 'tidewater' | undefined) ?? 'personal',
+  );
+  const [openId, setOpenId] = useState<string | null>(
+    () => getKv('debug:mailOpen') ?? null,
+  );
   const [paywall, setPaywall] = useState(false);
   const unlocked = useStoryUnlocked();
   const flags = flagSet();
