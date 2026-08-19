@@ -106,6 +106,7 @@ export const NOTES: Note[] = [
     when: 'Sep 28',
     body:
       'donepezil 10mg — MORNINGS, with food\nDr. Okafor — thursdays 2pm (drive her, she cancels ubers)\n' +
+      'harborview intake weds — bring the insurance card. she’ll say she doesn’t need it\n' +
       'insurance lapsed?? call monday\nDO NOT argue about the radio. it’s her radio.',
   },
   {

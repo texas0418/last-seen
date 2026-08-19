@@ -26,11 +26,8 @@ import MessagesScreen from './src/screens/MessagesScreen';
 import NightCard from './src/screens/NightCard';
 import SettingsScreen from './src/screens/SettingsScreen';
 import EndingScreen from './src/screens/EndingScreen';
-import {
-  NotesScreen,
-  PhotosScreen,
-  VoicemailScreen,
-} from './src/screens/SimpleApps';
+import PhotosScreen from './src/screens/PhotosScreen';
+import { NotesScreen, VoicemailScreen } from './src/screens/SimpleApps';
 
 function Root() {
   useWorldVersion();

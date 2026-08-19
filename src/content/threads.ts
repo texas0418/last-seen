@@ -157,6 +157,14 @@ export const THREADS: Thread[] = [
         when: 'Oct 10, 8:12 PM',
         visibleWhen: ['night6'],
       },
+      {
+        // The absence the player can SEE — this is what sends them to
+        // Settings > Cloud trash. A phone leaves the trace, not the words.
+        from: 'them',
+        body: '[1 message deleted — recoverable from Cloud trash until Nov 10]',
+        when: 'Oct 11, 2026, 11:59 PM',
+        visibleWhen: ['night6'],
+      },
       // Recovered from cloud trash in act 3: Marcus was never the villain.
       {
         from: 'them',
@@ -188,7 +196,7 @@ export const THREADS: Thread[] = [
     live: {
       trigger: 'booksDone',
       steps: [
-        { kind: 'them', body: 'you opened the books.', delayMs: 9000 },
+        { kind: 'them', body: 'you opened the books.', delayMs: 2000 },
         {
           kind: 'them',
           body: 'quinn couldn’t leave the numbers alone either. look how that ended.',
@@ -207,7 +215,7 @@ export const THREADS: Thread[] = [
           waitFor: 'valeNamed',
           kind: 'them',
           body: 'asking the waterfront about me now.',
-          delayMs: 10000,
+          delayMs: 3000,
         },
         {
           kind: 'them',
@@ -267,7 +275,7 @@ export const THREADS: Thread[] = [
         {
           kind: 'them',
           body: 'this number lit up again two days ago. i told myself i wouldn’t ask.',
-          delayMs: 8000,
+          delayMs: 2500,
         },
         {
           kind: 'them',
@@ -347,7 +355,7 @@ export const THREADS: Thread[] = [
         {
           kind: 'them',
           body: 'You just logged into her mail. I watch that account for a living. If you’re police, say so. If you’re him, I’m already gone.',
-          delayMs: 6000,
+          delayMs: 2500,
         },
         {
           kind: 'them',
@@ -392,7 +400,7 @@ export const THREADS: Thread[] = [
           waitFor: 'night8',
           kind: 'them',
           body: 'Rosa Soto talked to you. ROSA SOTO. Okay. Listen. The story has a spine, the report has a signature — but legal wants a name on the surveillance. The man who watched your sister for six weeks is a pattern, Casey. Patterns keep schedules. Schedules have names.',
-          delayMs: 6000,
+          delayMs: 2500,
         },
         {
           kind: 'them',
@@ -419,10 +427,10 @@ export const THREADS: Thread[] = [
           delayMs: 2500,
         },
         {
-          waitFor: 'act3',
+          waitFor: 'night9',
           kind: 'them',
-          body: 'Rosa said “tide book.” Tidewater. She named that account so family would know it was FOR you. If you’re inside it: the transmittals. Quinn always said the signature was the one honest thing about him. Who signed for the lab results — the county copies?',
-          delayMs: 9000,
+          body: 'Rosa said “tide book.” TIDEWATER — she named that mailbox so her family would know it was for you. Get inside it. Then find me the transmittals: Quinn always said the signature was the one honest thing about him. Who signed for the lab results — the county copies?',
+          delayMs: 2500,
         },
         {
           kind: 'freetext',
@@ -442,7 +450,7 @@ export const THREADS: Thread[] = [
           waitFor: 'night10',
           kind: 'them',
           body: 'One more thing, and then I stop asking. The receipt in that account. Flowers, the 14th. Her car was found on the 12th. I have read it forty times. Tell me where she stood when she paid — or tell me I’m wrong to hope.',
-          delayMs: 9000,
+          delayMs: 2500,
         },
         {
           kind: 'freetext',

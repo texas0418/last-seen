@@ -1,20 +1,17 @@
 // src/screens/SimpleApps.tsx
-// The three quiet surfaces: Phone (voicemail transcripts), Notes, Photos.
-// Photos carry the long-press "look closer" gesture taught on the lock
-// screen — the closer layer is where zoom-level details live.
+// The two quiet surfaces: Phone (voicemail + audio) and Notes. Photos is
+// its own screen (PhotosScreen.tsx).
+
+
 
 import { useAudioPlayer, useAudioPlayerStatus, setAudioModeAsync } from 'expo-audio';
 import { useEffect, useState } from 'react';
-import {
-  Image, Pressable, ScrollView, StyleSheet, View, useWindowDimensions,
-} from 'react-native';
+import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
 import { VM_AUDIO } from '../audioAssets';
-import { NOTES, PHOTOS, VOICEMAILS } from '../content/other';
-import { PhotoViewer } from '../engine/PhotoViewer';
+import { NOTES, VOICEMAILS } from '../content/other';
 import { AppHeader, BodyText, ChromeText, StatusBarRow, ui } from '../engine/ui';
 import { isVisible } from '../models';
-import { PHOTO_ART } from '../photoAssets';
 import { flagSet, isRead, markRead } from '../state';
 import { colors, fonts } from '../theme';
 
@@ -128,66 +125,6 @@ export function NotesScreen({ onBack }: { onBack: () => void }) {
   );
 }
 
-export function PhotosScreen({ onBack }: { onBack: () => void }) {
-  const [openId, setOpenId] = useState<string | null>(null);
-  const [closerId, setCloserId] = useState<string | null>(null);
-  const { width } = useWindowDimensions();
-  // Explicit pixel size — percentage width on Image is unreliable here and
-  // falls back to the bitmap's intrinsic size (see PhotoViewer note).
-  // 14pt list padding + 16pt card padding + 1pt border, each side.
-  const imgW = width - 2 * (14 + 16 + 1);
-  const items = PHOTOS.filter((p) => isVisible(p, flagSet()));
-  const open = items.find((p) => p.id === openId);
-  const openArt = open ? PHOTO_ART[open.id] : undefined;
-  return (
-    <View style={ui.screen}>
-      <StatusBarRow />
-      <AppHeader title="Photos" subtitle="tap a photo to look closer" onBack={onBack} />
-      <ScrollView contentContainerStyle={{ padding: 14 }}>
-        {items.map((p) => {
-          markRead(p.id);
-          const art = PHOTO_ART[p.id];
-          const closer = closerId === p.id && p.closer;
-          return (
-            <Pressable
-              key={p.id}
-              style={s.photo}
-              onPress={() => (art ? setOpenId(p.id) : setCloserId(closer ? null : p.id))}
-              onLongPress={() => setCloserId(p.id)}
-              delayLongPress={600}
-            >
-              {art ? (
-                <Image
-                  source={art.image}
-                  style={[s.photoImg, { width: imgW, height: Math.round(imgW / art.ar) }]}
-                  accessibilityLabel={p.alt}
-                />
-              ) : (
-                <>
-                  <ChromeText style={s.photoEmoji}>{p.emoji}</ChromeText>
-                  <BodyText style={[s.photoAlt, closer ? { color: colors.ghost } : null]}>
-                    {closer ? p.closer : p.alt}
-                  </BodyText>
-                </>
-              )}
-              {p.caption ? <BodyText style={s.photoCaption}>“{p.caption}”</BodyText> : null}
-              <ChromeText style={s.photoWhen}>{p.when}</ChromeText>
-            </Pressable>
-          );
-        })}
-      </ScrollView>
-      {open && openArt ? (
-        <PhotoViewer
-          source={openArt.image}
-          ar={openArt.ar}
-          label={open.closer ?? open.alt}
-          onClose={() => setOpenId(null)}
-        />
-      ) : null}
-    </View>
-  );
-}
-
 const s = StyleSheet.create({
   playRow: {
     flexDirection: 'row',
@@ -207,23 +144,4 @@ const s = StyleSheet.create({
   transcriptLabel: { fontFamily: fonts.mono, fontSize: 11, color: colors.faint, marginBottom: 12 },
   transcript: { fontFamily: fonts.sans, fontSize: 17, lineHeight: 27, color: colors.text },
   note: { fontFamily: fonts.sans, fontSize: 16, lineHeight: 26, color: colors.text },
-  photo: {
-    backgroundColor: colors.panel,
-    borderRadius: 14,
-    borderWidth: 1,
-    borderColor: colors.panelBorder,
-    padding: 16,
-    marginBottom: 12,
-  },
-  photoImg: { borderRadius: 10, backgroundColor: colors.hairline },
-  photoEmoji: { fontSize: 30, textAlign: 'center', marginBottom: 8 },
-  photoAlt: {
-    fontFamily: fonts.sans,
-    fontSize: 14,
-    lineHeight: 21,
-    color: colors.textDim,
-    fontStyle: 'italic',
-  },
-  photoCaption: { fontFamily: fonts.sans, fontSize: 13, color: colors.text, marginTop: 8 },
-  photoWhen: { fontFamily: fonts.sans, fontSize: 11, color: colors.faint, marginTop: 6 },
 });

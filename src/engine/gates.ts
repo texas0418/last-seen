@@ -156,6 +156,7 @@ export const GATES: Gate[] = [
     wrong: ['Incorrect PIN.', 'Incorrect PIN. Recovery items remain encrypted.'],
     clues: [
       { itemId: 'th-dae', surface: 'messages', what: 'the PIN scheme: "everything’s mom now — where she is"' },
+      { itemId: 'nt-mom', surface: 'notes', what: 'harborview intake — establishes WHERE mom is, no room number' },
       { itemId: 'cal-harborview', surface: 'calendar', what: 'mom — harborview · rm 214 · tuesdays' },
     ],
     nudges: [

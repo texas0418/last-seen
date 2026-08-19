@@ -90,6 +90,8 @@ export default function LockScreen() {
           source={PHOTO_ART[wallpaper.id].image}
           ar={PHOTO_ART[wallpaper.id].ar}
           label={wallpaper.closer ?? wallpaper.alt}
+          when={wallpaper.when}
+          caption={wallpaper.caption}
           onClose={() => setCloser(false)}
         />
       ) : null}

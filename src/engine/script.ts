@@ -4,7 +4,8 @@
 // rendered from what actually happened (which choice was taken, what was
 // typed). The screen only schedules timers and writes the cursor forward.
 
-import type { ScriptStep } from '../models';
+import type { Flag, FlagSet, ScriptStep, Thread } from '../models';
+import { isVisible } from '../models';
 
 export interface RenderedBubble {
   from: 'them' | 'me';
@@ -59,3 +60,28 @@ export const nextCursor = (
   cursor: number,
   goto: number | undefined,
 ): number => goto ?? cursor + 1;
+
+/** A step is "ready" when it exists, isn't the terminator, and either has no
+ *  waitFor or its waitFor flag is set. A parked waitFor step is NOT ready. */
+export const isStepReady = (
+  step: ScriptStep | undefined,
+  has: (f: Flag) => boolean,
+): boolean =>
+  !!step && step.kind !== 'end' && (!step.waitFor || has(step.waitFor));
+
+/** Fingerprint of everything the player could currently SEE in a thread:
+ *  visible archived messages, script position, and whether someone is
+ *  waiting on them right now. Stored when the thread is opened; any change
+ *  makes it unread again — which is how a real phone behaves and how the
+ *  player learns that T, Mara or Dae have said something new. */
+export function threadStamp(
+  thread: Thread,
+  flags: FlagSet,
+  cursor: number,
+  has: (f: Flag) => boolean,
+): string {
+  const seen = thread.messages.filter((m) => isVisible(m, flags)).length;
+  const live = thread.live && flags.has(thread.live.trigger);
+  const ready = live ? isStepReady(currentStep(thread.live!.steps, cursor), has) : false;
+  return `${seen}.${cursor}.${ready ? 1 : 0}`;
+}

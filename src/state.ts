@@ -79,6 +79,14 @@ export const markRead = (itemId: string): void => {
   if (!isRead(itemId)) putKv(readKey(itemId), '1');
 };
 
+/** Stamped variants for threads: "read" means "read at THIS content state."
+ *  New messages (live or archived) change the stamp -> unread again. */
+export const isReadAt = (itemId: string, stamp: string): boolean =>
+  getKv(readKey(itemId)) === stamp;
+export const markReadAt = (itemId: string, stamp: string): void => {
+  if (getKv(readKey(itemId)) !== stamp) putKv(readKey(itemId), stamp);
+};
+
 /** Settings > "Start over" — wipes the phone back to the envelope. */
 export function resetWorld(): void {
   resetAll();

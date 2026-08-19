@@ -16,14 +16,16 @@ import {
 import { THREADS } from '../content/threads';
 import { checkGate, gateById } from '../engine/gates';
 import { activeGates, hintLabel } from '../engine/hints';
-import { currentStep, scriptHistory } from '../engine/script';
+import { currentStep, scriptHistory, threadStamp } from '../engine/script';
 import { AppHeader, Bubble, ChromeText, ChromeTextInput, StatusBarRow, ui } from '../engine/ui';
 import { isVisible, type ScriptStep, type Thread } from '../models';
 import {
   flagSet,
   getKv,
   hasFlag,
+  isReadAt,
   markRead,
+  markReadAt,
   putKv,
   scriptIndex,
   setFlag,
@@ -37,6 +39,16 @@ const hintKey = (gateId: string) => `hint:${gateId}`;
 // Threads whose latest live message arrived seconds ago (this JS session
 // only) — those type on letter by letter; history is always instant.
 const freshDelivery: Record<string, number> = {};
+
+function TypingBubble() {
+  // Animated so a wait reads as "someone is typing", not a frozen glyph.
+  const [n, setN] = useState(1);
+  useEffect(() => {
+    const t = setInterval(() => setN((v) => (v % 3) + 1), 420);
+    return () => clearInterval(t);
+  }, []);
+  return <Bubble from="them" body={'·'.repeat(n)} />;
+}
 
 function TypewriterBubble({ body }: { body: string }) {
   const [n, setN] = useState(1);
@@ -186,7 +198,7 @@ function LiveArea({ thread }: { thread: Thread }) {
           <Bubble key={i} from={b.from} body={b.body} />
         );
       })}
-      {typing && <Bubble from="them" body="…" />}
+      {typing && <TypingBubble />}
       {step && !typing && <LiveChoice thread={thread} step={step} cursor={cursor} />}
       {step && !typing && <LiveFreetext thread={thread} step={step} cursor={cursor} />}
       {thread.id === 'th-dae' && done && <DaeHints />}
@@ -197,7 +209,8 @@ function LiveArea({ thread }: { thread: Thread }) {
 function ThreadView({ thread, onBack }: { thread: Thread; onBack: () => void }) {
   const flags = flagSet();
   const scroll = useRef<ScrollView>(null);
-  useEffect(() => markRead(thread.id), [thread.id]);
+  const stamp = threadStamp(thread, flags, scriptIndex(thread.id), hasFlag);
+  useEffect(() => markReadAt(thread.id, stamp), [thread.id, stamp]);
   const liveActive = thread.live && flags.has(thread.live.trigger);
   return (
     <KeyboardAvoidingView
@@ -240,7 +253,8 @@ export default function MessagesScreen({ onBack }: { onBack: () => void }) {
             <Pressable key={t.id} style={ui.row} onPress={() => setOpenId(t.id)}>
               <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <ChromeText style={ui.rowTitle}>{t.contact}</ChromeText>
-                {!hasFlag('ending4') && !getKv(`read:${t.id}`) && (
+                {!hasFlag('ending4') &&
+                  !isReadAt(t.id, threadStamp(t, flags, scriptIndex(t.id), hasFlag)) && (
                   <View style={ui.badge}>
                     <ChromeText style={ui.badgeText}> </ChromeText>
                   </View>
