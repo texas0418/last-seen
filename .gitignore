@@ -12,3 +12,6 @@ android/
 *.mobileprovision
 .DS_Store
 __pycache__/
+
+# Build/tool logs (e.g. sim-build-typecaps.log from `expo run:ios`)
+*.log
