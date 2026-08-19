@@ -283,6 +283,12 @@ API from this file — do not re-enter by hand:
    the mailbox opened, and the unlock **survived a force-quit**, which is
    what proves the entitlement came back from RevenueCat rather than an
    in-memory flag. No errors.
+   **Restore also passed** — uninstalled (which wipes the anonymous
+   RevenueCat id with the app's data), reinstalled, replayed to the gate:
+   the paywall correctly reappeared, and *Restore purchase* unlocked the
+   story with no purchase sheet and no second charge. That is the path
+   Guideline 3.1.1 requires and reviewers do test, and it is the one a real
+   player hits on a reinstall or a new phone.
 
 ### RevenueCat (done 2026-08-19)
 
