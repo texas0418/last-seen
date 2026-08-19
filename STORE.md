@@ -113,9 +113,36 @@ already indexes the title, subtitle and category).
 
 ## Privacy nutrition label
 
-**Data Not Collected** — every category. The app has no network calls of
-its own; the only third party is RevenueCat, which receives an anonymous
-purchase receipt and a random identifier and is disclosed in the policy.
+**CORRECTED 2026-08-19 — this section previously said "Data Not Collected,
+answer No to everything." That is wrong and would have been a false
+declaration.**
+
+The app makes no network calls of its own, but RevenueCat does, and it
+*retains* what it receives so that Restore purchase works. Retention beyond
+servicing the request in real time is Apple's definition of collection.
+"Data Not Linked to You" is a sub-classification of **collected** data — it
+still must be declared. The exemption that allows skipping disclosure
+requires collection to be infrequent, optional and outside core
+functionality; a purchase is core functionality.
+
+Answer **Yes, we collect data**, then declare:
+
+| Category | Type | Linked to identity | Tracking | Purpose |
+|---|---|---|---|---|
+| Purchases | Purchase History | No | No | App Functionality |
+| Identifiers | User ID | No | No | App Functionality |
+
+"Not linked" is accurate: `proAccess.ts` calls `Purchases.configure({ apiKey })`
+with no `appUserID`, so RevenueCat generates a random anonymous id per
+install. No account, no name, no email, nothing tying it to a person.
+
+The *User ID* row is a judgement call — the id is RevenueCat's, not one we
+assign. Declare it anyway; over-declaring costs a line on the store page,
+under-declaring gets apps rejected.
+
+Everything else is genuinely **not collected**: no analytics, no ads, no
+crash reporting, no contacts/photos/location/microphone, no browsing or
+usage data. The privacy policy already matches this declaration exactly.
 Answer "No" to every collection question.
 
 ---
