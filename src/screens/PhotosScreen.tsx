@@ -15,7 +15,7 @@ import {
 } from 'react-native';
 
 import { PHOTOS } from '../content/other';
-import { PhotoViewer } from '../engine/PhotoViewer';
+import { PhotoViewer, type ViewerPhoto } from '../engine/PhotoViewer';
 import { AppHeader, ChromeText, StatusBarRow, ui } from '../engine/ui';
 import { isVisible } from '../models';
 import { PHOTO_ART } from '../photoAssets';
@@ -30,8 +30,16 @@ export default function PhotosScreen({ onBack }: { onBack: () => void }) {
   const { width } = useWindowDimensions();
   const tile = Math.floor((width - GAP * (COLS - 1)) / COLS);
   const items = PHOTOS.filter((p) => isVisible(p, flagSet()));
-  const open = items.find((p) => p.id === openId);
-  const openArt = open ? PHOTO_ART[open.id] : undefined;
+  // the viewer pages through the whole roll, like real Photos
+  const viewerPhotos: ViewerPhoto[] = items.map((p) => ({
+    id: p.id,
+    when: p.when,
+    caption: p.caption,
+    label: p.closer ?? p.alt,
+    source: PHOTO_ART[p.id]?.image,
+    ar: PHOTO_ART[p.id]?.ar,
+  }));
+  const openIndex = items.findIndex((p) => p.id === openId);
 
   return (
     <View style={ui.screen}>
@@ -41,12 +49,14 @@ export default function PhotosScreen({ onBack }: { onBack: () => void }) {
         <ChromeText style={s.count}>{items.length} Items</ChromeText>
         <View style={s.grid}>
           {items.map((p) => {
-            markRead(p.id);
             const art = PHOTO_ART[p.id];
             return (
               <Pressable
                 key={p.id}
-                onPress={() => setOpenId(p.id)}
+                onPress={() => {
+                  markRead(p.id);
+                  setOpenId(p.id);
+                }}
                 style={{ width: tile, height: tile, marginRight: GAP, marginBottom: GAP }}
               >
                 {art ? (
@@ -66,14 +76,10 @@ export default function PhotosScreen({ onBack }: { onBack: () => void }) {
           })}
         </View>
       </ScrollView>
-      {open ? (
+      {openIndex >= 0 ? (
         <PhotoViewer
-          source={openArt?.image}
-          ar={openArt?.ar}
-          label={open.closer ?? open.alt}
-          when={open.when}
-          caption={open.caption}
-          described={openArt ? undefined : open.alt}
+          photos={viewerPhotos}
+          startIndex={openIndex}
           onClose={() => setOpenId(null)}
         />
       ) : null}

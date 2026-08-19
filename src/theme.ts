@@ -45,7 +45,10 @@ export const TYPE_CAPS = {
 
 export const fonts = {
   /** Everything the phone renders — a modern OS is sans. */
-  sans: Platform.select({ ios: 'Helvetica Neue', default: 'sans-serif' })!,
+  // iOS: UNSET so the OS renders SF Pro — the actual iPhone system font.
+  // Naming a family here gets a legacy face that reads spindly/stretched,
+  // especially in TextInput placeholders. Mono/serif stay deliberate.
+  sans: Platform.select({ ios: undefined, default: 'sans-serif' }) as unknown as string,
   /** Ciphertext, passwords, timestamps, the decoder. */
   mono: Platform.select({ ios: 'Menlo', default: 'monospace' })!,
   /** Casey's narration between screens — the only non-phone voice. */

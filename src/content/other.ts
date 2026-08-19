@@ -19,7 +19,7 @@ export const VOICEMAILS: Voicemail[] = [
     duration: '0:17',
     transcript:
       '“Quinn, honey, it’s your mother. I was thinking about the wisteria at ' +
-      'Alder Street — twelve years this fall since we lost that house, can you ' +
+      'Alder Street, twelve years this fall since we lost that house, can you ' +
       'believe it. Your father never did fix the gate. Anyway. The girl on the ' +
       'radio said rain. Call me when you’re off, don’t forget to eat something.”',
   },
@@ -50,7 +50,7 @@ export const VOICEMAILS: Voicemail[] = [
     duration: '0:20',
     transcript:
       '“Thank you for the flowers, honey. Lilies, like the fair. Though I told ' +
-      'the delivery girl at the door, my Quinn always sends yellow ones — she ' +
+      'the delivery girl at the door, my Quinn always sends yellow ones, and she ' +
       'laughed. People laugh at me now. The card was nice. You and your little ' +
       'codes. Call me back, everyone here keeps using the wrong voice.”',
     visibleWhen: ['act2'],
@@ -81,7 +81,7 @@ export const VOICEMAILS: Voicemail[] = [
   {
     id: 'vm-eli',
     from: 'Eli Soto (fwd: R. Soto)',
-    when: 'Apr 8, 2025, 6:12 AM',
+    when: 'Apr 12, 2025, 6:12 AM',
     duration: '0:22',
     visibleWhen: ['rosaTrust'],
     transcript:
@@ -166,7 +166,7 @@ export const PHOTOS: DescribedPhoto[] = [
     emoji: '🪴',
     caption: 'the hostages',
     alt:
-      'The windowsill jungle over the radiator — pothos, fern, the little monstera — rain on the glass, the street grey beyond.',
+      'The windowsill jungle over the radiator: pothos, fern, the little monstera. Rain on the glass, the street grey beyond.',
   },
   {
     id: 'ph-ozzy',
@@ -207,7 +207,7 @@ export const PHOTOS: DescribedPhoto[] = [
     when: 'Oct 2',
     emoji: '🛒',
     alt:
-      'Two paper bags spilling groceries on the kitchen counter — apples, a leek, plain bread. The fluorescent hum practically audible.',
+      'Two paper bags spilling groceries on the kitchen counter. Apples, a leek, plain bread. The fluorescent hum practically audible.',
   },
   {
     id: 'b11',
@@ -321,10 +321,10 @@ export const PHOTOS: DescribedPhoto[] = [
 
 /** Casey's narration — the only voice outside the phone. Shown once. */
 export const INTRO: string[] = [
-  'The envelope is padded, brown, heavier than it looks. No return address. The postmark is smudged — K————L B——, the rest gone to rain.',
+  'The envelope is padded, brown, heavier than it looks. No return address. The postmark is smudged past reading. K————L B——, and the rest gone to rain.',
   'Inside: your sister’s phone. You know it by the chip on the corner and by the way your chest does something geological when the screen lights up.',
   'Six days ago they found Quinn’s car at Widow’s Point with the door open. The tide was going out. The sheriff used the word “concluded” on the third day.',
-  'Also in the envelope, nothing else. No note. Which — if you knew Quinn, and you did, three years ago, before Dad, before the silence — is itself a kind of note.',
+  'Also in the envelope, nothing else. No note. Which, if you knew Quinn, and you did, three years ago, before Dad, before the silence, is itself a kind of note.',
   'She set every PIN to the best day. She never said which day. You were probably supposed to know.',
 ];
 
@@ -341,7 +341,7 @@ export const ENDINGS: Ending[] = [
     prose: [
       'Mara’s story runs on a Thursday. By Friday there are federal cars at the marina office, and Carol from the front office is carrying a box to her sedan, crying and waving to the cameras.',
       'Marcus Halloway testifies for four hours. He does not look at his father once.',
-      'Three weeks later, a voicemail from an unlisted number: “They subpoenaed me, bird. Which means I exist again. Which means — put the kettle on. I’m coming home the long way.”',
+      'Three weeks later, a voicemail from an unlisted number: “They subpoenaed me, bird. Which means I exist again. Which means put the kettle on. I’m coming home the long way.”',
     ],
   },
   {

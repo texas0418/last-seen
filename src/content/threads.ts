@@ -70,7 +70,7 @@ export const THREADS: Thread[] = [
       },
       {
         from: 'quinn',
-        body: 'reset it. everything’s mom now — where she is. i won’t forget where she is.',
+        body: 'reset it. everything’s mom now, where she is. i won’t forget where she is.',
         when: 'Sep 14, 3:29 PM',
         visibleWhen: ['night6'],
       },
@@ -95,7 +95,7 @@ export const THREADS: Thread[] = [
         },
         {
           kind: 'them',
-          body: 'casey. she talked about you like a phantom limb. ok. i don’t think she jumped. nobody who jokes about plants jumps. ask me anything — i knew her best.',
+          body: 'casey. she talked about you like a phantom limb. ok. i don’t think she jumped. nobody who jokes about plants jumps. ask me anything, i knew her best.',
           delayMs: 1000,
         },
         { kind: 'end' },
@@ -161,14 +161,14 @@ export const THREADS: Thread[] = [
         // The absence the player can SEE — this is what sends them to
         // Settings > Cloud trash. A phone leaves the trace, not the words.
         from: 'them',
-        body: '[1 message deleted — recoverable from Cloud trash until Nov 10]',
+        body: '[1 message deleted. Recoverable from Cloud trash until Nov 10]',
         when: 'Oct 11, 2026, 11:59 PM',
         visibleWhen: ['night6'],
       },
       // Recovered from cloud trash in act 3: Marcus was never the villain.
       {
         from: 'them',
-        body: '[recovered · deleted by account owner · Oct 11, 11:59 PM] I know what my father did to the Soto reports. I’ve been copying them too. If you go public I’ll testify. Whatever you decide — I’m sorry I was a coward first.',
+        body: '[recovered · deleted by account owner · Oct 11, 11:59 PM] I know what my father did to the Soto reports. I’ve been copying them too. If you go public I’ll testify. Whatever you decide… I’m sorry I was a coward first.',
         when: 'Oct 11, 11:58 PM',
         visibleWhen: ['cloudRestored'],
       },
@@ -265,7 +265,7 @@ export const THREADS: Thread[] = [
       },
       {
         from: 'them',
-        body: 'My husband is dead, Ms. Mercer. Ten minutes doesn’t fix arithmetic.',
+        body: 'My husband is dead, Ms. Mercer. Ten minutes doesn’t change that.',
         when: 'Aug 19, 3:05 PM',
       },
     ],
@@ -279,7 +279,7 @@ export const THREADS: Thread[] = [
         },
         {
           kind: 'them',
-          body: 'if you’re halloway, stop. if you’re police, you know where i live. if you’re the sister — she said you existed — then prove you’re holding HER phone. what’s printed under my husband’s name, on the flyer in the seamen’s hall window. every word.',
+          body: 'if you’re halloway, stop. if you’re police, you know where i live. if you’re the sister. she said you existed. then prove you’re holding HER phone. what’s printed under my husband’s name, on the flyer in the seamen’s hall window. every word.',
           delayMs: 1000,
         },
         {
@@ -290,7 +290,7 @@ export const THREADS: Thread[] = [
         { kind: 'them', body: 'okay.', delayMs: 1000 },
         {
           kind: 'them',
-          body: 'he called me from the boat the morning he died. i kept it. and the police “lost” two pages of their own report — i photographed them at the front desk while the deputy got coffee. quinn is the only other person who ever saw these. now you.',
+          body: 'he called me from the boat the morning he died. i kept it. and the police “lost” two pages of their own report. i photographed them at the front desk while the deputy got coffee. quinn is the only other person who ever saw these. now you.',
           delayMs: 1000,
         },
         {
@@ -383,7 +383,7 @@ export const THREADS: Thread[] = [
         },
         {
           kind: 'them',
-          body: 'When you can name the first report they touched — the number, not vibes — text it to me. Until then I’m writing around a hole.',
+          body: 'When you can name the first report they touched, text it to me. The number. Not vibes. Until then I’m writing around a hole.',
           delayMs: 1000,
         },
         {
@@ -393,13 +393,13 @@ export const THREADS: Thread[] = [
         },
         {
           kind: 'them',
-          body: 'R-1147. Bed seven. April. He walked into that water eleven days after the lab said nobody should. The story has its spine now — and whoever built that shelf isn’t done with you. Keep reading.',
+          body: 'R-1147. Bed seven. April. He walked into that water ten days after the lab said nobody should. The story has its spine now. Whoever built that shelf isn’t done with you. Keep reading.',
           delayMs: 1000,
         },
         {
           waitFor: 'night8',
           kind: 'them',
-          body: 'Rosa Soto talked to you. ROSA SOTO. Okay. Listen. The story has a spine, the report has a signature — but legal wants a name on the surveillance. The man who watched your sister for six weeks is a pattern, Casey. Patterns keep schedules. Schedules have names.',
+          body: 'Rosa Soto talked to you. ROSA SOTO. Okay. Listen. The story has a spine, the report has a signature, but legal wants a name on the surveillance. Six weeks of watching means a schedule, and a schedule means somebody who gets paid.',
           delayMs: 1000,
         },
         {
@@ -414,7 +414,7 @@ export const THREADS: Thread[] = [
         },
         {
           kind: 'them',
-          body: 'Terrence Vale. Twenty-two years of harbor patrol, walks into Halloway’s the same month the shell company is born. I have his pension record and his parking spot. He’s real, he’s paid, and he’s about to be famous. If he texts you again — do not answer.',
+          body: 'Terrence Vale. Twenty-two years of harbor patrol, walks into Halloway’s the same month the shell company is born. I have his pension record and his parking spot. He’s real, he’s paid, and he’s about to be famous. If he texts you again, do not answer.',
           delayMs: 1000,
         },
         {
@@ -429,7 +429,7 @@ export const THREADS: Thread[] = [
         {
           waitFor: 'night9',
           kind: 'them',
-          body: 'Rosa said “tide book.” TIDEWATER — she named that mailbox so her family would know it was for you. Get inside it. Then find me the transmittals: Quinn always said the signature was the one honest thing about him. Who signed for the lab results — the county copies?',
+          body: 'Rosa said “tide book.” TIDEWATER. She named that mailbox so her family would know it was for you. Get inside it. Then find me the transmittals: Quinn always said the signature was the one honest thing about him. Who signed for the lab results — the county copies?',
           delayMs: 1000,
         },
         {
@@ -439,7 +439,7 @@ export const THREADS: Thread[] = [
         },
         {
           kind: 'them',
-          body: 'R. Halloway. Received and signed ten days before he sent a crew into that water. That isn’t negligence, Casey — it’s arithmetic. The story files Thursday morning. Whatever else is in that account — the drafts, the things written in a language I can’t read — those are yours, not mine.',
+          body: 'R. Halloway. He signed for it ten days before he sent a crew into that water. That’s not negligence, that’s a decision. The story files Thursday morning. Whatever else is in that account, the drafts, the things written in a language I can’t read, those are yours. Not mine.',
           delayMs: 1000,
         },
         {
@@ -449,7 +449,7 @@ export const THREADS: Thread[] = [
         {
           waitFor: 'night10',
           kind: 'them',
-          body: 'One more thing, and then I stop asking. The receipt in that account. Flowers, the 14th. Her car was found on the 12th. I have read it forty times. Tell me where she stood when she paid — or tell me I’m wrong to hope.',
+          body: 'One more thing, and then I stop asking. The receipt in that account. Flowers, the 14th. Her car was found on the 12th. I have read it forty times. Tell me where she stood when she paid. Or tell me I’m wrong to hope.',
           delayMs: 1000,
         },
         {
@@ -459,7 +459,7 @@ export const THREADS: Thread[] = [
         },
         {
           kind: 'them',
-          body: 'Tidepool Florals. In store. Cash. Two days after. — I’m not printing that part. Some things aren’t the story; they’re yours. Go read the draft.',
+          body: 'Tidepool Florals. In store. Cash. Two days after. I’m not printing that part. Some things aren’t the story. They’re yours. Go read the draft.',
           delayMs: 1000,
         },
         {
@@ -488,10 +488,14 @@ export const THREADS: Thread[] = [
       steps: [
         {
           kind: 'them',
-          body: 'Ms. Mercer — Casey. Roy Halloway’s office says someone up north signed for a package in your name. If you are in possession of your sister’s phone, that is evidence in an open case. Bring it in. We’ll take it from here.',
+          body: 'Ms. Mercer. Casey. Roy Halloway’s office says someone up north signed for a package in your name. If you are in possession of your sister’s phone, that is evidence in an open case. Bring it in. We’ll take it from here.',
           delayMs: 1000,
         },
         {
+          // Gated to the endgame: an ending reachable at N9 lets the player
+          // finish the game with three nights unplayed. All four doors
+          // should open at the same moment, in Night XII.
+          waitFor: 'burnerContact',
           kind: 'choice',
           options: [
             { label: 'Bring the phone to the station', goto: 2 },
@@ -500,7 +504,7 @@ export const THREADS: Thread[] = [
         },
         {
           kind: 'them',
-          body: 'Good. Side door, after six. No need to make a circus of it. Kind of you to be reasonable — grief makes people imaginative.',
+          body: 'Good. Side door, after six. No need to make a circus of it. Kind of you to be reasonable. Grief makes people imaginative.',
           delayMs: 1000,
         },
         {
@@ -550,7 +554,7 @@ export const THREADS: Thread[] = [
         // 5-7 — loud
         {
           kind: 'them',
-          body: 'say it plain. no taking it back. she prints everything — the town, the sheriff, our name next to eli’s in the paper.',
+          body: 'say it plain. no taking it back. she prints everything. the town, the sheriff, our name next to eli’s in the paper.',
           delayMs: 1000,
         },
         {

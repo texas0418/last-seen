@@ -253,12 +253,10 @@ export default function MessagesScreen({ onBack }: { onBack: () => void }) {
             <Pressable key={t.id} style={ui.row} onPress={() => setOpenId(t.id)}>
               <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <ChromeText style={ui.rowTitle}>{t.contact}</ChromeText>
-                {!hasFlag('ending4') &&
+{!hasFlag('ending4') &&
                   !isReadAt(t.id, threadStamp(t, flags, scriptIndex(t.id), hasFlag)) && (
-                  <View style={ui.badge}>
-                    <ChromeText style={ui.badgeText}> </ChromeText>
-                  </View>
-                )}
+                    <View style={ui.threadDot} />
+                  )}
               </View>
               <ChromeText style={ui.rowSub} numberOfLines={1}>
                 {last?.body ?? 'New conversation'}

@@ -26,7 +26,7 @@ import {
   StatusBarRow,
   ui,
 } from '../engine/ui';
-import { isVisible, type Email } from '../models';
+import { type Attachment, isVisible, type Email } from '../models';
 import { useStoryUnlocked } from '../proAccess';
 import { flagSet, hasFlag, isRead, markRead, putKv, setFlag } from '../state';
 import { colors, fonts } from '../theme';
@@ -76,8 +76,32 @@ function Login({
   );
 }
 
+/** A document opened out of an email — full screen, monospaced, the way a
+ *  phone shows a PDF. Evidence should feel like a FILE, not more prose. */
+function DocView({
+  attachment,
+  onBack,
+}: {
+  attachment: Attachment;
+  onBack: () => void;
+}) {
+  return (
+    <View style={ui.screen}>
+      <StatusBarRow />
+      <AppHeader title={attachment.name} subtitle="Attachment" onBack={onBack} />
+      <ScrollView contentContainerStyle={{ padding: 18 }} horizontal={false}>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          <BodyText selectable style={s.docBody}>{attachment.body}</BodyText>
+        </ScrollView>
+      </ScrollView>
+    </View>
+  );
+}
+
 function EmailView({ email, onBack }: { email: Email; onBack: () => void }) {
+  const [doc, setDoc] = useState<Attachment | null>(null);
   markRead(email.id);
+  if (doc) return <DocView attachment={doc} onBack={() => setDoc(null)} />;
   return (
     <View style={ui.screen}>
       <StatusBarRow />
@@ -86,10 +110,16 @@ function EmailView({ email, onBack }: { email: Email; onBack: () => void }) {
         <BodyText style={s.subject}>{email.subject}</BodyText>
         <BodyText selectable style={s.body}>{email.body}</BodyText>
         {(email.attachments ?? []).map((a) => (
-          <View key={a.name} style={s.attach}>
-            <ChromeText style={s.attachName}>📎 {a.name}</ChromeText>
-            <BodyText style={s.attachBody}>{a.body}</BodyText>
-          </View>
+          <Pressable key={a.name} style={s.attachCard} onPress={() => setDoc(a)}>
+            <ChromeText style={s.attachIcon}>📄</ChromeText>
+            <View style={{ flex: 1 }}>
+              <ChromeText style={s.attachName}>{a.name}</ChromeText>
+              <ChromeText style={s.attachMeta}>
+                {`${Math.max(1, Math.round(a.body.length / 40))} KB · tap to open`}
+              </ChromeText>
+            </View>
+            <ChromeText style={s.attachChevron}>›</ChromeText>
+          </Pressable>
         ))}
       </ScrollView>
     </View>
@@ -189,6 +219,28 @@ export default function MailScreen({ onBack }: { onBack: () => void }) {
 }
 
 const s = StyleSheet.create({
+  attachCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    backgroundColor: colors.panel,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: colors.panelBorder,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+    marginTop: 14,
+  },
+  attachIcon: { fontSize: 22 },
+  attachName: { fontSize: 15, color: colors.text },
+  attachMeta: { fontSize: 12, color: colors.faint, marginTop: 2 },
+  attachChevron: { fontSize: 22, color: colors.faint },
+  docBody: {
+    fontFamily: fonts.mono,
+    fontSize: 13,
+    lineHeight: 21,
+    color: colors.text,
+  },
   login: { padding: 24, marginTop: 30 },
   loginAddress: { fontFamily: fonts.mono, fontSize: 15, color: colors.text, textAlign: 'center' },
   loginHint: {
@@ -210,16 +262,6 @@ const s = StyleSheet.create({
   loginBtnText: { color: '#eef4fa', fontFamily: fonts.sans, fontSize: 16, fontWeight: '600' },
   subject: { fontFamily: fonts.sans, fontSize: 18, fontWeight: '700', color: colors.text, marginBottom: 12 },
   body: { fontFamily: fonts.sans, fontSize: 15, lineHeight: 23, color: colors.text },
-  attach: {
-    marginTop: 16,
-    backgroundColor: colors.panel,
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: colors.panelBorder,
-    padding: 12,
-  },
-  attachName: { fontFamily: fonts.sans, fontSize: 13, color: colors.accent, marginBottom: 8 },
-  attachBody: { fontFamily: fonts.mono, fontSize: 12.5, lineHeight: 19, color: colors.textDim },
   tabs: { flexDirection: 'row', paddingHorizontal: 14, paddingVertical: 8, gap: 8 },
   tab: {
     borderRadius: 14,

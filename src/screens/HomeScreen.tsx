@@ -10,8 +10,8 @@ import { NOTES, PHOTOS, VOICEMAILS } from '../content/other';
 import { THREADS } from '../content/threads';
 import { ChromeText, StatusBarRow, ui } from '../engine/ui';
 import { isVisible } from '../models';
-import { threadStamp } from '../engine/script';
-import { flagSet, hasFlag, isRead, isReadAt, scriptIndex } from '../state';
+import { threadUnreadCount } from '../engine/script';
+import { flagSet, hasFlag, isRead, readStamp, scriptIndex } from '../state';
 import { colors, fonts } from '../theme';
 
 export type AppId =
@@ -36,11 +36,11 @@ const APPS: { id: AppId; label: string; emoji: string }[] = [
 function unreadCount(app: AppId): number {
   const flags = flagSet();
   if (app === 'messages')
-    return THREADS.filter(
-      (t) =>
-        isVisible(t, flags) &&
-        !isReadAt(t.id, threadStamp(t, flags, scriptIndex(t.id), hasFlag)),
-    ).length;
+    return THREADS.filter((t) => isVisible(t, flags)).reduce(
+      (n, t) =>
+        n + threadUnreadCount(t, flags, scriptIndex(t.id), hasFlag, readStamp(t.id)),
+      0,
+    );
   if (app === 'mail') {
     if (!hasFlag('act2')) return 1; // the locked account itself demands attention
     return EMAILS.filter(

@@ -87,11 +87,17 @@ export default function LockScreen() {
       </ScrollView>
       {closer && PHOTO_ART[wallpaper.id] ? (
         <PhotoViewer
-          source={PHOTO_ART[wallpaper.id].image}
-          ar={PHOTO_ART[wallpaper.id].ar}
-          label={wallpaper.closer ?? wallpaper.alt}
-          when={wallpaper.when}
-          caption={wallpaper.caption}
+          photos={[
+            {
+              id: wallpaper.id,
+              when: wallpaper.when,
+              caption: wallpaper.caption,
+              label: wallpaper.closer ?? wallpaper.alt,
+              source: PHOTO_ART[wallpaper.id].image,
+              ar: PHOTO_ART[wallpaper.id].ar,
+            },
+          ]}
+          startIndex={0}
           onClose={() => setCloser(false)}
         />
       ) : null}

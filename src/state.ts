@@ -81,6 +81,7 @@ export const markRead = (itemId: string): void => {
 
 /** Stamped variants for threads: "read" means "read at THIS content state."
  *  New messages (live or archived) change the stamp -> unread again. */
+export const readStamp = (itemId: string): string | undefined => getKv(readKey(itemId));
 export const isReadAt = (itemId: string, stamp: string): boolean =>
   getKv(readKey(itemId)) === stamp;
 export const markReadAt = (itemId: string, stamp: string): void => {

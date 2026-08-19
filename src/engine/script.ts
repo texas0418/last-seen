@@ -85,3 +85,25 @@ export function threadStamp(
   const ready = live ? isStepReady(currentStep(thread.live!.steps, cursor), has) : false;
   return `${seen}.${cursor}.${ready ? 1 : 0}`;
 }
+
+/** How many new things the player hasn't seen in this thread, iOS-style
+ *  (a count of messages, not "1 per thread"). Compares the stored stamp
+ *  against the live one. No stamp = never opened = everything is new. */
+export function threadUnreadCount(
+  thread: Thread,
+  flags: FlagSet,
+  cursor: number,
+  has: (f: Flag) => boolean,
+  storedStamp: string | undefined,
+): number {
+  const seen = thread.messages.filter((m) => isVisible(m, flags)).length;
+  const live = thread.live && flags.has(thread.live.trigger);
+  const ready = live ? isStepReady(currentStep(thread.live!.steps, cursor), has) : false;
+  if (!storedStamp) return seen + (ready ? 1 : 0);
+  const [pm, pc, pr] = storedStamp.split('.').map(Number);
+  return (
+    Math.max(0, seen - (pm || 0)) +
+    Math.max(0, cursor - (pc || 0)) +
+    (ready && !pr ? 1 : 0)
+  );
+}

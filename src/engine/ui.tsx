@@ -122,6 +122,14 @@ export const ui = StyleSheet.create({
     borderBottomColor: colors.hairline,
   },
   unreadDot: { color: colors.accent, fontSize: 11 },
+  /** iOS Messages-style unread mark: a small blue dot, never a red pill. */
+  threadDot: {
+    width: 9,
+    height: 9,
+    borderRadius: 5,
+    backgroundColor: colors.accent,
+    marginLeft: 8,
+  },
   rowTitleUnread: { fontWeight: '600' },
   rowTitle: { fontFamily: fonts.sans, fontSize: 16, fontWeight: '600', color: colors.text },
   rowSub: { fontFamily: fonts.sans, fontSize: 13, color: colors.textDim, marginTop: 3 },

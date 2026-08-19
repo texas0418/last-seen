@@ -15,7 +15,7 @@ import { isVisible } from '../models';
 import { flagSet, isRead, markRead } from '../state';
 import { colors, fonts } from '../theme';
 
-function VoicemailPlayer({ source }: { source: number }) {
+function VoicemailPlayer({ source, onPlay }: { source: number; onPlay: () => void }) {
   const player = useAudioPlayer(source);
   const status = useAudioPlayerStatus(player);
   useEffect(() => {
@@ -24,6 +24,7 @@ function VoicemailPlayer({ source }: { source: number }) {
   const toggle = () => {
     if (status.playing) player.pause();
     else {
+      onPlay(); // a real phone clears the dot when it's PLAYED, not opened
       if (status.didJustFinish || status.currentTime >= status.duration - 0.1)
         player.seekTo(0);
       player.play();
@@ -54,13 +55,16 @@ export function VoicemailScreen({ onBack }: { onBack: () => void }) {
   const items = VOICEMAILS.filter((v) => isVisible(v, flagSet()));
   const open = items.find((v) => v.id === openId);
   if (open) {
-    markRead(open.id);
+    // cues with no audio can only be "heard" by reading them
+    if (VM_AUDIO[open.id] == null) markRead(open.id);
     return (
       <View style={ui.screen}>
         <StatusBarRow />
         <AppHeader title={open.from} subtitle={`${open.when} · ${open.duration}`} onBack={() => setOpenId(null)} />
         <ScrollView contentContainerStyle={{ padding: 20 }}>
-          {VM_AUDIO[open.id] != null && <VoicemailPlayer source={VM_AUDIO[open.id]} />}
+          {VM_AUDIO[open.id] != null && (
+            <VoicemailPlayer source={VM_AUDIO[open.id]} onPlay={() => markRead(open.id)} />
+          )}
           <ChromeText style={s.transcriptLabel}>
             {VM_AUDIO[open.id] != null ? 'TRANSCRIPT' : 'TRANSCRIPT (audio unavailable)'}
           </ChromeText>

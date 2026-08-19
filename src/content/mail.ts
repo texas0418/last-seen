@@ -68,7 +68,7 @@ export const EMAILS: Email[] = [
     when: 'Sep 30, 2026',
     body:
       'This week: our records request on county shellfish-bed testing came back ' +
-      '92% redacted — and the 8% is damning. Also: who is buying up dockside ' +
+      '92% redacted. The 8% is damning. Also: who is buying up dockside ' +
       'leases in Port Brennan?\n\nBy Mara Reyes, staff investigator.',
   },
   {
@@ -110,7 +110,7 @@ export const EMAILS: Email[] = [
       'panel. Its filing agent also handles Roy Halloway’s boat registrations.\n' +
       '3. The coroner’s office never tested Eli’s blood for what was in that water.\n\n' +
       'Quinn had the ledger side. I have the county side. Together it’s a case. ' +
-      'Her half is still out there somewhere — she called it "the tide book." ' +
+      'Her half is still out there somewhere. She called it "the tide book." ' +
       'If you find an account, a folder, anything: that’s the match. Don’t hand ' +
       'it to Dunmore. He signed the Soto report.',
   },
@@ -193,7 +193,7 @@ const BACKUP_EMAILS: Email[] = [
     body:
       'First file. Brennan Analytical’s issued-report log for 2025, pulled ' +
       'under the public records act. This is what the lab actually wrote. ' +
-      'Nobody disputes this list — that’s what makes it a ruler. — M',
+      'Nobody disputes this list. That’s what makes it a ruler. — M',
     attachments: [
       {
         name: 'brennan-issued-2025.pdf',
@@ -204,7 +204,7 @@ const BACKUP_EMAILS: Email[] = [
           'R-1136-B · Feb 12 · Bed 2 · marginal — retest advised\n' +
           'R-1140-B · Mar 09 · Bed 3 · pass\n' +
           'R-1144-B · Mar 30 · Bed 5 · pass\n' +
-          'R-1147-B · Apr 08 · Bed 7 · FAIL — biotoxin exceedance.\n' +
+          'R-1147-B · Apr 02 · Bed 7 · FAIL — biotoxin exceedance.\n' +
           '            worker contact not advised.\n' +
           'R-1151-B · May 12 · Bed 2 · pass\n' +
           'R-1155-B · Jun 02 · Bed 7 · FAIL — exceedance persists\n' +
@@ -221,7 +221,7 @@ const BACKUP_EMAILS: Email[] = [
     when: 'Oct 19, 2026',
     visibleWhen: ['maraTrusted'],
     body:
-      'Second file. The county’s shellfish-bed filing index — the official ' +
+      'Second file. The county’s shellfish-bed filing index. The official ' +
       'shelf. Harvest permits, insurance, the sheriff’s desk: everything ' +
       'downstream reads THIS, not the lab. — M',
     attachments: [
