@@ -243,20 +243,34 @@ API from this file — do not re-enter by hand:
 - age rating declaration (computes to 9+ — see above)
 - 5 screenshots at `APP_IPHONE_67`
 - App Review notes, stored **byte-for-byte identical** to this file
-- IAP `ls_story_unlock` created: non-consumable, $5.99, 175 territories,
-  localization set
+- IAP `ls_story_unlock`: non-consumable, $5.99, 175 territories, localized,
+  review screenshot attached — **`READY_TO_SUBMIT`**
 
 **Still outstanding:**
 
-1. **IAP review screenshot** — the IAP stays `MISSING_METADATA` without it.
-   Needs a capture of the real paywall, which needs real RevenueCat keys
-   first (with placeholders `proAccess.ts` fails open and the paywall never
-   renders).
-2. **App Privacy nutrition labels** — not settable through the public API.
+1. **App Privacy nutrition labels** — not settable through the public API.
    Simon, in the ASC website. Answer "No" to every collection question.
-3. **The build** — none uploaded yet.
-4. **Sandbox purchase test** — see the note below; needs an explicit
+2. **The build** — none uploaded yet.
+3. **Sandbox purchase test** — see the note below; needs an explicit
    provisioning profile.
+
+### RevenueCat (done 2026-08-19)
+
+Project `f443c37e`. App credentials both report *Valid credentials*: In-App
+Purchase key `74AP8H7329`, App Store Connect API key `84UF5N584V`.
+Entitlement `story` holds product `ls_story_unlock`; offering `default` is
+**current** and carries package `$rc_lifetime`. Verified by asking
+RevenueCat's own API with the shipped public key, which is what the SDK
+does:
+
+```
+current_offering_id = "default"
+packages            = [$rc_lifetime -> ls_story_unlock]
+```
+
+The IAP review screenshot is `assets/store/iap/iap-review-paywall.png`,
+captured from the real paywall on the iPhone 16 Pro Max simulator with the
+live key in the build.
 
 ### Signing gotcha for the sandbox test
 
