@@ -275,9 +275,17 @@ API from this file — do not re-enter by hand:
 
 **Still outstanding:**
 
-1. **App Privacy nutrition labels** — not settable through the public API.
-   Simon, in the ASC website. Answer "No" to every collection question.
-2. **The build** — none uploaded yet.
+1. ~~App Privacy nutrition labels~~ — published 2026-08-19 with the
+   corrected declaration (see the App Privacy section above).
+2. ~~The build~~ — **build 1 uploaded and VALID, attached to version
+   1.0.0.** Archived and exported with *manual* distribution signing
+   against the explicit `Last Seen App Store` profile (id `Q8L5LYPDXV`,
+   cert `QW27QN5A28`) rather than `-allowProvisioningUpdates` automatic
+   signing, which is what lost a distribution private key on Tally.
+   `altool --validate-app` → VERIFY SUCCEEDED, then upload, then confirmed
+   `processingState: VALID` **through the API** — altool's own success
+   message is not trustworthy over a flaky connection.
+   Delivery UUID `e453b713-2781-4ddf-8c63-793362399455`.
 3. ~~Sandbox purchase test~~ — **PASSED 2026-08-19 on the iPhone 11 Pro Max
    (iOS 26.6).** Bought `ls_story_unlock` in sandbox: the paywall dismissed,
    the mailbox opened, and the unlock **survived a force-quit**, which is
