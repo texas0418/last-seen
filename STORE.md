@@ -61,7 +61,7 @@ games get lost among platformers.
 > solved from a single screen. A password hides across three apps. A code
 > two children invented is scattered over a burnt page and an unanswered
 > message. One night is nothing but a forged document, waiting for you to
-> notice which letter changed. Keep something to write on nearby.
+> notice which letter changed.
 >
 > AND A HINT SYSTEM THAT IS A PERSON
 > When you are stuck, text Dae. She knew your sister better than anyone,
