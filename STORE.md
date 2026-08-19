@@ -11,7 +11,7 @@ verified against the drafts below.
 |---|---|---|
 | App name | `Last Seen: Widow's Point` | 30 (uses 24) |
 | Subtitle | `A found-phone detective story` | 30 (uses 29) |
-| Bundle ID | `com.lastseen.app` | — |
+| Bundle ID | `com.simonshih.lastseen` | — |
 | SKU | `lastseen-widowspoint-001` | — |
 | Primary category | Games → Puzzle | — |
 | Secondary category | Games → Adventure | — |
