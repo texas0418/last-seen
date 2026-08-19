@@ -85,7 +85,7 @@ export const THREADS: Thread[] = [
     live: {
       trigger: 'phoneUnlocked',
       steps: [
-        { kind: 'them', body: 'my messages just went to READ. who is this.', delayMs: 4000 },
+        { kind: 'them', body: 'my messages just went to READ. who is this.', delayMs: 1000 },
         {
           kind: 'choice',
           options: [
@@ -96,7 +96,7 @@ export const THREADS: Thread[] = [
         {
           kind: 'them',
           body: 'casey. she talked about you like a phantom limb. ok. i don’t think she jumped. nobody who jokes about plants jumps. ask me anything — i knew her best.',
-          delayMs: 2500,
+          delayMs: 1000,
         },
         { kind: 'end' },
       ],
@@ -196,16 +196,16 @@ export const THREADS: Thread[] = [
     live: {
       trigger: 'booksDone',
       steps: [
-        { kind: 'them', body: 'you opened the books.', delayMs: 2000 },
+        { kind: 'them', body: 'you opened the books.', delayMs: 1000 },
         {
           kind: 'them',
           body: 'quinn couldn’t leave the numbers alone either. look how that ended.',
-          delayMs: 3500,
+          delayMs: 1000,
         },
         {
           kind: 'them',
           body: 'box. marina office. by friday. after that i stop charging by the hour.',
-          delayMs: 3000,
+          delayMs: 1000,
         },
         {
           kind: 'choice',
@@ -215,12 +215,12 @@ export const THREADS: Thread[] = [
           waitFor: 'valeNamed',
           kind: 'them',
           body: 'asking the waterfront about me now.',
-          delayMs: 3000,
+          delayMs: 1000,
         },
         {
           kind: 'them',
           body: 'quinn learned this at the end: going dark doesn’t hide you. it just tells me what you’re holding.',
-          delayMs: 4000,
+          delayMs: 1000,
         },
         { kind: 'end' },
         // after this: nothing. his silence is the cliff.
@@ -275,28 +275,28 @@ export const THREADS: Thread[] = [
         {
           kind: 'them',
           body: 'this number lit up again two days ago. i told myself i wouldn’t ask.',
-          delayMs: 2500,
+          delayMs: 1000,
         },
         {
           kind: 'them',
           body: 'if you’re halloway, stop. if you’re police, you know where i live. if you’re the sister — she said you existed — then prove you’re holding HER phone. what’s printed under my husband’s name, on the flyer in the seamen’s hall window. every word.',
-          delayMs: 4000,
+          delayMs: 1000,
         },
         {
           kind: 'freetext',
           gateId: 'rosa',
           wrong: 'every word. or don’t write back.',
         },
-        { kind: 'them', body: 'okay.', delayMs: 3000 },
+        { kind: 'them', body: 'okay.', delayMs: 1000 },
         {
           kind: 'them',
           body: 'he called me from the boat the morning he died. i kept it. and the police “lost” two pages of their own report — i photographed them at the front desk while the deputy got coffee. quinn is the only other person who ever saw these. now you.',
-          delayMs: 4500,
+          delayMs: 1000,
         },
         {
           kind: 'them',
           body: 'check the phone. i sent everything to her mail. don’t make me regret the one brave thing i’ve done all year.',
-          delayMs: 3000,
+          delayMs: 1000,
         },
         {
           kind: 'choice',
@@ -305,7 +305,7 @@ export const THREADS: Thread[] = [
         {
           kind: 'them',
           body: 'one more thing. she called me the night before they found her car. i didn’t pick up. the message said: if anything happens, the tide book is still there. TIDE BOOK. you’re her sister. what is a tide book?',
-          delayMs: 5000,
+          delayMs: 1000,
         },
         {
           kind: 'choice',
@@ -324,11 +324,11 @@ export const THREADS: Thread[] = [
     live: {
       trigger: 'act2',
       steps: [
-        { kind: 'them', body: 'that phone went dark six days ago. now it reads its mail. interesting.', delayMs: 8000 },
+        { kind: 'them', body: 'that phone went dark six days ago. now it reads its mail. interesting.', delayMs: 1000 },
         {
           kind: 'them',
           body: 'whoever you are: seal it in a box, mail it to the marina office, walk away. there’s money in it for you. there’s worse in it if not.',
-          delayMs: 3000,
+          delayMs: 1000,
         },
         {
           kind: 'choice',
@@ -338,7 +338,7 @@ export const THREADS: Thread[] = [
             { label: '[ Don’t reply ]', goto: 4 },
           ],
         },
-        { kind: 'them', body: 'wrong answer.', delayMs: 2000 },
+        { kind: 'them', body: 'wrong answer.', delayMs: 1000 },
         { kind: 'end' },
       ],
     },
@@ -355,12 +355,12 @@ export const THREADS: Thread[] = [
         {
           kind: 'them',
           body: 'You just logged into her mail. I watch that account for a living. If you’re police, say so. If you’re him, I’m already gone.',
-          delayMs: 2500,
+          delayMs: 1000,
         },
         {
           kind: 'them',
           body: 'If you’re someone who loved her: prove you’ve read what she read. The September AP batch. Two invoices, same day, same amount. One payee is real. Type the name of the one that isn’t.',
-          delayMs: 3000,
+          delayMs: 1000,
         },
         {
           kind: 'freetext',
@@ -370,7 +370,7 @@ export const THREADS: Thread[] = [
         {
           kind: 'them',
           body: 'Okay. Okay. My name is Mara Reyes. I’m a reporter. Quinn was my source, and the story is real, and it is not done. I just sent her backup what I have. Read it, then we talk about what happens to the Halloways.',
-          delayMs: 2500,
+          delayMs: 1000,
         },
         {
           kind: 'choice',
@@ -379,12 +379,12 @@ export const THREADS: Thread[] = [
         {
           kind: 'them',
           body: 'Three files. The lab’s own ledger, the county’s shelf, and the shell company. Quinn could read them. Can you?',
-          delayMs: 2500,
+          delayMs: 1000,
         },
         {
           kind: 'them',
           body: 'When you can name the first report they touched — the number, not vibes — text it to me. Until then I’m writing around a hole.',
-          delayMs: 3000,
+          delayMs: 1000,
         },
         {
           kind: 'freetext',
@@ -394,18 +394,18 @@ export const THREADS: Thread[] = [
         {
           kind: 'them',
           body: 'R-1147. Bed seven. April. He walked into that water eleven days after the lab said nobody should. The story has its spine now — and whoever built that shelf isn’t done with you. Keep reading.',
-          delayMs: 4000,
+          delayMs: 1000,
         },
         {
           waitFor: 'night8',
           kind: 'them',
           body: 'Rosa Soto talked to you. ROSA SOTO. Okay. Listen. The story has a spine, the report has a signature — but legal wants a name on the surveillance. The man who watched your sister for six weeks is a pattern, Casey. Patterns keep schedules. Schedules have names.',
-          delayMs: 2500,
+          delayMs: 1000,
         },
         {
           kind: 'them',
           body: 'Find me the name. One word. I can’t print “T.”',
-          delayMs: 2500,
+          delayMs: 1000,
         },
         {
           kind: 'freetext',
@@ -415,7 +415,7 @@ export const THREADS: Thread[] = [
         {
           kind: 'them',
           body: 'Terrence Vale. Twenty-two years of harbor patrol, walks into Halloway’s the same month the shell company is born. I have his pension record and his parking spot. He’s real, he’s paid, and he’s about to be famous. If he texts you again — do not answer.',
-          delayMs: 4500,
+          delayMs: 1000,
         },
         {
           kind: 'choice',
@@ -424,13 +424,13 @@ export const THREADS: Thread[] = [
         {
           kind: 'them',
           body: 'Then we work until Thursday. — M',
-          delayMs: 2500,
+          delayMs: 1000,
         },
         {
           waitFor: 'night9',
           kind: 'them',
           body: 'Rosa said “tide book.” TIDEWATER — she named that mailbox so her family would know it was for you. Get inside it. Then find me the transmittals: Quinn always said the signature was the one honest thing about him. Who signed for the lab results — the county copies?',
-          delayMs: 2500,
+          delayMs: 1000,
         },
         {
           kind: 'freetext',
@@ -440,7 +440,7 @@ export const THREADS: Thread[] = [
         {
           kind: 'them',
           body: 'R. Halloway. Received and signed ten days before he sent a crew into that water. That isn’t negligence, Casey — it’s arithmetic. The story files Thursday morning. Whatever else is in that account — the drafts, the things written in a language I can’t read — those are yours, not mine.',
-          delayMs: 4500,
+          delayMs: 1000,
         },
         {
           kind: 'choice',
@@ -450,7 +450,7 @@ export const THREADS: Thread[] = [
           waitFor: 'night10',
           kind: 'them',
           body: 'One more thing, and then I stop asking. The receipt in that account. Flowers, the 14th. Her car was found on the 12th. I have read it forty times. Tell me where she stood when she paid — or tell me I’m wrong to hope.',
-          delayMs: 2500,
+          delayMs: 1000,
         },
         {
           kind: 'freetext',
@@ -460,7 +460,7 @@ export const THREADS: Thread[] = [
         {
           kind: 'them',
           body: 'Tidepool Florals. In store. Cash. Two days after. — I’m not printing that part. Some things aren’t the story; they’re yours. Go read the draft.',
-          delayMs: 4000,
+          delayMs: 1000,
         },
         {
           kind: 'choice',
@@ -471,7 +471,7 @@ export const THREADS: Thread[] = [
         {
           kind: 'them',
           body: 'Call me when you decide who this ends for. — M',
-          delayMs: 2500,
+          delayMs: 1000,
         },
         { kind: 'end' },
       ],
@@ -489,7 +489,7 @@ export const THREADS: Thread[] = [
         {
           kind: 'them',
           body: 'Ms. Mercer — Casey. Roy Halloway’s office says someone up north signed for a package in your name. If you are in possession of your sister’s phone, that is evidence in an open case. Bring it in. We’ll take it from here.',
-          delayMs: 20000,
+          delayMs: 1000,
         },
         {
           kind: 'choice',
@@ -501,7 +501,7 @@ export const THREADS: Thread[] = [
         {
           kind: 'them',
           body: 'Good. Side door, after six. No need to make a circus of it. Kind of you to be reasonable — grief makes people imaginative.',
-          delayMs: 2500,
+          delayMs: 1000,
         },
         {
           kind: 'choice',
@@ -529,12 +529,12 @@ export const THREADS: Thread[] = [
           echo: 'still game',
           wrong: 'Wrong number.',
         },
-        { kind: 'them', body: '…', delayMs: 6000 },
-        { kind: 'them', body: 'hi, bird.', delayMs: 4000 },
+        { kind: 'them', body: '…', delayMs: 1000 },
+        { kind: 'them', body: 'hi, bird.', delayMs: 1000 },
         {
           kind: 'them',
           body: 'you actually did it. i hoped and i was terrified, both. i’m safe. i can’t say more unless you already know it. what happens now is the only choice that ever mattered:',
-          delayMs: 3000,
+          delayMs: 1000,
         },
         // 4 — the choice. Confirms are IN-FICTION (Quinn asks to be sure);
         // every resolved branch flows to 13, the reopen beat, so the player
@@ -551,7 +551,7 @@ export const THREADS: Thread[] = [
         {
           kind: 'them',
           body: 'say it plain. no taking it back. she prints everything — the town, the sheriff, our name next to eli’s in the paper.',
-          delayMs: 2500,
+          delayMs: 1000,
         },
         {
           kind: 'choice',
@@ -565,7 +565,7 @@ export const THREADS: Thread[] = [
         {
           kind: 'them',
           body: 'you’re sure. i stay dead. you grieve me in public for the rest of your life, and mom never knows.',
-          delayMs: 2500,
+          delayMs: 1000,
         },
         {
           kind: 'choice',
@@ -579,7 +579,7 @@ export const THREADS: Thread[] = [
         {
           kind: 'them',
           body: 'if you really know, you don’t have to say the town to me. say it to the phone. it’s been listening this whole time anyway.',
-          delayMs: 3000,
+          delayMs: 1000,
         },
         {
           kind: 'freetext',
@@ -590,7 +590,7 @@ export const THREADS: Thread[] = [
         {
           kind: 'them',
           body: '…still there? it doesn’t feel finished. the other doors are still on the table.',
-          delayMs: 2500,
+          delayMs: 1000,
         },
         {
           kind: 'choice',
