@@ -1,371 +1,429 @@
-# LAST SEEN: Widow's Point — Step-by-Step Walkthrough (v2 · Twelve Nights)
+# LAST SEEN: Widow's Point — Walkthrough (v2 · Twelve Nights)
 
-**⚠️ TOTAL SPOILERS.** Every gate in play order: where to go, what to read,
-what to conclude, what to type. Written for testing — a tester's checklist
-is at the bottom.
+**⚠️ TOTAL SPOILERS.** Every step says exactly where to go, what to tap, and
+where the answer gets typed.
 
-**How nights work:** each night opens with a title card ("NIGHT V — THE
-BOOKS") and a one-line recap. The next night unlocks the moment you finish
-the last beat of the current one — usually a tap on a reply chip. If no
-card appears, you haven't finished the night.
+## Before you start — the phone's layout
 
-**Getting hints in-game:** text Dae. Her thread grows "Ask about…" chips for
-whatever gate you're currently stuck on. Two nudges per gate, never the
-answer.
+Home screen apps (tap the ⌂ back arrow "‹" at top-left to return):
+
+| Icon | Label | What it is |
+|---|---|---|
+| 💬 | **Messages** | All text threads. Most answers get typed here. |
+| ✉️ | **Mail** | Two tabs: **Personal** and **🔒 tidewater.ledger** |
+| 📞 | **Phone** | **This is the voicemail app.** Not a dialer. |
+| 📝 | **Notes** | Quinn's notes |
+| 🌁 | **Photos** | ~21 photos. Tap one to open full-screen, pinch to zoom. |
+| 📅 | **Calendar** | Her appointments |
+| ⚙️ | **Settings** | Accounts, Cloud trash, endings count |
+
+**How nights work:** a night opens with a title card (NIGHT V — THE BOOKS).
+The next night unlocks the moment you tap the last reply chip of the current
+one. If no card appears, you haven't tapped it yet.
+
+**Typing answers into a text thread:** open the thread and scroll to the
+bottom. If someone is waiting on you, there's a text box with a ↑ button.
+**If there's no text box, they're still "typing" — wait a few seconds.**
+
+**Hints:** open Messages → **Dae 🌙**. Her thread grows "Ask about…" chips
+for whatever gate you're stuck on. Two nudges each, never the answer.
 
 ---
 
 # NIGHT I — THE ENVELOPE
-### Gate: lock screen · `2008`
+
+**Goal:** unlock the phone.
+**Answer goes:** the keypad on the lock screen.
 
 1. Tap through Casey's five intro paragraphs.
-2. **Lock screen → tap the wallpaper photo** (the photo-booth strip). It
-   opens full-screen.
-3. **Pinch to zoom into the strip's bottom white border.** Tiny print, like
-   a real souvenir: `© BRENNAN CO. FAIR — SOUVENIR STRIP — 2008`.
-4. The intro said she set every PIN to "the best day." The best day was the
-   fair. **Type `2008`.**
+2. On the lock screen, **tap the wallpaper photo** (the photo-booth strip of
+   two girls). It opens full-screen.
+3. **Pinch to zoom into the wide white border at the BOTTOM of the strip.**
+   Tiny printed line: `© BRENNAN CO. FAIR — SOUVENIR STRIP — 2008`.
+4. Tap **Done** (top right) to close the photo.
+5. The intro said she set every PIN to "the best day." That was the fair.
+   **Tap `2` `0` `0` `8` on the keypad.**
 
-**NIGHT II opens.**
+**→ Night II opens automatically.**
 
 ---
 
 # NIGHT II — UNREAD
-### No gate. This night is reading.
 
-Read everything; it's all setup for later nights:
+**Goal:** none. This night is reading. No answer to type.
 
-- **Messages:** Dae 🌙 (banter, then grief), M 🌊 (reads like an affair),
-  T (six weeks of menace), Marcus Halloway ("what you took"), Slater's
-  Pharmacy, and **Casey ♡** — your own thread, three years of her messages
-  and no replies, ending in what looks like gibberish.
-- **Voicemail:** Mom (Oct 2), Mom (Oct 11), Dae (Oct 13), Carol from the
-  Halloway front office. **Press play** — they have audio.
-- **Photos:** ~21 images. Most are noise. The budgie, the burnt page, the
-  memorial flyer, and the ferry timetable are not.
-- **Notes / Calendar:** her life mid-stride.
+Read all of it — every later night depends on it:
 
-**When Dae texts you live, answer her.** Either reply works; she becomes
-your hint channel afterward.
+1. **Open Messages.** Read every thread: `Dae 🌙`, `M 🌊`, `T`,
+   `Marcus Halloway`, `Slater's Pharmacy`, and **`Casey ♡`** — your own
+   thread, three years of her messages and no replies, ending in gibberish.
+2. **Open Phone (📞).** Four voicemails: `Mom` (Oct 2), `Mom` (Oct 11),
+   `Dae 🌙` (Oct 13), `Halloway Seafood — Front Office`. **Tap one, then
+   press play** — they have real audio.
+3. **Open Photos.** ~21 images. Most are noise. Tap a few; pinch to zoom.
+4. **Open Notes and Calendar.** A life mid-stride.
+5. **Go back to Messages → `Dae 🌙`.** She texts you live. **Tap either
+   reply chip** ("It's Casey…" or "A friend…"). She becomes your hint line.
 
-**NIGHT III opens** when Dae's script finishes.
+**→ Night III opens when Dae's conversation finishes.**
 
 ---
 
 # NIGHT III — PASSWORD
-### Gate: personal mail · `ozzy2014`
 
-Three surfaces, one piece each:
+**Goal:** open Quinn's email.
+**Answer goes:** Mail → **Personal** tab → the password field.
 
-1. **Messages → Dae 🌙 → scroll to Sep 21.**
+1. **Messages → `Dae 🌙` → scroll UP to Sep 21.** Read:
    Dae: *"you still name every password after that dumb bird??"*
    Quinn: *"…now it's him plus the year we lost the house."*
-   → **Formula: BIRD'S NAME + YEAR THE HOUSE WAS LOST.**
-2. **Photos → the blue budgie on the curtain rod.** Caption: *"Ozzy. King."*
-   → **Name: OZZY.** (King is a joke title; `ozzyking2014` also accepted.)
-3. **Voicemail → Mom, Oct 2, 2026.** *"…twelve years this fall since we
-   lost that house."*
-   → **Math: the voicemail is dated 2026. 2026 − 12 = 2014.**
-4. **Mail → Personal → type `ozzy2014`.**
+   → **The formula: BIRD'S NAME + THE YEAR THE HOUSE WAS LOST.**
+2. **Photos → the sky-blue budgie on a curtain rod.** Tap it. The caption
+   reads *"Ozzy. King."* → **The bird's name is OZZY.**
+3. **Phone (📞) → `Mom`, Oct 2, 2026.** She says *"twelve years this fall
+   since we lost that house."* → **The row is dated 2026. 2026 − 12 = 2014.**
+4. **Open Mail → Personal tab → tap the password field → type `ozzy2014`
+   → tap Sign in.**
 
-**Then read the new inbox.** Important: the **"Fwd: AP batch — September"**
-attachment (two invoices), the pharmacy statement (the pills were Mom's —
-that worry was false), and **"Storage 90% full"**, which names a second
-account: `tidewater.ledger@`. Remember it.
+**Now read the inbox.** Three emails matter most:
+- **"Fwd: AP batch — September (do not delete)"** from Quinn Mercer — open
+  the attachment.
+- **"Itemized statement — Rx #7741"** from Slater's Pharmacy — the pills
+  were **Mom's**. That worry was false.
+- **"Your storage is 90% full"** from PelicanMail — it names a **second
+  account: `tidewater.ledger@`**. Remember that.
 
-**NIGHT IV opens.**
+**→ Night IV opens automatically.**
 
 ---
 
 # NIGHT IV — M 🌊
-### Gate: the stranger's test · `coastal remediation`
 
-A new thread appears: **Unknown · (360) 555-0177**. Not M — you don't know
-who this is yet. She saw someone log into Quinn's mail and tests you:
-*"The September AP batch. Two invoices, same day, same amount. One payee is
-real. Type the name of the one that isn't."*
+**Goal:** pass a stranger's test.
+**Answer goes:** Messages → **`Unknown · (360) 555-0177`** → text box.
 
-1. **Mail → Personal → "Fwd: AP batch — September" → open the attachment.**
-2. Both dated Sep 30, both $4,800:
+A new thread appears from `Unknown · (360) 555-0177`. (This is NOT the
+`M 🌊` thread — you don't know who this is yet.) She asks:
+*"Two invoices, same day, same amount. Type the name of the one that isn't."*
+
+1. **Mail → Personal → "Fwd: AP batch — September (do not delete)" → tap
+   the attachment.**
+2. Two invoices, both Sep 30, both $4,800:
    - **Brennan Analytical** — a real water-testing lab.
    - **Coastal Remediation LLC** — *"consulting — resample & filing."*
-3. A lab tests water once and files it. A twin invoice to "re-sample and
-   re-file" is somebody paying to *replace* results.
-4. **Type `coastal remediation`.**
+3. A lab tests the water once and files the result. A twin invoice for the
+   same money to "re-sample and re-file" is somebody paying to **replace**
+   results. The fake payee is the shell company.
+4. **Messages → `Unknown · (360) 555-0177` → type `coastal remediation`
+   → tap ↑.**
 
-**Payoff:** *"My name is Mara Reyes. I'm a reporter. Quinn was my source."*
-The affair was cover. Go re-read M 🌊's thread.
+She reveals herself: *"My name is Mara Reyes. I'm a reporter."* The affair
+was cover. Go re-read `M 🌊` with new eyes.
 
-**To open NIGHT V:** stay in Mara's thread and tap **"I'll read all of it."**
+**→ To open Night V: stay in that same thread and tap the chip
+"I'll read all of it."**
 
 ---
 
 # NIGHT V — THE BOOKS
-### Gate: which report was swapped · `r1147`
 
-Mara drops three files into your inbox. Read them side by side.
+**Goal:** find which lab report was forged.
+**Answer goes:** Messages → **`Unknown · (360) 555-0177`** (Mara — same
+thread as Night IV) → text box.
 
-1. **Mail → "backup 1/3 — what the lab issued."** The lab's own log:
+Mara sends three emails. **Open Mail → Personal.**
+
+1. **"backup 1/3 — what the lab issued"** → open the attachment. This is
+   what the lab actually wrote:
    `R-1147-B · Apr 08 · Bed 7 · FAIL — biotoxin exceedance. worker contact
    not advised.`
-2. **Mail → "backup 2/3 — what the county shelf says."** The official
-   filing index: `Bed 7 · Apr 2025 · R-1147-C · pass`.
-3. **Same bed. Same month. One letter different — and the verdict flipped.**
+2. **"backup 2/3 — what the county shelf says"** → open the attachment.
+   This is the official record:
+   `Bed 7 · Apr 2025 · R-1147-C · pass`
+3. **Compare them.** Same bed, same month — but the last letter changed
+   and the verdict flipped from FAIL to pass.
 4. **Notes → "ledger rules"** confirms the trick:
    *"B is born. C is changed. nothing gets a C without somebody paying for
    the edit."*
-5. Mara wants *the first* report they touched. Scanning both lists top to
-   bottom, R-1147 is the first mismatch (June's R-1155 is the second).
-6. **Type `r1147`** (r-1147, r1147b, 1147 all accepted).
+5. Mara wants **the first** report they touched. Read both lists top to
+   bottom: **R-1147** is the first mismatch. (June's R-1155 is the second —
+   not the answer.)
+6. **Messages → `Unknown · (360) 555-0177` → type `r1147` → tap ↑.**
+   *(r-1147, r1147b, 1147 also accepted.)*
 
-Also read **backup 3/3** — the shell company was formed one month before
-Eli died, and its first invoice is "filing amendment — rush."
+Also open **"backup 3/3 — the shell"** — the company was formed one month
+before Eli died, and its first invoice was "filing amendment — rush."
 
-**Cliff:** T texts for the first time since Quinn vanished — *"you opened
-the books."*
-
-**To open NIGHT VI:** open T's thread, let his three messages arrive, then
-tap **"[ Don't reply ]"**.
+**→ To open Night VI: open Messages → `T`. Wait for his three messages to
+arrive, then tap the chip "[ Don't reply ]".**
 
 ---
 
 # NIGHT VI — MARCUS
-### Gate: cloud PIN · `0214`
 
-New material surfaces across four apps: Marcus's *"I signed the log as me"*
-text, his **voicemail (Oct 11)**, dread entries on the **Calendar**
-(`R.H. — office · bring nothing.` and the unnamed `Oct 12, 5:00 AM`), and a
-locked recovery in Settings.
+**Goal:** recover a deleted message.
+**Answer goes:** **Settings → Cloud trash → the PIN field.**
 
-1. **Messages → Dae 🌙** — a new exchange from Sep 14:
-   *"reset it. everything's mom now — where she is."*
+1. **Messages → `Dae 🌙`.** A new exchange from Sep 14 has appeared:
+   *"locked out of your own cloud AGAIN… new pin, again??"*
+   Quinn: *"reset it. everything's mom now — **where she is**."*
    → **The PIN is about WHERE Mom is, not who she is.**
-2. **Calendar → "mom — harborview"** · *rm 214. she likes the window chair.*
-   → **Room 214.**
-3. The pad wants four digits and the room has three. **Pad it: `0214`.**
-4. **Settings → Cloud trash → enter `0214` → Unlock.**
+2. **Open Calendar → "mom — harborview"** · detail: *"rm 214. she likes the
+   window chair."* → **Room 214.**
+3. The PIN pad wants **four** digits and the room number has three.
+   **Pad it: `0214`.**
+4. **Open Settings → tap "Cloud trash" → type `0214` in the field → tap
+   Unlock.**
 
-**Payoff:** Marcus's deleted message is restored — he'd been copying the
-Soto records too, and he'll testify. **Read the recovery stamp:** deleted by
-the account owner, Oct 11, 11:59 PM. One minute after he sent it. *Quinn*
-erased it.
+Marcus's deleted message is restored to his thread — he'd been copying the
+Soto records too, and he'll testify. **Open Messages → `Marcus Halloway`
+and read the recovery stamp:** deleted by the account owner, Oct 11,
+11:59 PM. One minute after he sent it. **Quinn** erased it.
 
-**NIGHT VII opens.**
+Also worth reading tonight: **Phone (📞) → `Marcus Halloway`** voicemail,
+and the Calendar's `R.H. — office · bring nothing.` and the unnamed
+`Oct 12, 5:00 AM`.
+
+**→ Night VII opens automatically.**
 
 ---
 
 # NIGHT VII — ROSA
-### Gate: the widow's test · `the water doesn't forgive`
 
-Rosa Soto — Eli's widow — texts the phone. Her archived thread shows Quinn
-approached her in August and got refused. Now she wants proof you're holding
+**Goal:** earn a widow's trust.
+**Answer goes:** Messages → **`Rosa Soto`** → text box.
+
+A new thread from `Rosa Soto` — Eli's widow. She wants proof you're holding
 Quinn's phone: *"what's printed under my husband's name, on the flyer in the
 seamen's hall window. every word."*
 
-1. **Photos → the memorial flyer taped inside the window.** Tap, zoom under
-   his name and dates — past `ELI SOTO · 1991–2025 · CREW, F/V DORA MAE` to
-   the smaller line beneath.
-2. **Type `the water doesn't forgive`.**
+1. **Photos → the photocopied memorial flyer taped inside a window** (the
+   young fisherman in orange rain gear). **Tap it, then pinch-zoom BELOW
+   his name and dates** — past `ELI SOTO · 1991–2025 · CREW, F/V DORA MAE`
+   — to the smaller line underneath.
+2. It reads: **the water doesn't forgive.**
+3. **Messages → `Rosa Soto` → type `the water doesn't forgive` → tap ↑.**
 
-**Payoff — the heart of the case:**
-- **Voicemail → Eli Soto** (forwarded). Recorded the morning he died, wind
-  and diesel behind him: *"water smells like a battery… the office said pull
-  anyway… tell your mother we'll come Sunday. Love you."*
-- **Mail → "what they lost"** — Rosa's photos of the two report pages that
-  went missing: dispatch time overwritten `06:24 → 07:58`, a deckhand's
-  statement struck through, `[see county filing R-1147-C]`, and the
-  reviewing officer: **R. DUNMORE, SHERIFF**.
+**What she gives you:**
+- **Phone (📞) → `Eli Soto (fwd: R. Soto)`** — his last voicemail, the
+  morning he died, wind and diesel behind him.
+- **Mail → Personal → "what they lost"** from Rosa Soto — photos of the two
+  report pages that went missing: dispatch time overwritten `06:24 → 07:58`,
+  a deckhand's statement struck through, and the reviewing officer:
+  **R. DUNMORE, SHERIFF.**
 
-**Cliff:** Quinn called Rosa the night before. *"If anything happens, the
-tide book is still there."* **What's a tide book?**
-
-**To open NIGHT VIII:** tap **"I don't know yet. But I'll find it."**
+**→ To open Night VIII: back in `Rosa Soto`, tap the chip
+"I don't know yet. But I'll find it."**
 
 ---
 
 # NIGHT VIII — T
-### Gate: name the watcher · `vale`
 
-Mara comes back: legal needs a name on the surveillance. *"I can't print 'T.'"*
+**Goal:** give the watcher a name.
+**Answer goes:** Messages → **`Unknown · (360) 555-0177`** (Mara) → text box.
 
-1. **Messages → T** — re-read six weeks as a *pattern*: he knows her
+Mara comes back: legal needs a name. *"I can't print 'T.'"*
+
+1. **Messages → `T`.** Re-read six weeks as a **pattern** — he knows her
    sweater, her coat, her office hours, her parking. A watcher on a
-   schedule. New archived line: *"nice parking job."*
-2. **Photos → the marina lot at night** (her car, shot from across the
-   street). Zoom the figure at the fence: **a high-visibility jacket.**
-   Harbor patrol.
-3. **Mail → "Waterfront Notes — March 2025."** Between the dredge schedule
-   and Chowder Friday: *"Harbor Patrol's T. Vale has retired… He joins
-   Halloway Seafood as a security consultant."*
-4. **Type `vale`** (tvale / terrencevale accepted).
+   schedule. A new archived line has appeared: *"nice parking job."*
+2. **Photos → the car alone in a marina parking lot at night.** Tap it,
+   **zoom the figure standing at the fence on the right**: he's wearing a
+   **high-visibility jacket.** Harbor patrol.
+3. **Mail → Personal → "Waterfront Notes — March 2025"** from Port Brennan
+   Working Waterfront. Between the dredge schedule and Chowder Friday:
+   *"Harbor Patrol's **T. Vale** has retired… He joins Halloway Seafood as
+   a security consultant."*
+4. **Messages → `Unknown · (360) 555-0177` → type `vale` → tap ↑.**
+   *(tvale, terrence vale also accepted.)*
 
-**Payoff:** Mara has his pension record and his parking spot. He walked into
-Halloway's the same month the shell company was born.
+T sends two final messages — then never texts again. The silence is the
+point.
 
-**Cliff:** T sends two last messages — *"going dark doesn't hide you"* — and
-then never texts again. The silence is the point.
-
-**To open NIGHT IX:** tap **"He gave me until Friday."**
+**→ To open Night IX: in Mara's thread, tap the chip
+"He gave me until Friday."**
 
 ---
 
 # NIGHT IX — TIDEWATER
-### Gates: hidden account · `doramae1991` — then the signature · `r halloway`
 
-**Rosa's "tide book" = `tidewater.ledger@`.** Go open it.
+**Two gates tonight.**
 
-**Mail → tidewater.ledger tab.** The password hint is gibberish:
-`gsv ylzg. dsvm sv dzh ylim.`
+## IX-a — open the hidden mailbox
+**Answer goes:** Mail → **🔒 tidewater.ledger** tab → the password field.
 
-**First, crack the sisters' cipher** (if you haven't already):
-1. **Photos → the burnt notebook page.** Zoom: crayon title *"THE GAME —
-   RULE 1: never write the real thing."* Below in pencil: `A—Z`, `B—Y`,
-   `C—X` — then fire eats the page.
-2. **The rule: the alphabet mirrored.** A↔Z, B↔Y, C↔X, D↔W, E↔V, F↔U, G↔T,
-   H↔S, I↔R, J↔Q, K↔P, L↔O, M↔N.
-3. **Prove it: Messages → Casey ♡ →** `XZHVB. KOVZHV.` decodes to
-   **CASEY. PLEASE.**
-4. **Now the hint:** `gsv ylzg. dsvm sv dzh ylim.` → **"the boat. when he
-   was born."**
-5. **Photos → the memorial flyer:** the boat is **DORA MAE**, born **1991**.
-6. **Type `doramae1991`.**
+Rosa's "tide book" **is** the second account from Night III.
+**Open Mail → tap the `🔒 tidewater.ledger` tab.** The password hint is
+gibberish: `gsv ylzg. dsvm sv dzh ylim.`
 
-**Then read the archive** — the tide book, numbered exhibits, the burner
-confirmation (a line ending **0412**), the florist receipt, and in Drafts,
-one unsent message that's pure gibberish.
+**Crack the sisters' cipher first:**
+1. **Photos → the burnt half-page of notebook paper on carpet.** Tap,
+   zoom. Crayon: *"THE GAME — RULE 1: never write the real thing."* Below
+   in pencil: `A—Z`, `B—Y`, `C—X` — then the fire eats the rest.
+2. **The rule is the alphabet mirrored:**
+   `A↔Z  B↔Y  C↔X  D↔W  E↔V  F↔U  G↔T  H↔S  I↔R  J↔Q  K↔P  L↔O  M↔N`
+3. **Prove it: Messages → `Casey ♡`.** Her sign-off `XZHVB. KOVZHV.`
+   decodes to **CASEY. PLEASE.** It works.
+4. **Now decode the login hint** `gsv ylzg. dsvm sv dzh ylim.` →
+   **"the boat. when he was born."**
+5. **Photos → the memorial flyer** (Night VII): the boat is **DORA MAE**,
+   born **1991**.
+6. **Mail → 🔒 tidewater.ledger → type `doramae1991` → Sign in.**
 
-**Mara asks who signed for the lab results.**
-1. **Mail → tidewater → "the tide book — everything, in order" → exhibit 5**
-   and the **transmittal scan**: *Attn: R. Halloway (SIGNED, RECEIVED Apr 2
-   2025) — "Bed 7 exceedances: DO NOT HARVEST"* — stamped **RECEIVED TEN
-   DAYS BEFORE THE DREDGE DETAIL**.
-2. **Type `r halloway`** (roy halloway accepted).
+## IX-b — name the signature
+**Answer goes:** Messages → **`Unknown · (360) 555-0177`** (Mara) → text box.
 
-**To open NIGHT X:** tap **"Understood."**
+7. **Mail → tidewater tab → "the tide book — everything, in order"** from
+   Quinn Mercer. Read the numbered exhibits, then **open the attachment
+   `transmittal_scan.pdf`**: *Attn: **R. Halloway** (SIGNED, RECEIVED Apr 2
+   2025)* — *"Bed 7 exceedances: DO NOT HARVEST"* — stamped **RECEIVED TEN
+   DAYS BEFORE THE DREDGE DETAIL.**
+8. **Messages → `Unknown · (360) 555-0177` → type `r halloway` → tap ↑.**
+   *(roy halloway also accepted.)*
+
+While you're in the tidewater inbox, also read **"Receipt — order #3117"**
+(Tidepool Florals) and **"Your prepaid line is active"** (NorthTel — a
+number ending **0412**).
+
+**→ To open Night X: in Mara's thread, tap the chip "Understood."**
 
 ---
 
 # NIGHT X — THE FLOWERS
-### Gate: where she stood on the 14th · `tidepool florals`
 
-Mara's hardest question: *"Her car was found on the 12th. Tell me where she
-stood when she paid — or tell me I'm wrong to hope."*
+**Goal:** prove where Quinn stood two days after she died.
+**Answer goes:** Messages → **`Unknown · (360) 555-0177`** (Mara) → text box.
 
-1. **Mail → tidewater → "Receipt — order #3117."** Read the date and the
-   method: **Oct 14, 9:12 AM — paid IN STORE, cash.** Two days *after* she
-   died. You cannot pay in-store without standing in the store.
-2. **Voicemail → Mom, Oct 15** — *"Thank you for the flowers, honey. Lilies,
-   like the fair."* Not grief. A delivery that actually happened.
-3. **Type `tidepool florals`** (tidepool accepted).
+Mara: *"Her car was found on the 12th. Tell me where she stood when she
+paid — or tell me I'm wrong to hope."*
 
-**Payoff:** *"I'm not printing that part. Some things aren't the story;
-they're yours. Go read the draft."*
+1. **Mail → 🔒 tidewater.ledger → "Receipt — order #3117"** from Tidepool
+   Florals. Read the date and the payment method:
+   **Oct 14, 9:12 AM — paid IN STORE, cash.** That's two days **after** she
+   disappeared. You cannot pay in-store without standing in the store.
+2. **Phone (📞) → `Mom`, Oct 15, 2026.** *"Thank you for the flowers,
+   honey. Lilies, like the fair."* The flowers really arrived.
+3. **Messages → `Unknown · (360) 555-0177` → type `tidepool florals`
+   → tap ↑.** *(tidepool also accepted.)*
 
-**To open NIGHT XI:** tap **"It's in our language. I'll read it alone."**
+Mara: *"I'm not printing that part. Some things aren't the story; they're
+yours. Go read the draft."*
+
+**→ To open Night XI: tap the chip "It's in our language. I'll read it
+alone."**
 
 ---
 
 # NIGHT XI — THE DRAFT
-### Gate: the full hand-decode
 
-**Mail → tidewater → Drafts → "Draft — never sent."**
+**Goal:** decode a 500-character message by hand.
+**Where:** Mail → 🔒 tidewater.ledger → **"Draft — never sent."** Tap it and
+the decoder opens.
 
-1. Tap any letter **in the message** — every instance highlights — then type
-   what it really is on the A–Z keyboard below. It fills everywhere at once.
-2. ⌫ clears the selected letter; **"start over"** (with confirm) wipes the
-   whole mapping; a duplicate guess flags red in place.
-3. Use the mirror (Night IX). Every letter must be mapped — under five
-   remaining the top line counts down (*"four letters are still lying to
-   you."*).
-4. When it's done: *"the letters have stopped fighting you."* — **and the
-   mapping locks permanently.**
+**How the decoder works:**
+1. **Tap any letter inside the message.** Every copy of that letter
+   highlights, and the top line says *"every 'G' is lit."*
+2. **Tap the real letter on the A–Z keyboard below.** It fills in
+   everywhere at once.
+3. **⌫** clears the selected letter. **"start over"** (bottom, with a
+   confirm) wipes the whole mapping.
+4. If you assign the same letter twice, both flag red — that's a warning,
+   not a block.
+5. Use the mirror from Night IX. Under five letters remaining, the top line
+   counts down: *"four letters are still lying to you."*
+6. When it's finished: *"the letters have stopped fighting you."* — **and
+   it locks permanently.**
 
-**Decoded, it says:** she's alive, what Halloway did, the choice she's
+**The decoded draft says:** she's alive, what Halloway did, the choice she's
 leaving you, a number ending **0412**, and **"say the old words."**
 
-**NIGHT XII opens.** A new thread is waiting: **Unknown · ···-0412**.
+**→ Night XII opens automatically. A new thread is waiting in Messages.**
 
 ---
 
 # NIGHT XII — STILL GAME
-### Gate: the old words · `still game`
 
-The words are **not** in the draft.
+**Goal:** answer a three-year-old question.
+**Answer goes:** Messages → **`Unknown · ···-0412`** → text box.
 
-1. **Messages → Casey ♡ → the last message**, Mar 8, 2024: `HGROO TZNV?`
-2. Decode with the mirror: **"STILL GAME?"** — the question Quinn asked
-   three years ago that you never answered.
-3. **Type `still game`.** You're answering it now.
+The old words are **not** in the draft.
 
-### The four endings
+1. **Messages → `Casey ♡` → scroll to the very last message**, dated
+   Mar 8, 2024: `HGROO TZNV?`
+2. **Decode it with the mirror:** H→S, G→T, R→I, O→L, O→L = **STILL**;
+   T→G, Z→A, N→M, V→E = **GAME**. → **"STILL GAME?"** — the question Quinn
+   asked three years ago that you never answered.
+3. **Messages → `Unknown · ···-0412` → type `still game` → tap ↑.**
 
-Quinn lays out the choice. Each option asks you to say it plain before it
-counts — that's the confirmation, in her words, not a dialog box.
+## The four endings
 
-- **ENDING 1 — LOUD:** *"I'm sending everything to Mara."* → *"Send it. All
-  of it. This ends loud."*
-- **ENDING 2 — QUIET:** *"I'll burn it. Stay a ghost."* → *"Burn it. Stay a
-  ghost. Stay safe."*
-- **ENDING 3 — THE FAIR:** *"I know where you are. I'm coming."* → she says
-  don't tell *her* the town, tell the phone. **Answer below.**
-- **ENDING 4 — PROCEDURE:** any time in act 3, open **Sheriff Dunmore's
-  thread** and comply. The trap with no puzzle.
+Quinn lays out the choice. Each option then asks you to say it plain — that
+second tap is the confirmation, in her words.
+
+- **ENDING 1 — LOUD:** tap *"I'm sending everything to Mara. All of it."*
+  → then *"Send it. All of it. This ends loud."*
+- **ENDING 2 — QUIET:** tap *"I'll burn it. Stay a ghost. Stay safe."*
+  → then *"Burn it. Stay a ghost. Stay safe."*
+- **ENDING 3 — THE FAIR:** tap *"I know where you are. I'm coming."*
+  → she says don't tell *her* the town, tell the phone. **See below.**
+- **ENDING 4 — PROCEDURE:** any time after Night IX, open
+  **Messages → `Sheriff R. Dunmore`** and comply. The trap with no puzzle.
 
 **After each epilogue** (marked `ENDING N OF 4`), Quinn texts again —
-*"…still there? it doesn't feel finished."* — and the three options return.
-All four are reachable in one playthrough. **Settings** counts them.
+*"…still there? it doesn't feel finished."* — and the three options come
+back. **All four are reachable in one playthrough.** Settings shows how
+many you've seen.
 
-### Ending 3's answer · `kestrel bay`
+## Ending 3's answer
+**Answer goes:** Messages → **`Unknown · ···-0412`** → text box.
 
 Three clues, each answering one small question:
-
-1. **What does the name look like?** The intro: the envelope's postmark is
-   rain-smudged to `K————L B——`. Two words, K…L then B…
-2. **What are the candidates?** **Photos → the ferry timetable**: Port
-   Brennan · Tessley · **Kestrel Bay** · Ardenwall. Only one fits the
-   smudge. (The 5:40 AM circled twice in pen is how she left.)
-3. **Is she actually there?** The florist receipt — in store, cash, Oct 14.
-   She stood in that shop, in that town, two days after she died.
-4. **Type `kestrel bay`.**
+1. **What does the name look like?** The intro (Night I): the envelope's
+   postmark is rain-smudged to `K————L B——`. Two words — first starts with
+   K and ends with L, second starts with B.
+2. **What are the candidates?** **Photos → the ferry timetable board.**
+   Zoom the stops: Port Brennan · Tessley · **Kestrel Bay** · Ardenwall.
+   Only one fits the smudge. (The `5:40 AM` circled twice in pen is how she
+   left town.)
+3. **Was she actually there?** The florist receipt — in store, cash,
+   Oct 14. She stood in that shop, in that town, two days after she died.
+4. **Type `kestrel bay` → tap ↑.**
 
 ---
 
-# Quick answer key
+# Where every answer gets typed
 
-| Night | Gate | Answer |
+| # | Answer | Exactly where |
 |---|---|---|
-| I | Lock screen | `2008` |
-| III | Personal mail | `ozzy2014` |
-| IV | Mara's test | `coastal remediation` |
-| V | The swapped report | `r1147` |
-| VI | Cloud PIN | `0214` |
-| VII | Rosa's test | `the water doesn't forgive` |
-| VIII | The watcher | `vale` |
-| IX | tidewater.ledger | `doramae1991` |
-| IX | The signature | `r halloway` |
-| X | The fourteenth | `tidepool florals` |
-| XI | The draft | full hand-decode |
-| XII | The burner | `still game` |
-| XII | The town (Ending 3) | `kestrel bay` |
+| 1 | `2008` | Lock screen keypad |
+| 2 | `ozzy2014` | Mail → **Personal** tab → password field |
+| 3 | `coastal remediation` | Messages → **Unknown · (360) 555-0177** |
+| 4 | `r1147` | Messages → **Unknown · (360) 555-0177** |
+| 5 | `0214` | **Settings** → Cloud trash → PIN field |
+| 6 | `the water doesn't forgive` | Messages → **Rosa Soto** |
+| 7 | `vale` | Messages → **Unknown · (360) 555-0177** |
+| 8 | `doramae1991` | Mail → **🔒 tidewater.ledger** tab → password field |
+| 9 | `r halloway` | Messages → **Unknown · (360) 555-0177** |
+| 10 | `tidepool florals` | Messages → **Unknown · (360) 555-0177** |
+| 11 | *(decode the draft)* | Mail → tidewater → **Draft — never sent** |
+| 12 | `still game` | Messages → **Unknown · ···-0412** |
+| 13 | `kestrel bay` | Messages → **Unknown · ···-0412** |
+
+**Five of the thirteen go to Mara** — one running conversation in the
+`Unknown · (360) 555-0177` thread, from Night IV all the way to Night X.
 
 ---
 
 # Tester's checklist
 
-Things worth confirming while you play:
-
-- [ ] **Night cards** — one per night, correct number/title, shown once and
-      never again.
-- [ ] **Voicemail audio** — 7 cues play with the beep; Dae's cuts off; Eli's
-      has wind and engine under him.
-- [ ] **Photos** — every one opens full-screen, pinch-zooms, pans in all
-      directions, Done closes it.
-- [ ] **Unread dots** — appear on Mail/Voicemail/Notes rows and clear when
-      opened. Home badges reach zero when everything's read.
-- [ ] **Live texts** — type on letter by letter; tap completes instantly;
-      leaving a thread and coming back doesn't restart the wait.
-- [ ] **Decoder** — start-over confirms before wiping; locks after solving.
-- [ ] **Endings** — all four reachable in one run; epilogue shows
-      `ENDING N OF 4`; Settings shows the count.
-- [ ] **Difficulty** — with the noise pass in, does each gate now take real
-      work? That's the question the whole build was for.
+- [ ] Night cards fire once each, correct number and title
+- [ ] All 7 voicemails play (Dae's cuts off; Eli's has wind + engine)
+- [ ] Every photo opens full-screen, pinch-zooms, pans every direction,
+      Done closes it
+- [ ] Unread dots appear and clear; Home badges reach zero when read
+- [ ] Live texts type on letter-by-letter; tapping completes instantly;
+      leaving a thread and returning doesn't restart the wait
+- [ ] Decoder: start-over confirms; locks after solving
+- [ ] All four endings reachable in one run; Settings counts them
+- [ ] **The real question: with the noise pass in, does each gate take
+      actual work?**
