@@ -181,4 +181,49 @@ for (const e of [...EMAILS, ...VOICEMAILS, ...NOTES, ...PHOTOS])
   );
 }
 
+
+// ——— 4. STYLE: no AI tells in player-facing prose ———
+// Playtest 2 rules (Simon, 2026-08-19). These are permanent: the fixes are
+// worthless if the next content drop reintroduces them.
+{
+  const spoken = pool.filter(
+    (p) => !/\.att$|attach/.test(p.where), // documents may use dashes/forms
+  );
+
+  // (a) no math-as-metaphor — the tell that started this rule
+  const MATH_TELLS = /\b(arithmetic|an equation|the equation|calculus)\b/i;
+  for (const p of spoken) {
+    assert.ok(
+      !MATH_TELLS.test(p.text),
+      `AI TELL (math metaphor) in ${p.where}: "${p.text.slice(0, 70)}"`,
+    );
+  }
+
+  // (b) em-dash density. Functional marks stay (postmark redaction, speech
+  // interruption, note shorthand); this only catches a relapse into using
+  // them as a prose habit. Measured baseline after the sweep: 1 per 84.
+  const words = spoken.reduce((n, p) => n + p.text.split(/\s+/).length, 0);
+  // strip redaction runs first — "K————L B——" is a smudged postmark, a
+  // puzzle glyph, not a punctuation habit
+  const dashes = spoken.reduce(
+    (n, p) => n + (p.text.replace(/—{2,}/g, '').match(/—/g) ?? []).length,
+    0,
+  );
+  const perDash = words / Math.max(dashes, 1);
+  assert.ok(
+    perDash >= 60,
+    `AI TELL: em dashes every ${Math.round(perDash)} words in dialogue/narration ` +
+      `(${dashes} in ${words}). Keep it at 60+; use commas, periods or nothing.`,
+  );
+
+  // (c) nobody texts a semicolon
+  for (const t of THREADS) {
+    for (const m of t.messages)
+      assert.ok(!m.body.includes(';'), `semicolon in a text message: ${t.id}`);
+    for (const s of t.live?.steps ?? [])
+      if (s.kind === 'them')
+        assert.ok(!s.body.includes(';'), `semicolon in a live message: ${t.id}`);
+  }
+}
+
 console.log(`test-content: all assertions passed (${pool.length} readable items scanned)`);

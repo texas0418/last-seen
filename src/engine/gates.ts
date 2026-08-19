@@ -112,14 +112,14 @@ export const GATES: Gate[] = [
     answers: ['coastalremediation', 'coastalremediationllc'],
     setsFlag: 'maraTrusted',
     wrong: [
-      'Wrong. You skimmed. She didn’t die skimming. Read the invoices again — both of them.',
+      'Wrong. You skimmed. She didn’t die skimming. Read the invoices again. Both of them.',
     ],
     clues: [
       { itemId: 'em-invoices', surface: 'mail', what: 'the AP batch: same date, same $4,800, two payees — one real lab, one shell' },
       { itemId: 'th-m', surface: 'messages', what: 'M: "the second set. he thinks nobody reads the ledger twice."' },
     ],
     nudges: [
-      'mara wants proof you READ it. the money always gets paid twice — once for the truth, once for the lie.',
+      'mara wants proof you READ it. the money always gets paid twice, once for the truth, once for the lie.',
       'open the September AP batch attachment. the lab is real. the other payee is not.',
     ],
   },
@@ -161,7 +161,7 @@ export const GATES: Gate[] = [
     ],
     nudges: [
       'her cloud pin? dae teased her about it once. after the diagnosis, everything became mom.',
-      'not who mom is. WHERE mom is. the pad wants four digits and the answer only has three — she padded it.',
+      'not who mom is. WHERE mom is. the pad wants four digits and the answer only has three, so she padded it.',
     ],
   },
   {
@@ -197,7 +197,7 @@ export const GATES: Gate[] = [
     ],
     nudges: [
       'the watcher sent her a picture once. she kept it. look at what he didn’t mean to photograph.',
-      'harbor patrol doesn’t let go of its jackets. the waterfront newsletter keeps receipts — march, personnel.',
+      'harbor patrol doesn’t let go of its jackets. the waterfront newsletter keeps receipts. march, personnel.',
     ],
   },
   {
@@ -207,7 +207,7 @@ export const GATES: Gate[] = [
     kind: 'deduction',
     answers: ['rhalloway', 'royhalloway'],
     setsFlag: null,
-    wrong: ['The archive knows. Read it like she filed it — in order.'],
+    wrong: ['The archive knows. Read it like she filed it, in order.'],
     clues: [
       { itemId: 'em-tidebook', surface: 'mail', what: 'exhibit 5 + the transmittal scan: R. Halloway, signed, ten days early' },
       { itemId: 'th-m', surface: 'messages', what: '"he signs the county copies himself. arrogance is our best witness."' },
@@ -231,7 +231,7 @@ export const GATES: Gate[] = [
       { itemId: 'ph-ferry', surface: 'photos', what: 'the dawn sailing north — how a dead woman reaches a shop' },
     ],
     nudges: [
-      'mom said a girl came to the door. the receipt says nobody delivered anything — somebody stood at a counter.',
+      'mom said a girl came to the door. the receipt says nobody delivered anything, so somebody stood at a counter.',
       'the receipt has a letterhead. type it.',
     ],
   },
