@@ -11,7 +11,7 @@
     "backgroundColor": "#0a0c10",
     "ios": {
       "supportsTablet": false,
-      "buildNumber": "1",
+      "buildNumber": "2",
       "bundleIdentifier": "com.simonshih.lastseen",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
@@ -34,7 +34,13 @@
           "imageWidth": 180
         }
       ],
-      "expo-audio"
+      [
+        "expo-audio",
+        {
+          "microphonePermission": false,
+          "enableBackgroundPlayback": false
+        }
+      ]
     ]
   }
 }
