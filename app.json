@@ -2,7 +2,7 @@
   "expo": {
     "name": "Last Seen",
     "slug": "last-seen",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "scheme": "lastseen",
@@ -11,7 +11,7 @@
     "backgroundColor": "#0a0c10",
     "ios": {
       "supportsTablet": false,
-      "buildNumber": "2",
+      "buildNumber": "3",
       "bundleIdentifier": "com.simonshih.lastseen",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
@@ -40,7 +40,10 @@
           "microphonePermission": false,
           "enableBackgroundPlayback": false
         }
-      ]
+      ],
+      "expo-asset",
+      "expo-font",
+      "expo-sqlite"
     ]
   }
 }
