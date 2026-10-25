@@ -111,7 +111,7 @@ const s = StyleSheet.create({
   label: { position: 'absolute', left: 90, bottom: 26 },
   labelLine: { fontFamily: fonts.mono, fontSize: 12, color: '#2b2118', letterSpacing: 1 },
   labelLineDim: { fontFamily: fonts.mono, fontSize: 9, color: '#4a3a2a', marginTop: 3 },
-  center: { flex: 1, justifyContent: 'flex-start' },
+  center: { flex: 1, justifyContent: 'center', paddingBottom: 60 },
   tap: {
     textAlign: 'center',
     color: colors.faint,
