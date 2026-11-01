@@ -5,8 +5,11 @@
 // inside the app binary — it can read offerings and start a purchase, nothing
 // more. It is not a secret. Never put a RevenueCat SECRET key here.
 //
-// Android is still a placeholder. proAccess.ts fails OPEN for any placeholder
-// key, so the story stays unlocked on platforms we have not wired up.
+// Store selection is a BUILD-TIME flag: EXPO_PUBLIC_STORE=amazon in the
+// environment when Metro bundles (scripts/build-amazon-apk.sh sets it). Unset,
+// every Android build is a Play build. proAccess.ts fails OPEN for any
+// placeholder key, so AMAZON_KEY must be the real amzn_ key before an Amazon
+// build ships; scripts/build-amazon-apk.sh refuses to build while it is not.
 
 import { Platform } from 'react-native';
 
@@ -15,9 +18,14 @@ export const PRODUCT_ID = 'ls_full_story';
 
 const IOS_KEY = 'appl_zokzbmbAsXOeidlUQpxEKJAMkBZ';
 const ANDROID_KEY = 'goog_syYLSvCSFvQdQrqyLMIecVObgNL';
+const AMAZON_KEY = 'amzn_PLACEHOLDER';
 
-export const keyForPlatform = (): string =>
-  Platform.OS === 'android' ? ANDROID_KEY : IOS_KEY;
+export const IS_AMAZON_BUILD = process.env.EXPO_PUBLIC_STORE === 'amazon';
+
+export const keyForPlatform = (): string => {
+  if (Platform.OS !== 'android') return IOS_KEY;
+  return IS_AMAZON_BUILD ? AMAZON_KEY : ANDROID_KEY;
+};
 
 export const isPlaceholderKey = (key: string): boolean =>
   key.includes('PLACEHOLDER');
