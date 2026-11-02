@@ -18,7 +18,7 @@ export const PRODUCT_ID = 'ls_full_story';
 
 const IOS_KEY = 'appl_zokzbmbAsXOeidlUQpxEKJAMkBZ';
 const ANDROID_KEY = 'goog_syYLSvCSFvQdQrqyLMIecVObgNL';
-const AMAZON_KEY = 'amzn_PLACEHOLDER';
+const AMAZON_KEY = 'amzn_afXHemmhcHMVkwjJPckRdkLwdql';
 
 export const IS_AMAZON_BUILD = process.env.EXPO_PUBLIC_STORE === 'amazon';
 
