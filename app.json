@@ -39,7 +39,8 @@
         "expo-audio",
         {
           "microphonePermission": false,
-          "enableBackgroundPlayback": false
+          "enableBackgroundPlayback": false,
+          "recordAudioAndroid": false
         }
       ],
       "expo-asset",
