@@ -39,13 +39,15 @@
         "expo-audio",
         {
           "microphonePermission": false,
-          "enableBackgroundPlayback": false
+          "enableBackgroundPlayback": false,
+          "recordAudioAndroid": false
         }
       ],
       "expo-asset",
       "expo-font",
       "expo-sqlite",
-      "./plugins/withReleaseSigning.js"
+      "./plugins/withReleaseSigning.js",
+      "./plugins/withAmazonAuthKey.js"
     ]
   }
 }
