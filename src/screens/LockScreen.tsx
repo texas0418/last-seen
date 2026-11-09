@@ -75,7 +75,7 @@ export default function LockScreen() {
             </BodyText>
           </View>
         ))}
-        <ChromeText style={s.dots}>{'●'.repeat(entry.length).padEnd(4, '○')}</ChromeText>
+        <ChromeText style={s.dots}>{'■'.repeat(entry.length).padEnd(4, '□')}</ChromeText>
         {warning ? <ChromeText style={s.warning}>{warning}</ChromeText> : null}
         <View style={s.pad}>
           {KEYS.map((k, i) => (
@@ -137,15 +137,19 @@ const s = StyleSheet.create({
   },
   notif: {
     backgroundColor: 'rgba(20,24,31,0.85)',
-    borderRadius: 12,
-    padding: 10,
-    marginBottom: 8,
+    borderRadius: 6,
+    borderLeftWidth: 3,
+    borderLeftColor: colors.accentDeep,
+    paddingVertical: 9,
+    paddingHorizontal: 12,
+    marginBottom: 6,
   },
-  notifApp: { fontFamily: fonts.sans, fontSize: 11, color: colors.faint, marginBottom: 2 },
+  notifApp: { fontFamily: fonts.mono, fontSize: 10, letterSpacing: 1, color: colors.faint, marginBottom: 2, textTransform: 'uppercase' },
   notifLine: { fontFamily: fonts.sans, fontSize: 14, color: colors.text },
   dots: {
     textAlign: 'center',
     color: colors.ghost,
+    fontFamily: fonts.mono,
     fontSize: 22,
     letterSpacing: 14,
     marginVertical: 12,
@@ -165,13 +169,15 @@ const s = StyleSheet.create({
     alignSelf: 'center',
   },
   key: {
-    width: 72,
-    height: 56,
-    margin: 6,
-    borderRadius: 28,
+    width: 74,
+    height: 54,
+    margin: 5,
+    borderRadius: 6,
     backgroundColor: colors.panel,
+    borderWidth: 1,
+    borderColor: colors.panelBorder,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  keyText: { color: colors.text, fontSize: 24, fontFamily: fonts.sans },
+  keyText: { color: colors.text, fontSize: 22, fontFamily: fonts.mono },
 });

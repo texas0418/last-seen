@@ -2,7 +2,7 @@
   "expo": {
     "name": "Last Seen",
     "slug": "last-seen",
-    "version": "1.0.1",
+    "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "scheme": "lastseen",
@@ -11,8 +11,8 @@
     "backgroundColor": "#0a0c10",
     "ios": {
       "supportsTablet": false,
-      "buildNumber": "3",
-      "bundleIdentifier": "com.simonshih.lastseen",
+      "buildNumber": "1",
+      "bundleIdentifier": "com.simonshih.widowspoint",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       }
@@ -23,7 +23,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#0a0c10"
-      }
+      },
+      "versionCode": 1
     },
     "plugins": [
       [
@@ -43,7 +44,8 @@
       ],
       "expo-asset",
       "expo-font",
-      "expo-sqlite"
+      "expo-sqlite",
+      "./plugins/withReleaseSigning.js"
     ]
   }
 }

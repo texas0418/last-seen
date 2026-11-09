@@ -1,6 +1,7 @@
 // src/screens/HomeScreen.tsx
-// BrineOS home: a grid of the six apps. Badges are honest unread counts so
-// the phone itself points at new evidence without ever explaining it.
+// BrineOS home: a ledger of the phone's apps, one row each, the way a small
+// carrier's OS might do it. Unread counts are honest and written out, so the
+// phone points at new evidence without a red badge ever explaining it.
 
 import { Pressable, StyleSheet, View } from 'react-native';
 
@@ -23,14 +24,14 @@ export type AppId =
   | 'calendar'
   | 'settings';
 
-const APPS: { id: AppId; label: string; emoji: string }[] = [
-  { id: 'messages', label: 'Messages', emoji: '💬' },
-  { id: 'mail', label: 'Mail', emoji: '✉️' },
-  { id: 'voicemail', label: 'Phone', emoji: '📞' },
-  { id: 'notes', label: 'Notes', emoji: '📝' },
-  { id: 'photos', label: 'Photos', emoji: '🌁' },
-  { id: 'calendar', label: 'Calendar', emoji: '📅' },
-  { id: 'settings', label: 'Settings', emoji: '⚙️' },
+const APPS: { id: AppId; label: string; code: string }[] = [
+  { id: 'messages', label: 'Messages', code: 'MSG' },
+  { id: 'mail', label: 'Mail', code: 'MAIL' },
+  { id: 'voicemail', label: 'Phone', code: 'TEL' },
+  { id: 'notes', label: 'Notes', code: 'NOTE' },
+  { id: 'photos', label: 'Photos', code: 'IMG' },
+  { id: 'calendar', label: 'Calendar', code: 'CAL' },
+  { id: 'settings', label: 'Settings', code: 'SYS' },
 ];
 
 function unreadCount(app: AppId): number {
@@ -66,18 +67,18 @@ export default function HomeScreen({ onOpen }: { onOpen: (app: AppId) => void })
     <View style={ui.screen}>
       <StatusBarRow />
       <ChromeText style={s.owner}>Quinn’s phone</ChromeText>
-      <View style={s.grid}>
+      <View style={s.list}>
         {APPS.map((a) => {
           const n = unreadCount(a.id);
           return (
-            <Pressable key={a.id} style={s.tile} onPress={() => onOpen(a.id)}>
-              {n > 0 && (
-                <View style={[ui.badge, s.tileBadge]}>
-                  <ChromeText style={ui.badgeText}>{n}</ChromeText>
-                </View>
-              )}
-              <ChromeText style={s.tileEmoji}>{a.emoji}</ChromeText>
-              <ChromeText style={s.tileLabel}>{a.label}</ChromeText>
+            <Pressable key={a.id} style={s.row} onPress={() => onOpen(a.id)}>
+              <View style={s.codeBox}>
+                <ChromeText style={s.code}>{a.code}</ChromeText>
+              </View>
+              <ChromeText style={s.rowLabel}>{a.label}</ChromeText>
+              <ChromeText style={[s.rowCount, n > 0 && s.rowCountOn]}>
+                {n > 0 ? `${n} unread` : ''}
+              </ChromeText>
             </Pressable>
           );
         })}
@@ -96,28 +97,35 @@ const s = StyleSheet.create({
     marginTop: 18,
     letterSpacing: 1,
   },
-  grid: {
+  list: {
     flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
     justifyContent: 'center',
-    alignContent: 'center',
-    gap: 18,
-    padding: 24,
+    paddingHorizontal: 22,
+    gap: 8,
   },
-  tile: {
-    width: 96,
-    height: 96,
-    borderRadius: 22,
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 14,
+    paddingVertical: 12,
+    paddingHorizontal: 12,
+    borderRadius: 6,
     backgroundColor: colors.panel,
+    borderLeftWidth: 3,
+    borderLeftColor: colors.accentDeep,
+  },
+  codeBox: {
+    width: 52,
+    paddingVertical: 4,
+    borderRadius: 3,
     borderWidth: 1,
     borderColor: colors.panelBorder,
     alignItems: 'center',
-    justifyContent: 'center',
   },
-  tileBadge: { position: 'absolute', top: -6, right: -6 },
-  tileEmoji: { fontSize: 34 },
-  tileLabel: { fontFamily: fonts.sans, fontSize: 12, color: colors.textDim, marginTop: 6 },
+  code: { fontFamily: fonts.mono, fontSize: 11, color: colors.accent, letterSpacing: 1 },
+  rowLabel: { flex: 1, fontFamily: fonts.sans, fontSize: 16, color: colors.text },
+  rowCount: { fontFamily: fonts.mono, fontSize: 12, color: colors.faint },
+  rowCountOn: { color: colors.badge },
   footer: {
     textAlign: 'center',
     fontFamily: fonts.mono,
